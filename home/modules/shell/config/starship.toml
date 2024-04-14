@@ -1,0 +1,33 @@
+palette = 'dracula'
+
+[palettes.dracula]
+color_background     =    '#6F4E37'
+color_foreground     =    '#f8f8f2'
+color_cyan           =    '#8be9fd'
+color_orange         =    '#ffb86c'
+color_purple         =    '#bd93f9'
+color_red            =    '#ff5555'
+color_yellow         =    '#f1fa8c'
+
+[character]
+success_symbol = """
+[](bold color_background)\
+[󰮯 ](bold fg:color_yellow bg:color_background)\
+[···](fg:color_foreground bg:color_background)\
+[󱙝 ](bold fg:color_orange bg:color_background)\
+[󰊠 ](bold fg:color_cyan bg:color_background)\
+[󱙝](bold fg:color_foreground bg:color_background)\
+[](bold color_background)"""
+
+error_symbol = """
+[](bold color_red)\
+[󰮯 ](bold fg:color_yellow bg:color_red)\
+[···](fg:color_foreground bg:color_red)\
+[󱙝 ](bold fg:color_orange bg:color_red)\
+[󰊠 ](bold fg:color_cyan bg:color_red)\
+[󱙝](bold fg:color_foreground bg:color_red)\
+[](bold color_red)"""
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #bd93f9"

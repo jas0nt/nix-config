@@ -1,0 +1,37 @@
+{ lib, pkgs, ... }:
+
+{
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+    theme = {
+      package = pkgs.dracula-theme;
+      name = "Dracula";
+    };
+    iconTheme = {
+      package = pkgs.beauty-line-icon-theme;
+      name = "BeautyLine";
+    };
+  };
+
+  home.file = {
+    "wallpaper" = {
+      recursive = true;
+      source = ./wallpaper;
+    };
+  };
+
+}
