@@ -3,6 +3,8 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  virtualisation.docker.enable = true;
+
   programs = {
     git = {
       enable = true;
