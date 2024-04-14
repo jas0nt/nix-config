@@ -11,6 +11,7 @@
     neofetch
     miniserve
     freerdp
+    just
 
     wpsoffice
     qq
