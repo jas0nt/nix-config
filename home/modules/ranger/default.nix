@@ -2,7 +2,7 @@
 
 {
 
-  home.packages = [pkgs.ranger];
+  home.packages = [ pkgs.ranger ];
 
   home.file = {
     ".config/ranger" = {
