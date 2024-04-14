@@ -12,6 +12,7 @@
     ./modules/ranger
     ./modules/input-method
     ./modules/lunarvim
+    ./modules/helix
     ./modules/cava
     ./modules/dunst
     ./packages
