@@ -16,7 +16,7 @@
     mybt = {
       Unit = {
         Description = "Bluetooth device";
-        Requires = [ "pipewire.service" ];
+        Requires = [ "pulseaudio.service" ];
       };
       Install = { WantedBy = [ "default.target" ]; };
       Service = {
