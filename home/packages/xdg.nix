@@ -10,6 +10,8 @@ let
     "application/x-extension-xht" = browser;
     "application/x-extension-xhtml" = browser;
     "application/xhtml+xml" = browser;
+    "application/json" = browser;
+    "application/pdf" = browser;
     "text/html" = browser;
     "x-scheme-handler/about" = browser;
     "x-scheme-handler/chrome" = [ "chromium-browser.desktop" ];
@@ -17,15 +19,14 @@ let
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
+    "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
+    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
+    "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
     "image/*" = [ "imv.desktop" ];
-    "application/json" = browser;
-    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
-    "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
-    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
-    "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+    "inode/directory" = [ "pcmanfm.desktop" ];
   };
 in {
   xdg = {

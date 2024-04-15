@@ -89,10 +89,6 @@ function rules.create(clientkeys, clientbuttons)
       properties = { titlebars_enabled = false }
     },
     {
-      rule = { class = "Emacs" },
-      properties = { screen = 1, tag = "7", switchtotag = true }
-    },
-    {
       rule = { class = "kitty" },
       properties = { screen = 1, tag = "1", switchtotag = true }
     },
@@ -111,6 +107,15 @@ function rules.create(clientkeys, clientbuttons)
     {
       rule = { class = "pcmanfm" },
       properties = { screen = 1, tag = "3", switchtotag = true }
+    },
+    {
+      rule_any = {
+        class = {
+          "emacs", "Emacs",
+          "code", "Code",
+        }
+      },
+      properties = { screen = 1, tag = "7" }
     },
     {
       rule = { class = "steam" },
