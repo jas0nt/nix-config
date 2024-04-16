@@ -1,0 +1,174 @@
+/* dracula theme */
+@define-color Nix-Logo            #7EBAE4;
+@define-color background-darker   rgba(30, 31, 41, 230);
+@define-color background          #282a36;
+@define-color selection           #44475a;
+@define-color foreground          #f8f8f2;
+@define-color comment             #6272a4;
+@define-color cyan                #8be9fd;
+@define-color green               #50fa7b;
+@define-color orange              #ffb86c;
+@define-color pink                #ff79c6;
+@define-color purple              #bd93f9;
+@define-color red                 #ff5555;
+@define-color yellow              #f1fa8c;
+
+* {
+    border: none;
+    font-family: FiraCode Nerd Font;
+    font-size: 14px;
+    font-style: normal;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @background-darker;
+    color: @foreground;
+    opacity: 0.9;
+    border-radius: 1em;
+    border-bottom: 2px solid @background;
+}
+
+#workspaces {
+    background: transparent;
+    font-weight: normal;
+    font-style: normal;
+}
+
+#workspaces button {
+    padding: 0.25em 0.25em;
+    margin: 0px 0.25em;
+    color: @foreground;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: transparent;
+    color: @comment;
+    /* background-image: linear-gradient(0deg, @selection, @background-darker); */
+}
+#workspaces button.active {
+    color: @purple;
+}
+#workspaces button.urgent {
+    color: @red;
+}
+#workspaces button.special {
+    color: @yellow;
+}
+
+#taskbar {
+    padding-left: 0.25em;
+}
+#taskbar button.active,
+#taskbar button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    /* background: transparent; */
+    color: @comment;
+    background-image: linear-gradient(0deg, @selection, @background-darker);
+}
+
+
+#custom-date,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#custom-launcher {
+    background: transparent;
+    margin: 0 0.1em;
+    border-radius: 20%;
+}
+
+#custom-mytray,
+#custom-launcher {
+    padding: 0 0.5em;
+    color: @Nix-Logo;
+    background: transparent;
+}
+
+#custom-launcher:hover {
+    color: @red;
+}
+
+#custom-power {
+    color: @background;
+    background-color: @red;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 5px 10px;
+}
+
+#tray {
+    background: @background-darker;
+    border-radius: 30%;
+    padding: 0 0.5em;
+}
+
+#clock {
+    color: #E6B9C6;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+
+#battery {
+    color: #9ece6a;
+}
+
+#battery.charging {
+    color: #9ece6a;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #f7768e;
+    color: #24283b;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#backlight {
+    background-color: #24283b;
+    color: #db4b4b;
+    border-radius: 0px 0px 0px 0px;
+    /* margin: 5px; */
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px 0px;
+}
+
+#network {
+    color: #f4d9e1;
+    border-radius: 8px;
+    margin-right: 5px;
+}
+
+#pulseaudio {
+    color: #f4d9e1;
+}
+
+#pulseaudio.muted {
+    background: transparent;
+    color: #928374;
+}
+
+#custom-playerlabel,
+#window {
+    background: transparent;
+    margin: 0 0.5em;
+}
+
+#cpu,
+#memory,
+#disk {
+    background-color: @background;
+    border-radius: 30%;
+    margin: 0 0.15em;
+    padding: 0 0.1em;
+    font-weight: bold;
+}
+

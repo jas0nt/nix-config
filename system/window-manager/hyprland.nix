@@ -20,8 +20,8 @@
   services.xserver = {
     displayManager = {
       sddm.wayland.enable = true;
-      defaultSession = "hyprland";
-      setupCommands = "Hyprland";
+      # defaultSession = "hyprland";
+      # setupCommands = "Hyprland";
     };
 
   };
@@ -29,6 +29,7 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     swaylock
+    sway-launcher-desktop
     grimblast # screenshot wayland
     wl-clipboard
   ];

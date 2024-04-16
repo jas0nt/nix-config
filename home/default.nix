@@ -6,6 +6,7 @@
     ./services
     ./modules/theme
     ./modules/awesomewm
+    ./modules/hyprland
     ./modules/rofi
     ./modules/kitty
     ./modules/shell

@@ -10,6 +10,7 @@ in {
     ./device.nix
     ./packages.nix
     ./window-manager/awesomewm.nix
+    ./window-manager/hyprland.nix
   ];
 
   # This value determines the NixOS release from which the default
