@@ -115,7 +115,7 @@ function rules.create(clientkeys, clientbuttons)
           "code", "Code",
         }
       },
-      properties = { screen = 1, tag = "7" }
+      properties = { screen = 1, tag = "7", switchtotag = true }
     },
     {
       rule = { class = "steam" },
