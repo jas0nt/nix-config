@@ -22,6 +22,7 @@
       wqy_zenhei # steam font
       # nerdfonts
       fira-code-nerdfont
+      fira
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
       noto-fonts-emoji

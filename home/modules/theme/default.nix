@@ -12,6 +12,7 @@
 
   gtk = {
     enable = true;
+    font.name = "Fira Sans";
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
