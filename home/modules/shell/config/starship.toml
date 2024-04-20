@@ -13,7 +13,7 @@ color_yellow         =    '#f1fa8c'
 success_symbol = """
 [](bold color_background)\
 [󰮯 ](bold fg:color_yellow bg:color_background)\
-[···](fg:color_foreground bg:color_background)\
+[   ](fg:color_foreground bg:color_background)\
 [󱙝 ](bold fg:color_orange bg:color_background)\
 [󰊠 ](bold fg:color_cyan bg:color_background)\
 [󱙝](bold fg:color_foreground bg:color_background)\
@@ -22,7 +22,7 @@ success_symbol = """
 error_symbol = """
 [](bold color_red)\
 [󰮯 ](bold fg:color_yellow bg:color_red)\
-[···](fg:color_foreground bg:color_red)\
+[   ](fg:color_foreground bg:color_red)\
 [󱙝 ](bold fg:color_orange bg:color_red)\
 [󰊠 ](bold fg:color_cyan bg:color_red)\
 [󱙝](bold fg:color_foreground bg:color_red)\
