@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 
 {
+  home.packages = with pkgs; [ calcure ];
 
   home.file = {
     ".config/hypr" = {
