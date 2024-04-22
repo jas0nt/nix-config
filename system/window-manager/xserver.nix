@@ -18,6 +18,6 @@
 
   };
 
-  environment.systemPackages = with pkgs; [ where-is-my-sddm-theme ];
+  environment.systemPackages = with pkgs; [ wmctrl where-is-my-sddm-theme ];
 
 }
