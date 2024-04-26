@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ ./xserver.nix ];
@@ -28,6 +28,10 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
+    swaynotificationcenter
+    wlogout
+    inputs.hyprlock.packages."${pkgs.system}".hyprlock
+
     swaylock
     sway-launcher-desktop
     grimblast # screenshot wayland
