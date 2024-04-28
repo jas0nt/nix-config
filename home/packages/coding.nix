@@ -13,6 +13,7 @@
         setuptools
         paramiko
         rapidfuzz
+        pyright
       ]))
     nodejs
     # nodePackages."@microsoft/inshellisense"
