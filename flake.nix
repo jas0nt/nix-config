@@ -34,7 +34,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = inputs;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.jason = import ./home;
           }
         ];
