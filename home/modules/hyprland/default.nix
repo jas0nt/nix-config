@@ -12,10 +12,6 @@
       recursive = true;
       source = ./config/waybar;
     };
-    ".config/swaylock" = {
-      recursive = true;
-      source = ./config/swaylock;
-    };
   };
 
 }

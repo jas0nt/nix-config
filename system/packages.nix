@@ -27,6 +27,7 @@
     openssl
     nmap
     clash-meta
+    libnotify
 
     # Modern unix tools
     btop

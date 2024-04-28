@@ -118,7 +118,7 @@
   "custom/mytray": {
     "format": "󰥺",
     "on-click": "hyprctl dispatch workspace empty",
-    "on-click-right": "swaylock"
+    "on-click-right": "hyprlock"
   },
   "group/hardware": {
     "orientation": "horizontal",

@@ -13,7 +13,7 @@
     };
     displayManager = {
       # sddm.wayland.enable = false;
-      defaultSession = "none+awesome";
+      # defaultSession = "none+awesome";
     };
 
     xautolock = {

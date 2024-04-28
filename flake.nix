@@ -18,6 +18,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprlock.url = "github:hyprwm/hyprlock/main";
+    hypridle.url = "github:hyprwm/hypridle/main";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
