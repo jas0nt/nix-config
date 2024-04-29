@@ -83,6 +83,7 @@ window#waybar {
 }
 
 #custom-mytray,
+#custom-notification,
 #custom-launcher {
     padding: 0 0.5em;
     color: @Nix-Logo;
