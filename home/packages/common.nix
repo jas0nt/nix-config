@@ -18,7 +18,6 @@
     qbittorrent
     motrix
     axel
-    aria2
     localsend
     libsForQt5.kdeconnect-kde
     steam
