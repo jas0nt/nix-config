@@ -18,17 +18,21 @@ upp input:
 history:
   nix profile history --profile /nix/var/nix/profiles/system
 
+list:
+  # list all generations
+  sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+
 clean:
   # remove all generations older than 7 days
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
-
-repl:
-  nix repl -f flake:nixpkgs
 
 gc:
   # garbage collect all unused nix store entries
   sudo nix store gc --debug
   sudo nix-collect-garbage --delete-old
+
+repl:
+  nix repl -f flake:nixpkgs
 
 
 proxy:

@@ -10,9 +10,6 @@
       fuckGFW  = "export http_proxy=http://127.0.0.1:7890; and export https_proxy=http://127.0.0.1:7890; and export all_proxy=socks5://127.0.0.1:7890";
     };
     shellAbbrs = {
-      nixgc = "nix-collect-garbage";
-      nix-list-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-      nix-del-gens = "sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system"; #gen numbers OR #older than 5 days: 5d
       icat = "kitten icat";
       ll = "eza --icons -l";
       la = "eza --icons -la";
