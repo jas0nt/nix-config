@@ -25,7 +25,7 @@
       my_audio_up.body       = "pulsemixer --change-volume +1\nmy_audio_notify";
       my_audio_down.body     = "pulsemixer --change-volume -1\nmy_audio_notify";
       my_launcher.body       = "sway-launcher-desktop";
-      my_locker.body         = "i3lock-fancy -gp";
+      my_locker.body         = "hyprlock";
       my_file_manager.body   = "ranger";
       my_screenshot.body     = "grimblast copysave area";
       gpu_fan.body           = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
