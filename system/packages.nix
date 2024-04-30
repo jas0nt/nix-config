@@ -64,7 +64,6 @@
     dmenu
     firefox-bin
     pcmanfm
-    cinnamon.nemo
     networkmanagerapplet
     nwg-look
   ];
