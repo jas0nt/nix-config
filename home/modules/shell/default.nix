@@ -17,7 +17,7 @@
       dota = "steam steam://rungameid/570";
     };
     functions = {
-      my_audio_notify.body   = "dunstify -r 1 -t 2000 -i volume \"Vol: $(pulsemixer --get-volume)\"";
+      my_audio_notify.body   = "notify-send -r 1 -t 2000 -i volume \"Vol: $(pulsemixer --get-volume)\"";
       my_audio_mute.body     = "pulsemixer --toggle-mute";
       my_audio_up.body       = "pulsemixer --change-volume +1\nmy_audio_notify";
       my_audio_down.body     = "pulsemixer --change-volume -1\nmy_audio_notify";
