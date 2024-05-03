@@ -1,6 +1,18 @@
 { lib, pkgs, ... }:
 
 {
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+    extraPackages = epkgs: [ epkgs.rime ];
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode;
+  };
+
   home.packages = with pkgs; [
     (python3.withPackages (ps:
       with ps; [
@@ -23,10 +35,10 @@
     jdk
     lua
 
-    emacs
     librime
-    emacsPackages.rime
-    vscode-fhs
+
+    # lsp
+    nil
     nixfmt
 
   ];

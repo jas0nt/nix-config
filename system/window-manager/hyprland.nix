@@ -3,6 +3,8 @@
 {
   imports = [ ./xserver.nix ];
 
+  programs.xwayland.enable = true;
+
   programs = {
     hyprland = {
       enable = true;

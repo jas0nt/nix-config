@@ -5,7 +5,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      lock = "i3lock-fancy -gp";
+      lock = "hyprlock";
       logout = "loginctl terminate-user $USER";
       fuckGFW  = "export http_proxy=http://127.0.0.1:7890; and export https_proxy=http://127.0.0.1:7890; and export all_proxy=socks5://127.0.0.1:7890";
     };
@@ -15,6 +15,7 @@
       la = "eza --icons -la";
       showcert = "nmap -p 443 --script ssl-cert";
       dota = "steam steam://rungameid/570";
+      vscode-wayland = "code --enable-features=UseOzonePlatform --ozone-platform=wayland";
     };
     functions = {
       my_audio_notify.body   = "notify-send -r 1 -t 2000 -i volume \"Vol: $(pulsemixer --get-volume)\"";
