@@ -9,6 +9,7 @@
       package = pkgs.gitFull;
       config.credential.helper = "store";
     };
+    mosh.enable = true;
 
   };
 
