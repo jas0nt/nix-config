@@ -3,16 +3,12 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.docker.enable = true;
-
   programs = {
     git = {
       enable = true;
       package = pkgs.gitFull;
       config.credential.helper = "store";
     };
-
-    dconf.enable = true;
 
   };
 

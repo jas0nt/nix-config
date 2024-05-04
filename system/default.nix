@@ -9,6 +9,7 @@ in {
     ./audio.nix
     ./device.nix
     ./packages.nix
+    ./virtualisation.nix
     ./window-manager/awesomewm.nix
     ./window-manager/hyprland.nix
   ];
