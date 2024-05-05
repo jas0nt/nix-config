@@ -1,8 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   programs = {
     git = {
       enable = true;
@@ -63,6 +61,7 @@
     pcmanfm
     networkmanagerapplet
     nwg-look
+    pkgs-unstable.wechat-uos
   ];
 
 }

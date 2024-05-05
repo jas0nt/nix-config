@@ -14,6 +14,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -21,11 +22,24 @@
     hypridle.url = "github:hyprwm/hypridle/main";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      nixos = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            inherit system;
+            config = {
+              allowUnfree = true;
+              permittedInsecurePackages = [ "openssl-1.1.1w" ];
+            };
+          };
+        };
         modules = [
           ./hardware/pc
           ./system
