@@ -10,7 +10,7 @@
       config.credential.helper = "store";
     };
     mosh.enable = true;
-
+    clash-verge.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
