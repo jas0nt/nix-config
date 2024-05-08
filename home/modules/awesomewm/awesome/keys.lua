@@ -197,21 +197,21 @@ keys.globalkeys = gears.table.join(
     -- ALSA volume control
     awful.key({}, "XF86AudioRaiseVolume",
         function()
-            awful.spawn("fish -c 'my_audio_up'", false)
+            awful.spawn("~/scripts/volume.sh up", false)
             awesome.emit_signal("volume_change")
         end,
         { description = "volume up", group = "hotkeys" }
     ),
     awful.key({}, "XF86AudioLowerVolume",
         function()
-            awful.spawn("fish -c 'my_audio_down'", false)
+            awful.spawn("~/scripts/volume.sh down", false)
             awesome.emit_signal("volume_change")
         end,
         { description = "volume down", group = "hotkeys" }
     ),
     awful.key({}, "XF86AudioMute",
         function()
-            awful.spawn("fish -c 'my_audio_mute'", false)
+            awful.spawn("~/scripts/volume.sh mute", false)
             awesome.emit_signal("volume_change")
         end,
         { description = "toggle mute", group = "hotkeys" }

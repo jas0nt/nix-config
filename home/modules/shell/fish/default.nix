@@ -1,6 +1,9 @@
 { lib, pkgs, ... }:
 
 {
+  imports = [
+    ../starship
+  ];
 
   programs.fish = {
     enable = true;
@@ -33,6 +36,8 @@
     };
   };
 
+  programs.starship.enableFishshellIntegration = true;
+
   programs.navi = {
     enable = true;
     enableFishIntegration = true;
@@ -51,13 +56,6 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
-  };
-
-  programs.starship = {
-    package = pkgs.starship;
-    enable = true;
-    enableFishIntegration = true;
-    settings = pkgs.lib.importTOML ./config/starship.toml;
   };
 
 }

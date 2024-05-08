@@ -9,7 +9,10 @@
     ./modules/hyprland
     ./modules/rofi
     ./modules/kitty
-    ./modules/shell
+    ./modules/scripts
+    ./modules/shell/bash
+    ./modules/shell/nushell
+    # ./modules/shell/fish
     ./modules/ranger
     ./modules/input-method
     ./modules/lunarvim

@@ -22,12 +22,11 @@ in {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  programs.fish.enable = true;
   users.users.jason = {
     isNormalUser = true;
     description = "jason";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
   };
 
   nix.settings.trusted-users = [ username ];

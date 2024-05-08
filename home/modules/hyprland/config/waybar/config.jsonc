@@ -25,7 +25,7 @@
   ],
   "clock": {
     "format": "{:%H:%M %a %b %d}",
-    "on-click": "pkill calcure || $TERMINAL --class myfloating calcure"
+    "on-click": "~/scripts/desktop.sh calendar"
   },
   "hyprland/window": {
     "format": "{title}",
@@ -118,7 +118,7 @@
   "custom/mytray": {
     "format": "󰥺",
     "on-click": "hyprctl dispatch workspace empty",
-    "on-click-right": "fish -c 'my_locker'"
+    "on-click-right": "~/scripts/desktop.sh locker"
   },
   "custom/notification": {
     "tooltip": false,
@@ -136,8 +136,8 @@
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "sleep 0.1s && swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
+    "on-click": "~/scripts/desktop.sh notification-center",
+    "on-click-right": "~/scripts/desktop.sh notification-dnd",
     "escape": true
   },
   "group/hardware": {
@@ -186,15 +186,15 @@
         "󱄡"
       ]
     },
-    "on-click": "fish -c 'my_audio_mute'",
-    "on-click-right": "pkill pwvucontrol || pwvucontrol",
-    "on-scroll-up": "fish -c 'my_audio_up'",
-    "on-scroll-down": "fish -c 'my_audio_down'",
+    "on-click": "~/scripts/volume.sh mute",
+    "on-click-right": "~/scripts/volume.sh gui",
+    "on-scroll-up": "~/scripts/volume.sh up",
+    "on-scroll-down": "~/scripts/volume.sh down",
     "scroll-step": 5
   },
   "custom/launcher": {
     "format": " ",
-    "on-click": "pkill btop || $TERMINAL --class myfloatingl btop",
-    "on-click-right": "fish -c 'my_locker'"
+    "on-click": "~/scripts/desktop.sh monitor",
+    "on-click-right": "~/scripts/desktop.sh locker"
   }
 }
