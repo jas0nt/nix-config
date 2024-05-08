@@ -20,6 +20,7 @@
       showcert = "nmap -p 443 --script ssl-cert";
       dota = "steam steam://rungameid/570";
       vscode-wayland = "code --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      venv = "sh -i -c $'source (gum file --directory ~/.venv)/bin/activate; nu'";
     };
   };
 
