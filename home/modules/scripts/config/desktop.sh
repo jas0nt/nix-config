@@ -8,8 +8,28 @@ launcher)
     $TERMINAL --class myfloating sway-launcher-desktop
     ;;
 
-locker)
+logout-menu)
+    pkill wlogout || wlogout -b 5 -B 500 -T 500
+    ;;
+
+lock)
     hyprlock
+    ;;
+
+logout)
+    hyprctl dispatch exit
+    ;;
+
+hibernate)
+    systemctl hibernate
+    ;;
+
+reboot)
+    systemctl reboot
+    ;;
+
+shutdown)
+    systemctl poweroff
     ;;
 
 file-manager)

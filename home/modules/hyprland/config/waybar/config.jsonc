@@ -118,7 +118,7 @@
   "custom/mytray": {
     "format": "󰥺",
     "on-click": "hyprctl dispatch workspace empty",
-    "on-click-right": "~/scripts/desktop.sh locker"
+    "on-click-right": "~/scripts/desktop.sh lock"
   },
   "custom/notification": {
     "tooltip": false,
@@ -195,6 +195,6 @@
   "custom/launcher": {
     "format": " ",
     "on-click": "~/scripts/desktop.sh monitor",
-    "on-click-right": "~/scripts/desktop.sh locker"
+    "on-click-right": "~/scripts/desktop.sh logout-menu"
   }
 }

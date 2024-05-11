@@ -33,7 +33,6 @@
     hyprpicker
     inputs.hyprlock.packages."${pkgs.system}".hyprlock
     inputs.hypridle.packages."${pkgs.system}".hypridle
-    wlogout
     sway-launcher-desktop
     grimblast # screenshot wayland
     wl-clipboard

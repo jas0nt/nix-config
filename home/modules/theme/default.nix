@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 
 {
+  programs.pywal.enable = true;
 
   home.pointerCursor = {
     gtk.enable = true;
