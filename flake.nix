@@ -48,7 +48,20 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgs = import inputs.nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+              };
+              pkgs-unstable = import inputs.nixpkgs-unstable {
+                inherit system;
+                config = {
+                  allowUnfree = true;
+                  permittedInsecurePackages = [ "openssl-1.1.1w" ];
+                };
+              };
+            };
             home-manager.users.jason = import ./home;
           }
         ];
