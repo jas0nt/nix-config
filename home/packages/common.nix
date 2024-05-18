@@ -8,7 +8,6 @@
     lolcat
     nms
 
-    neofetch
     miniserve
     freerdp
     just

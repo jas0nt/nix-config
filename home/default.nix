@@ -9,6 +9,7 @@
     ./modules/hyprland
     ./modules/rofi
     ./modules/kitty
+    ./modules/fastfetch
     ./modules/scripts
     ./modules/shell/bash
     ./modules/shell/nushell
