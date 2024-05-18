@@ -29,6 +29,14 @@
     enableNushellIntegration = true;
   };
 
+  programs.fzf = {
+    enable = true;
+  };
+
+  programs.broot = {
+    enable = true;
+  };
+
   programs.starship.enableNushellIntegration = true;
 
 }
