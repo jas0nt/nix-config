@@ -29,7 +29,7 @@ reboot)
     ;;
 
 shutdown)
-    systemctl poweroff
+    shutdown -h now
     ;;
 
 file-manager)
