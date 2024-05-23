@@ -1,6 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, pkgs-unstable, ... }:
 
 {
+  home.packages = [ pkgs-unstable.inshellisense ];
+
   imports = [
     ../starship
   ];

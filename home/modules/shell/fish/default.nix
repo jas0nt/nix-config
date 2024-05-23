@@ -36,7 +36,7 @@
     };
   };
 
-  programs.starship.enableFishshellIntegration = true;
+  programs.starship.enableFishIntegration = true;
 
   programs.navi = {
     enable = true;

@@ -28,7 +28,6 @@
         pyright
       ]))
     nodejs
-    # nodePackages."@microsoft/inshellisense"
     rustc
     cargo
     rustfmt
@@ -37,6 +36,7 @@
 
     librime
 
+    dprint
     # lsp
     nil
     nixfmt
