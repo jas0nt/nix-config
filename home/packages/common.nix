@@ -21,6 +21,7 @@
     localsend
     libsForQt5.kdeconnect-kde
     steam
+    appflowy
   ];
 
 }

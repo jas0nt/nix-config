@@ -1,13 +1,14 @@
 set shell := ["bash", "-uc"]
 
 default:
-  just --list --unsorted
+  @just --choose
 
-build:
-  sudo nixos-rebuild switch --flake path:.#nixos
+# [ minimal | minimal-proxy | nixos ]
+build target = 'nixos':
+  sudo nixos-rebuild switch --flake path:.#{{target}}
 
-debug:
-  sudo nixos-rebuild switch --flake path:.#nixos --show-trace --verbose
+debug target = 'nixos':
+  sudo nixos-rebuild switch --flake path:.#{{target}} --show-trace --verbose
 
 up:
   nix flake update
@@ -34,7 +35,6 @@ gc:
 repl:
   nix repl -f flake:nixpkgs
 
-
 proxy:
   sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
   sudo sh -c 'echo -e "[Service]\n\
@@ -44,11 +44,9 @@ proxy:
   > /run/systemd/system/nix-daemon.service.d/override.conf'
   sudo systemctl daemon-reload
   sudo systemctl restart nix-daemon
-  systemctl cat nix-daemon
 
 proxyoff:
   sudo rm -f /run/systemd/system/nix-daemon.service.d/override.conf
   sudo systemctl daemon-reload
   sudo systemctl restart nix-daemon
-  systemctl cat nix-daemon
 

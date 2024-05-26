@@ -1,12 +1,9 @@
 { pkgs, pkgs-unstable, lib, ... }:
 
 {
+  imports = [ ./minimal/sys-pkgs.nix ];
+
   programs = {
-    git = {
-      enable = true;
-      package = pkgs.gitFull;
-      config.credential.helper = "store";
-    };
     mosh.enable = true;
     clash-verge.enable = true;
   };
@@ -14,17 +11,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nushell
-    libGL
-    killall
-    gnumake
-    libgccjit
-    cmake
-    openssl
-    nmap
-    clash-meta
-    libnotify
-
     # Modern unix tools
     btop
     htop
@@ -49,10 +35,7 @@
     systemctl-tui
     bluez
     bluetuith
-    vim
-    wget
-    unzip
-    p7zip
+    libnotify
 
     # GUI apps
     kitty

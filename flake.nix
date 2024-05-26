@@ -23,23 +23,39 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          pkgs-unstable = import inputs.nixpkgs-unstable {
-            inherit system;
-            config = {
-              allowUnfree = true;
-              permittedInsecurePackages = [ "openssl-1.1.1w" ];
-            };
+    nixosConfigurations = let
+      system = "x86_64-linux";
+      mysys = "x86_64-linux";
+      special-args = {
+        inherit inputs;
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [ "openssl-1.1.1w" ];
           };
         };
+      };
+    in {
+      minimal = nixpkgs.lib.nixosSystem rec {
+        system = mysys;
+        specialArgs = special-args;
+        modules = [ ./hardware/pc ./system/minimal ];
+      };
+
+      minimal-proxy = nixpkgs.lib.nixosSystem rec {
+        system = mysys;
+        specialArgs = special-args;
+        modules = [ ./hardware/pc ./system/minimal ./system/proxy.nix ];
+      };
+
+      nixos = nixpkgs.lib.nixosSystem rec {
+        system = mysys;
+        specialArgs = special-args;
         modules = [
           ./hardware/pc
           ./system
@@ -48,20 +64,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              pkgs = import inputs.nixpkgs {
-                inherit system;
-                config.allowUnfree = true;
-              };
-              pkgs-unstable = import inputs.nixpkgs-unstable {
-                inherit system;
-                config = {
-                  allowUnfree = true;
-                  permittedInsecurePackages = [ "openssl-1.1.1w" ];
-                };
-              };
-            };
+            home-manager.extraSpecialArgs = special-args;
             home-manager.users.jason = import ./home;
           }
         ];
