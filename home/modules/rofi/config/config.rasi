@@ -20,7 +20,7 @@ configuration {
 }
 
 * {
-    font: "FiraCode Nerd Font 20";
+    font: "Fira Code 20";
 }
 
 * {

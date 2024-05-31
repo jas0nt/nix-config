@@ -25,8 +25,8 @@ local theme = {}
 theme.name = "pastel"
 
 -- Font
-theme.font = "FiraCode Nerd Font 9"
-theme.title_font = "FiraCode Nerd Font 10"
+theme.font = "Fira Code 9"
+theme.title_font = "Fira Code 10"
 
 
 -- Background

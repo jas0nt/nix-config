@@ -19,20 +19,21 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      wqy_zenhei # steam font
-      # nerdfonts
+      source-han-sans
+      fira-code
       fira-code-nerdfont
-      fira
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
       noto-fonts-emoji
     ];
 
     fontconfig = {
-      defaultFonts = {
-        serif = [ "Noto Serif CJK SC" ];
-        sansSerif = [ "Noto Sans CJK SC" ];
-        monospace = [ "FiraCode Nerd Font" ];
+      defaultFonts = let my-fonts = [
+        "Source Han Sans"
+        "Fira Code"
+      ];
+      in {
+        serif = my-fonts;
+        sansSerif = my-fonts;
+        monospace = my-fonts;
         emoji = [ "Noto Color Emoji" ];
       };
     };
