@@ -23,6 +23,7 @@
       dota = "steam steam://rungameid/570";
       vscode-wayland = "code --enable-features=UseOzonePlatform --ozone-platform=wayland";
       venv = "sh -i -c $'source (gum file --directory ~/.venv)/bin/activate; nu'";
+      ipy = "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'";
     };
   };
 
