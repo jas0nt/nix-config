@@ -11,6 +11,7 @@
     miniserve
     freerdp
     just
+    wlrctl
 
     wpsoffice
     qq
@@ -20,7 +21,6 @@
     axel
     localsend
     libsForQt5.kdeconnect-kde
-    steam
     appflowy
   ];
 
