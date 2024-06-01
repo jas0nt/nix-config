@@ -26,10 +26,7 @@
     ];
 
     fontconfig = {
-      defaultFonts = let my-fonts = [
-        "Source Han Sans"
-        "Fira Code"
-      ];
+      defaultFonts = let my-fonts = [ "Source Han Sans" "Fira Code" ];
       in {
         serif = my-fonts;
         sansSerif = my-fonts;

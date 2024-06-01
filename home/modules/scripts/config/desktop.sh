@@ -37,7 +37,7 @@ file-manager)
     ;;
 
 screenshot)
-    grimblast copysave area
+    grim -g "$(slurp)" - | wl-copy
     ;;
 
 calendar)

@@ -13,7 +13,6 @@
     just
     wlrctl
 
-    wpsoffice
     qq
     # wechat-uos
     qbittorrent

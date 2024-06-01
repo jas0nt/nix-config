@@ -34,7 +34,7 @@
     inputs.hyprlock.packages."${pkgs.system}".hyprlock
     inputs.hypridle.packages."${pkgs.system}".hypridle
     sway-launcher-desktop
-    grimblast # screenshot wayland
+    grim slurp  # screenshot wayland
     wl-clipboard
   ];
 
