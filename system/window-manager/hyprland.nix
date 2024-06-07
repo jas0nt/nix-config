@@ -8,7 +8,6 @@
   programs = {
     hyprland = {
       enable = true;
-      enableNvidiaPatches = true;
       xwayland.enable = true;
     };
 
@@ -16,7 +15,6 @@
       enable = true;
       package = pkgs.waybar;
     };
-
   };
 
   services.xserver = {
@@ -34,8 +32,8 @@
     inputs.hyprlock.packages."${pkgs.system}".hyprlock
     inputs.hypridle.packages."${pkgs.system}".hypridle
     sway-launcher-desktop
-    grim slurp  # screenshot wayland
+    grim # screenshot wayland
+    slurp
     wl-clipboard
   ];
-
 }

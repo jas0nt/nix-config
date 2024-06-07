@@ -10,6 +10,10 @@ build target = 'nixos':
 debug target = 'nixos':
   sudo nixos-rebuild switch --flake path:.#{{target}} --show-trace --verbose
 
+# no substitute
+build-nosub target = 'nixos':
+  sudo nixos-rebuild switch --flake path:.#{{target}} --option substitute false
+
 up:
   nix flake update
 
@@ -38,9 +42,9 @@ repl:
 proxy:
   sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
   sudo sh -c 'echo -e "[Service]\n\
-  Environment=\"http_proxy=socks5h://localhost:7891\"\n\
-  Environment=\"https_proxy=socks5h://localhost:7891\"\n\
-  Environment=\"all_proxy=socks5h://localhost:7891\"\n"\
+  Environment=\"http_proxy=http://127.0.0.1:7890\"\n\
+  Environment=\"https_proxy=http://127.0.0.1:7890\"\n\
+  Environment=\"all_proxy=socks5h://127.0.0.1:7891\"\n"\
   > /run/systemd/system/nix-daemon.service.d/override.conf'
   sudo systemctl daemon-reload
   sudo systemctl restart nix-daemon

@@ -22,11 +22,6 @@
     udisks2.enable = true;
     printing.enable = true; # Enable CUPS to print documents.
     # services.xserver.libinput.enable = true;  Enable touchpad support.
-    aria2 = {
-      enable = true;
-      extraArguments = "--rpc-listen-all --rpc-allow-origin-all=true";
-    };
-
   };
 
 }

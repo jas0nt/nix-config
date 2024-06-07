@@ -2,11 +2,7 @@
 
 let username = "jason";
 in {
-  imports = [
-    ./boot
-    ./networking.nix
-    ./sys-pkgs.nix
-  ];
+  imports = [ ./boot ./networking.nix ./sys-pkgs.nix ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -26,12 +22,7 @@ in {
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
 
-    substituters = [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
-    ];
-
+    substituters = [ "https://cache.nixos.org" ];
     trusted-public-keys =
       [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
     builders-use-substitutes = true;

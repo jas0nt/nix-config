@@ -3,6 +3,7 @@
 
   nixConfig = {
     extra-substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
@@ -59,12 +60,14 @@
         modules = [
           ./hardware/pc
           ./system
+          # ./system/proxy.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = special-args;
+            home-manager.backupFileExtension = "backup";
             home-manager.users.jason = import ./home;
           }
         ];
