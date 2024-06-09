@@ -25,7 +25,7 @@
   ],
   "clock": {
     "format": "{:%H:%M %a %b %d}",
-    "on-click": "~/scripts/desktop.sh calendar"
+    "on-click": "bash ~/scripts/desktop.sh calendar"
   },
   "hyprland/window": {
     "format": "{title}",
@@ -118,7 +118,7 @@
   "custom/mytray": {
     "format": "󰥺",
     "on-click": "hyprctl dispatch workspace empty",
-    "on-click-right": "~/scripts/desktop.sh lock"
+    "on-click-right": "bash ~/scripts/desktop.sh lock"
   },
   "custom/notification": {
     "tooltip": false,
@@ -136,8 +136,8 @@
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "~/scripts/desktop.sh notification-center",
-    "on-click-right": "~/scripts/desktop.sh notification-dnd",
+    "on-click": "bash ~/scripts/desktop.sh notification-center",
+    "on-click-right": "bash ~/scripts/desktop.sh notification-dnd",
     "escape": true
   },
   "group/hardware": {
@@ -186,15 +186,15 @@
         "󱄡"
       ]
     },
-    "on-click": "~/scripts/volume.sh mute",
-    "on-click-right": "~/scripts/volume.sh gui",
-    "on-scroll-up": "~/scripts/volume.sh up",
-    "on-scroll-down": "~/scripts/volume.sh down",
+    "on-click": "bash ~/scripts/volume.sh mute",
+    "on-click-right": "bash ~/scripts/volume.sh gui",
+    "on-scroll-up": "bash ~/scripts/volume.sh up",
+    "on-scroll-down": "bash ~/scripts/volume.sh down",
     "scroll-step": 5
   },
   "custom/launcher": {
     "format": " ",
-    "on-click": "~/scripts/desktop.sh monitor",
-    "on-click-right": "~/scripts/desktop.sh logout-menu"
+    "on-click": "bash ~/scripts/desktop.sh monitor",
+    "on-click-right": "bash ~/scripts/desktop.sh logout-menu"
   }
 }

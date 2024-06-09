@@ -1,3 +1,7 @@
+set -x
+
+DIR=$(dirname "$0")
+
 case $1 in
 
 monitor)
@@ -6,6 +10,19 @@ monitor)
 
 launcher)
     $TERMINAL --class myfloating sway-launcher-desktop
+    ;;
+
+idle-lock)
+    source $DIR/utils.sh
+    if is-media-playing; then
+        echo "Not locking"
+        wlrctl pointer move 1
+        wlrctl pointer move -1
+    else
+        echo "Locking"
+        hyprctl dispatch workspace empty
+        hyprlock
+    fi
     ;;
 
 logout-menu)

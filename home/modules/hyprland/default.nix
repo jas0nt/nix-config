@@ -23,31 +23,31 @@
     layout = [
       {
         label = "lock";
-        action = "~/scripts/desktop.sh lock";
+        action = "bash ~/scripts/desktop.sh lock";
         text = "lock";
         keybind = "l";
       }
       {
         label = "logout";
-        action = "~/scripts/desktop.sh logout";
+        action = "bash ~/scripts/desktop.sh logout";
         text = "logout";
         keybind = "q";
       }
       {
         label = "hibernate";
-        action = "~/scripts/desktop.sh hibernate";
+        action = "bash ~/scripts/desktop.sh hibernate";
         text = "Hibernate";
         keybind = "h";
       }
       {
         label = "reboot";
-        action = "~/scripts/desktop.sh reboot";
+        action = "bash ~/scripts/desktop.sh reboot";
         text = "Reboot";
         keybind = "r";
       }
       {
         label = "shutdown";
-        action = "~/scripts/desktop.sh shutdown";
+        action = "bash ~/scripts/desktop.sh shutdown";
         text = "Shutdown";
         keybind = "s";
       }
