@@ -39,7 +39,7 @@
     dprint
     # lsp
     nil
-    nixfmt
+    nixfmt-rfc-style
 
   ];
 }

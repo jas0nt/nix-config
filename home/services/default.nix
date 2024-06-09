@@ -9,7 +9,8 @@
       Install = { WantedBy = [ "default.target" ]; };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.clash-meta}/bin/clash-meta";
+        ExecStart =
+          "${pkgs.clash-meta}/bin/clash-meta -f ~/.config/clash/config.yaml";
       };
     };
 
@@ -21,8 +22,7 @@
       Install = { WantedBy = [ "default.target" ]; };
       Service = {
         Type = "simple";
-        ExecStart =
-          "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
+        ExecStart = "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
         Restart = "on-failure";
       };
     };

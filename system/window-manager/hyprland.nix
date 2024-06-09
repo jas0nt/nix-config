@@ -11,26 +11,27 @@
       xwayland.enable = true;
     };
 
+    hyprlock.enable = true;
+
     waybar = {
       enable = true;
       package = pkgs.waybar;
     };
   };
 
-  services.xserver = {
+  services.hypridle.enable = true;
+
+  services = {
     displayManager = {
       sddm.wayland.enable = true;
       defaultSession = "hyprland";
-      setupCommands = "Hyprland";
     };
-
   };
+  services.xserver.displayManager.setupCommands = "Hyprland";
 
   environment.systemPackages = with pkgs; [
     hyprpaper
     hyprpicker
-    inputs.hyprlock.packages."${pkgs.system}".hyprlock
-    inputs.hypridle.packages."${pkgs.system}".hypridle
     sway-launcher-desktop
     grim # screenshot wayland
     slurp

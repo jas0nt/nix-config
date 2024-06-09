@@ -1,10 +1,14 @@
 { pkgs, ... }:
 
 {
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    excludePackages = [ pkgs.xterm ];
+  services = {
+
+    xserver = {
+      enable = true;
+      xkb.layout = "us";
+      excludePackages = [ pkgs.xterm ];
+
+    };
 
     displayManager = {
       # Enable automatic login for the user.
@@ -21,3 +25,4 @@
   environment.systemPackages = with pkgs; [ wmctrl where-is-my-sddm-theme ];
 
 }
+
