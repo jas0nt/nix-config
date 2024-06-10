@@ -14,7 +14,7 @@
     wlrctl
 
     qq
-    # wechat-uos
+    wechat-uos
     qbittorrent
     motrix
     axel

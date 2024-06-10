@@ -45,7 +45,6 @@
     pcmanfm
     networkmanagerapplet
     nwg-look
-    pkgs-unstable.wechat-uos
   ];
 
 }

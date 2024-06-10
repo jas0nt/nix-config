@@ -28,13 +28,15 @@
         inherit inputs;
         pkgs = import inputs.nixpkgs {
           inherit system;
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [ "openssl-1.1.1w" ];
+          };
         };
         pkgs-unstable = import inputs.nixpkgs-unstable {
           inherit system;
           config = {
             allowUnfree = true;
-            permittedInsecurePackages = [ "openssl-1.1.1w" ];
           };
         };
       };
