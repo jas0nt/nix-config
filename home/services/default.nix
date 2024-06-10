@@ -10,7 +10,7 @@
       Service = {
         Type = "simple";
         ExecStart =
-          "${pkgs.clash-meta}/bin/clash-meta -f ~/.config/clash/config.yaml";
+          "${pkgs.clash-meta}/bin/clash-meta -f .config/clash/config.yaml";
       };
     };
 
