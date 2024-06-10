@@ -91,7 +91,7 @@ window#waybar {
 }
 
 #custom-launcher:hover {
-    color: @red;
+    color: @purple;
 }
 
 #custom-power {
