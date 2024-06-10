@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ./xserver.nix ];
+  imports = [ ./login-manager.nix ];
 
   programs.xwayland.enable = true;
 
@@ -20,14 +20,6 @@
   };
 
   services.hypridle.enable = true;
-
-  services = {
-    displayManager = {
-      sddm.wayland.enable = true;
-      defaultSession = "hyprland";
-    };
-  };
-  services.xserver.displayManager.setupCommands = "Hyprland";
 
   environment.systemPackages = with pkgs; [
     hyprpaper
