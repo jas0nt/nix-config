@@ -71,15 +71,6 @@ local function list_update(w, buttons, label, data, objects)
       else
          ib = wibox.widget.imagebox()
          tb = wibox.widget.textbox()
-         cb = clickable_container(wibox.container.margin(wibox.widget.imagebox(ICON_DIR .. "close.svg"), dpi(0.1),
-            dpi(0.1), dpi(0.1), dpi(0.1)))
-         cb.shape = gears.shape.circle
-         cbm = wibox.container.margin(cb, dpi(0.1), dpi(0.1), dpi(0.1), dpi(0.1)) -- 4, 8 ,12 ,12 -- close button
-         cbm:buttons(gears.table.join(awful.button({}, 1, nil,
-            function()
-               o.kill(o)
-            end
-         )))
          bg_clickable = clickable_container()
          bgb = wibox.container.background()
          tbm = wibox.container.margin(tb, dpi(0.1), dpi(0.1))
@@ -92,7 +83,6 @@ local function list_update(w, buttons, label, data, objects)
          l:add(ibm)
          l:add(tbm)
          ll:add(l)
-         -- ll:add(cbm)
 
          bg_clickable:set_widget(ll)
          -- And all of this gets a background
@@ -140,7 +130,6 @@ local function list_update(w, buttons, label, data, objects)
       end
       bgb:set_bg(bg)
       if type(bg_image) == 'function' then
-         -- TODO: Why does this pass nil as an argument?
          bg_image = bg_image(tb, o, nil, objects, i)
       end
       bgb:set_bgimage(bg_image)

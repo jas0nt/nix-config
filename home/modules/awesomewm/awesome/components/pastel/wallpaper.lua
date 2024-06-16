@@ -22,7 +22,7 @@ local gears = require("gears")
 local is_blurred = false;
 
 local wallpaper_dir = os.getenv("HOME") .. "/wallpaper"
-local wallpaper = wallpaper_dir .. "/wallpaper.jpg"
+local wallpaper = wallpaper_dir .. "/star-rail.jpg"
 local blurred_wallpaper = wallpaper_dir .. "/blurredWallpaper.png"
 
 awful.spawn.with_shell("feh --bg-fill " .. wallpaper)

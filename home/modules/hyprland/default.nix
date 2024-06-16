@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  imports = [ ../swaync ];
+
   home.packages = with pkgs; [ calcure ];
 
   home.file = {
@@ -54,5 +56,4 @@
     ];
     style = (builtins.readFile ./config/wlogout/style.css);
   };
-
 }

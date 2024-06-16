@@ -29,7 +29,7 @@ apps = {
     launcher = "rofi -show drun",
     switcher = "rofi -show window",
     cmdrunner = "rofi -show run",
-    lock = "i3lock-fancy -gp",
+    lock = "i3lock-fancy-rapid 5 3",
     screenshot = "shutter -s",
 }
 

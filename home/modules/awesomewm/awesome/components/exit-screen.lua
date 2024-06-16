@@ -80,7 +80,7 @@ local function lock_command()
 end
 
 local function poweroff_command()
-   awful.spawn.with_shell("poweroff")
+   awful.spawn.with_shell("shutdown -h now")
    awful.keygrabber.stop(exit_screen_grabber)
 end
 

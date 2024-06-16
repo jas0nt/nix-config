@@ -11,23 +11,24 @@
         luadbi-mysql # Database abstraction layer
       ];
     };
-    displayManager = {
-      # sddm.wayland.enable = false;
-      # defaultSession = "none+awesome";
-    };
 
     xautolock = {
       enable = true;
-      locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -gp";
-      nowlocker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -gp";
+      locker = "${pkgs.i3lock-fancy-rapid}/bin/i3lock-fancy-rapid 5 3";
+      nowlocker = "${pkgs.i3lock-fancy-rapid}/bin/i3-lock-fancy-rapid 5 3";
       time = 30;
     };
   };
 
+  services.displayManager = {
+    defaultSession = "none+awesome";
+  };
+
+
   environment.systemPackages = with pkgs; [
     feh
     picom
-    i3lock-fancy
+    i3lock-fancy-rapid
     shutter # screenshot
     xclip
   ];

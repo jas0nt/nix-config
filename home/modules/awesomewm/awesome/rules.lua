@@ -89,24 +89,8 @@ function rules.create(clientkeys, clientbuttons)
       properties = { titlebars_enabled = false }
     },
     {
-      rule = { class = "kitty" },
-      properties = { screen = 1, tag = "1", switchtotag = true }
-    },
-    {
-      rule = { class = "Microsoft-edge" },
-      properties = { screen = 1, tag = "2", switchtotag = true }
-    },
-    {
       rule = { class = "firefox" },
-      properties = { screen = 1, tag = "2", switchtotag = true }
-    },
-    {
-      rule = { class = "fm" },
-      properties = { screen = 1, tag = "3", switchtotag = true }
-    },
-    {
-      rule = { class = "pcmanfm" },
-      properties = { screen = 1, tag = "3", switchtotag = true }
+      properties = { screen = 1, tag = "1", switchtotag = true }
     },
     {
       rule_any = {
@@ -115,7 +99,19 @@ function rules.create(clientkeys, clientbuttons)
           "code", "Code",
         }
       },
+      properties = { screen = 1, tag = "2", switchtotag = true }
+    },
+    {
+      rule = { class = "kitty" },
       properties = { screen = 1, tag = "7", switchtotag = true }
+    },
+    {
+      rule = { class = "fm" },
+      properties = { screen = 1, tag = "3", switchtotag = true }
+    },
+    {
+      rule = { class = "pcmanfm" },
+      properties = { screen = 1, tag = "3", switchtotag = true }
     },
     {
       rule = { class = "steam" },

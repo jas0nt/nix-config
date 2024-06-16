@@ -29,7 +29,7 @@ calendar.create = function(screen)
    -- Clock / Calendar 12h format
    -- Get Time/Date format using `man strftime`
    -- local clock_widget = wibox.widget.textclock("<span font='" .. beautiful.title_font .."'>%l:%M %p</span>", 1)
-   local clock_widget = wibox.widget.textclock("<span font='" .. beautiful.title_font .."'> <b>%a</b> %b/%d  %H:%M</span>", 1)
+   local clock_widget = wibox.widget.textclock("<span font='" .. beautiful.title_font .."'> <b>%a</b> %H:%M %b %d</span>", 1)
 
    local cal_shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 12)

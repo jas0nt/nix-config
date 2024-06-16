@@ -19,8 +19,6 @@
     ./modules/lunarvim
     ./modules/helix
     ./modules/cava
-    ./modules/swaync
-    # ./modules/dunst
     ./packages
   ];
 

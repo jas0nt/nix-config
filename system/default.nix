@@ -8,8 +8,8 @@
     ./device.nix
     ./packages.nix
     ./virtualisation.nix
-    ./window-manager/hyprland.nix
-    # ./window-manager/awesomewm.nix
+    # ./window-manager/hyprland.nix
+    ./window-manager/awesomewm.nix
   ];
 
   users.users.jason = { shell = pkgs.nushell; };
