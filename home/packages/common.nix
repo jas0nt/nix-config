@@ -19,8 +19,7 @@
     motrix
     axel
     localsend
-    libsForQt5.kdeconnect-kde
-    appflowy
+    steam
   ];
 
 }

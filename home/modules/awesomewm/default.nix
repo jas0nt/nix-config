@@ -3,6 +3,11 @@
 {
   imports = [ ../dunst ];
 
+  home.packages = with pkgs; [
+    xdotool
+  ];
+
+
   home.file = {
     ".config/awesome"             = { recursive = true; source = ./awesome; };
     ".config/autostart"           = { recursive = true; source = ./autostart; };
