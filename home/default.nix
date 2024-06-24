@@ -5,7 +5,7 @@
   imports = [
     ./services
     ./modules/theme
-    ./modules/awesomewm
+    # ./modules/awesomewm
     ./modules/hyprland
     ./modules/rofi
     ./modules/kitty

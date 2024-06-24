@@ -11,7 +11,7 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
+  boot.extraModulePackages = [ ];
   boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
 
   fileSystems."/" =

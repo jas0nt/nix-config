@@ -4,8 +4,9 @@
 
   security.rtkit.enable = true; # PulseAudio uses this
   sound.enable = true;
-  hardware = {
-    pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    # package = pkgs.pulseaudioFull;
   };
 
   services = {
@@ -14,7 +15,7 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
+      # jack.enable = true;
     };
   };
 
