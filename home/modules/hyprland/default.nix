@@ -6,6 +6,9 @@
   home.packages = with pkgs; [ calcure ];
 
   home.file = {
+    ".config/code-flags.conf" = {
+      source = ./config/code-flags.conf;
+    };
     ".config/hypr" = {
       recursive = true;
       source = ./config/hypr;
