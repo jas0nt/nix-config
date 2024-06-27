@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    ffmpeg
+
     spotify
     cmus
     playerctl
@@ -12,6 +14,12 @@
     imv
     cinnamon.pix
     nomacs
+
+    yt-dlp
+    ytdownloader
+    clipgrab
+    media-downloader
+    yutto  # bilibili downloader
   ];
 
   programs = {
@@ -24,5 +32,7 @@
     obs-studio.enable = true;
   };
 
-  services = { playerctld.enable = true; };
+  services = {
+    playerctld.enable = true;
+  };
 }
