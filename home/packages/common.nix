@@ -19,7 +19,10 @@
     motrix
     axel
     localsend
+
     steam
+    wqy_zenhei
+    wqy_microhei
   ];
 
 }
