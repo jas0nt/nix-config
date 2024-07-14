@@ -22,8 +22,8 @@ M.apps = {
 }
 
 M.exit = {
-  lock     = "i3lock-fancy-rapid 5 3",
-  suspend  = "systemctl hibernate",
+  lock     = "bash -c 'sleep 1 && i3lock-fancy-rapid 5 3'",
+  suspend  = "bash -c 'systemctl hibernate'",
   reboot   = "systemctl reboot",
   shutdown = "shutdown -h now",
 }

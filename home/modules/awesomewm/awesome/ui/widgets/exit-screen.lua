@@ -3,6 +3,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local clickable_container = require("ui.widgets.clickable-container")
+local user = require("config.user")
 
 local dpi = beautiful.xresources.apply_dpi
 local ICON_DIR = gears.filesystem.get_configuration_dir() .. "/theme/assets/icons/exit-screen/"
@@ -55,7 +56,7 @@ local exit_screen_grabber
 
 local function suspend_command()
    exit_screen.hide()
-   awful.spawn.with_shell("sleep 1 && " .. user.exit.suspend)
+   awful.spawn.with_shell(user.exit.suspend)
 end
 
 local function exit_command()
@@ -64,7 +65,7 @@ end
 
 local function lock_command()
    exit_screen.hide()
-   awful.spawn.with_shell("sleep 1 && " .. user.exit.lock)
+   awful.spawn.with_shell(user.exit.lock)
 end
 
 local function poweroff_command()
