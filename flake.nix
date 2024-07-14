@@ -47,12 +47,6 @@
         modules = [ ./hardware/pc ./system/minimal ];
       };
 
-      minimal-proxy = nixpkgs.lib.nixosSystem rec {
-        system = mysys;
-        specialArgs = special-args;
-        modules = [ ./hardware/pc ./system/minimal ./system/proxy.nix ];
-      };
-
       nixos = nixpkgs.lib.nixosSystem rec {
         system = mysys;
         specialArgs = special-args;
