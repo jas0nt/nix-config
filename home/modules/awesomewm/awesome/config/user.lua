@@ -11,13 +11,15 @@ M.config = {
 
 M.apps = {
   -- My profile apps
+  monitor      = "bash -c 'pkill btop || kitty --class myfloatingl btop'",
   launcher     = "rofi -show drun",
   switcher     = "rofi -show window",
   terminal     = "kitty",
   web_browser  = "firefox",
   text_editor  = "lvim",
   file_manager = "kitty --class fm -e ranger",
-  screnshoot   = "shutter -s",
+  screnshoot   = "shutter --select",
+  screnshootf   = "shutter --full",
   image_viewer = "qview"
 }
 

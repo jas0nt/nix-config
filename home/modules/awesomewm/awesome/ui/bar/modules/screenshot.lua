@@ -10,6 +10,9 @@ local screenshot = awful.widget.button {
     awful.button({}, mod.leftclick, nil, function ()
       awful.spawn(user.apps.screnshoot, false)
     end),
+    awful.button({}, mod.rightclick, nil, function ()
+      awful.spawn(user.apps.screnshootf, false)
+    end),
   }
 }
 local myscreenshot = helpers.cbackground(helpers.margin(screenshot, 5, 5, 0, 0), helpers.rrect(4), colors.crust)

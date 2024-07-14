@@ -60,7 +60,16 @@ ruled.client.connect_signal("request::rules", function()
           "imv",
         },
       },
-      properties = { floating = true, width = screen_width * 0.55, height = screen_height * 0.55 },
+      properties = { floating = true, width = screen_width * 0.55, height = screen_height * 0.55, placement = awful.placement.centered },
+  }
+
+  ruled.client.append_rule {
+    rule_any = {
+        class = {
+          "myfloatingl",
+        },
+      },
+      properties = { floating = true, width = screen_width * 0.8, height = screen_height * 0.8, placement = awful.placement.centered },
   }
 
   ruled.client.append_rule {

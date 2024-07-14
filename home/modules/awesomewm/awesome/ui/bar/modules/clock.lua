@@ -6,7 +6,7 @@ local colors  = require("theme.colorsheme")
 -- Clock widget
 --------------------------------------------------------------------------------
 local textclock = wibox.widget {
-  format = " %a %b %d %I:%M %p ",
+  format = " %a %b %d %H:%M",
   widget = wibox.widget.textclock
 }
 local mytextclock = helpers.cbackground(textclock, helpers.rrect(4), colors.crust)
