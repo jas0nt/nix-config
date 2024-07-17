@@ -4,6 +4,7 @@ local watch     = require("awful.widget.watch")
 local colors    = require("theme.colorsheme")
 local helpers   = require("helpers")
 local user      = require("config.user")
+local mod       = require("binds.mod")
 
 local arc_vol = {}
 
@@ -55,15 +56,15 @@ end
 
 arc_vol:buttons(
   awful.util.table.join(
-    awful.button({}, 1, function() 
+    awful.button({}, mod.leftclick, function() 
       awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh mute", false)
       refresh()
     end),
-    awful.button({}, 4, function() 
+    awful.button({}, mod.scrollup, function() 
       awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh up", false)
       refresh()
     end),
-    awful.button({}, 5, function() 
+    awful.button({}, mod.scrolldown, function() 
       awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh down", false)
       refresh()
     end)
