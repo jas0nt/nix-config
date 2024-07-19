@@ -60,6 +60,10 @@ arc_vol:buttons(
       awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh mute", false)
       refresh()
     end),
+    awful.button({}, mod.rightclick, function() 
+      awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh gui", false)
+      refresh()
+    end),
     awful.button({}, mod.scrollup, function() 
       awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh up", false)
       refresh()

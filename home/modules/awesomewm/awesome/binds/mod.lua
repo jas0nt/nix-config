@@ -9,8 +9,8 @@ return {
   leftclick     = 1,
   midclick      = 2,
   rightclick    = 3,
-  scrolldown    = 4,
-  scrollup      = 5,
+  scrollup      = 4,
+  scrolldown    = 5,
   sidedownclick = 8,
   sideupclick   = 9
 }

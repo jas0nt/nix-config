@@ -152,6 +152,16 @@ global_key({
     on_release = nil,
   },
 
+  awful.key {
+    description = "mixer",
+    modifiers = { mod.super },
+    key = "p",
+    on_press = function ()
+      awful.spawn("bash " .. os.getenv("HOME") .. "/scripts/volume.sh tui", false)
+    end,
+    on_release = nil,
+  },
+
 })
 
 -- ---------------------------------------------------------------------------
