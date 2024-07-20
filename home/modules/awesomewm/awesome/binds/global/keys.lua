@@ -67,7 +67,7 @@ global_key({
 
   awful.key {
     description = "show help",
-    modifiers = { mod.super },
+    modifiers = { mod.super, mod.ctrl },
     key = "s",
     on_press = function ()
       hotkeys_popup.show_help()
@@ -138,6 +138,16 @@ global_key({
     key = "d",
     on_press = function()
       awful.spawn(user.apps.launcher)
+    end,
+    on_release = nil,
+  },
+
+  awful.key {
+    description = "open switcher",
+    modifiers = { mod.super },
+    key = "s",
+    on_press = function()
+      awful.spawn(user.apps.switcher)
     end,
     on_release = nil,
   },
