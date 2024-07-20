@@ -16,6 +16,7 @@
     # ./modules/shell/fish
     ./modules/ranger
     ./modules/input-method
+    ./modules/emacs
     ./modules/lunarvim
     ./modules/helix
     ./modules/cava

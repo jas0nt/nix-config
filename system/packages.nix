@@ -25,6 +25,7 @@
     fd # find
     httpie # curl
     procs # ps
+    silver-searcher
     ripgrep # grep
     jq
     fx # json
