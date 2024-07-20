@@ -11,7 +11,6 @@
     (python3.withPackages (ps:
       with ps; [
         pip
-        virtualenv
         epc
         orjson
         sexpdata
@@ -21,14 +20,13 @@
         rapidfuzz
         pyright
       ]))
+    virtualenv
     nodejs
     rustc
     cargo
     rustfmt
     jdk
     lua
-
-    librime
 
     dprint
     # lsp

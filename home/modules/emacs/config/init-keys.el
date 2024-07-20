@@ -24,7 +24,7 @@
     ("r" "recentf" consult-recent-file)
     ("d" "dired" dired)
     ("b" "bookmark" bookmark-jump)
-    ("o" "find-file-at-point" find-file-at-point)
+    ("a" "find-file-at-point" find-file-at-point)
     ]
    ["actions"
     ("s" "save-buffer" save-buffer)
