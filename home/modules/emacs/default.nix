@@ -50,6 +50,7 @@ in
       epkgs.nix-mode
       epkgs.nixos-options
 
+      epkgs.magit
       epkgs.bing-dict
       epkgs.fanyi
       epkgs.google-this
