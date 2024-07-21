@@ -1,22 +1,10 @@
 { lib, pkgs, ... }:
 
-let
-  config-files = [
-    ./config/init.el
-    ./config/init-theme.el
-    ./config/init-meow.el
-    ./config/init-keys.el
-    ./config/init-completion.el
-    ./config/init-edit.el
-    ./config/init-dired.el
-    ./config/init-dashboard.el
-    ./config/init-lsp.el
-    ./config/init-python.el
-  ];
-
-  emacs-configs = builtins.concatStringsSep "\n" (map builtins.readFile config-files);
-in
 {
+  home.file = {
+    ".emacs.d" = { recursive = true; source = ./config/.emacs.d; };
+  };
+
   programs.emacs = {
     enable = true;
     package = pkgs.emacs;
@@ -51,14 +39,16 @@ in
       epkgs.nixos-options
 
       epkgs.magit
+      epkgs.ace-pinyin
+      epkgs.pyim
       epkgs.bing-dict
       epkgs.fanyi
       epkgs.google-this
       epkgs.undo-tree
+      epkgs.rainbow-mode
       epkgs.rainbow-delimiters
       epkgs.try
     ];
-    extraConfig = emacs-configs;
   };
 
 }
