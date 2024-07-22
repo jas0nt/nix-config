@@ -17,7 +17,6 @@
       epkgs.consult
       epkgs.consult-ag
       epkgs.consult-projectile
-      epkgs.projectile
       epkgs.vertico
       epkgs.orderless
 
@@ -31,6 +30,7 @@
       epkgs.yasnippet
       epkgs.yasnippet-snippets
       epkgs.lsp-bridge
+      epkgs.acm-terminal
       # python
       epkgs.python-mode
       epkgs.pyvenv
@@ -45,6 +45,9 @@
       epkgs.fanyi
       epkgs.google-this
       epkgs.undo-tree
+      epkgs.treemacs
+      epkgs.projectile
+      epkgs.treemacs-projectile
       epkgs.rainbow-mode
       epkgs.rainbow-delimiters
       epkgs.try
