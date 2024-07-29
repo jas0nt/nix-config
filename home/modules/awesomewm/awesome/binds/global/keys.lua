@@ -294,6 +294,16 @@ global_key({
     on_release = nil,
     description = "focus the previous screen",
   },
+  
+  awful.key {
+    modifiers = { mod.super },
+    key = "z",
+    on_press = function ()
+       awful.screen.focused().bar.visible = not awful.screen.focused().bar.visible
+    end,
+    on_release = nil,
+    description = "toggle bar",
+  },
 })
 
 -- ---------------------------------------------------------------------------
