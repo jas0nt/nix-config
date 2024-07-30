@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 
 {
-
   imports = [
     ./services
     ./modules/theme
     ./modules/awesomewm
     # ./modules/hyprland
+    ./modules/btop
     ./modules/rofi
     ./modules/kitty
     ./modules/fastfetch

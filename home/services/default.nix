@@ -1,7 +1,6 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-
   systemd.user.services = {
 
     clash = {

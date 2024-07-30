@@ -1,7 +1,4 @@
-{ lib, pkgs, ... }:
-
 {
-
   programs.rofi.enable = true;
 
   home.file = {

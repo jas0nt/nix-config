@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, lib, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   imports = [ ./minimal/sys-pkgs.nix ];
@@ -12,7 +12,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Modern unix tools
-    btop
     htop
     bottom
     glances

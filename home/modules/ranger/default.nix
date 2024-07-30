@@ -1,7 +1,6 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
-
   home.packages = [ pkgs.ranger ];
 
   home.file = {

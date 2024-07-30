@@ -1,7 +1,4 @@
-{ lib, pkgs, ... }:
-
 {
-
   programs.helix.enable = true;
 
   home.file = {
