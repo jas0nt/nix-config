@@ -39,9 +39,9 @@ in
     };
   };
 
-  services.displayManager = {
-    defaultSession = "none+awesome";
-  };
+  # services.displayManager = {
+  #   defaultSession = "none+awesome";
+  # };
 
 
   environment.systemPackages = with pkgs; [
