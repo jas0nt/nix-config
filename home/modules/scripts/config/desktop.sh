@@ -20,7 +20,6 @@ idle-lock)
         wlrctl pointer move -1
     else
         echo "Locking"
-        hyprctl dispatch workspace empty
         hyprlock
     fi
     ;;

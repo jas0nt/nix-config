@@ -4,8 +4,8 @@
   imports = [
     ./services
     ./modules/theme
-    ./modules/awesomewm
-    # ./modules/hyprland
+    # ./modules/awesomewm
+    ./modules/hyprland
     ./modules/btop
     ./modules/rofi
     ./modules/kitty

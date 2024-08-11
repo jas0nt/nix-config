@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 
 {
   imports = [ ./login-manager.nix ];
@@ -28,5 +28,15 @@
     grim # screenshot wayland
     slurp
     wl-clipboard
+
+    # pkgs-unstable.ags
+    # bun
+    # dart-sass
+    # fd
+    # brightnessctl
+    # swww
+    # matugen
+    # gtk3
+    # gnome.adwaita-icon-theme
   ];
 }
