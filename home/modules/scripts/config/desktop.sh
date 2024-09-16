@@ -48,6 +48,10 @@ shutdown)
     shutdown -h now
     ;;
 
+toggle-im)
+    fcitx5-remote -t
+    ;;
+
 file-manager)
     $TERMINAL --class fm ranger
     ;;
