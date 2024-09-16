@@ -21,6 +21,7 @@
     "pulseaudio",
     "tray",
     // "group/hardware"
+    "gamemode",
     "custom/notification",
   ],
   "clock": {
