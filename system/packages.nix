@@ -41,7 +41,7 @@
     kitty
     qview
     dmenu
-    firefox-bin
+    firefox
     pcmanfm
     networkmanagerapplet
     nwg-look

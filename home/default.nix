@@ -6,6 +6,7 @@
     ./modules/theme
     # ./modules/awesomewm
     ./modules/hyprland
+    ./modules/firefox
     ./modules/btop
     ./modules/rofi
     ./modules/kitty
