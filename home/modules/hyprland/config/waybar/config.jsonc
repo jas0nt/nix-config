@@ -2,7 +2,7 @@
   "output": "HDMI-A-1",
   "position": "bottom",
   "layer": "top",
-  "height": 10,
+  "height": 18,
   "margin-top": 0,
   "margin-bottom": 0,
   "margin-left": 0,
@@ -50,7 +50,7 @@
   },
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 16,
+    "icon-size": 22,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "ignore-list": [
@@ -156,7 +156,7 @@
     }
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 22,
     "spacing": 8,
     "reverse-direction": true
   },

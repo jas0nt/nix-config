@@ -8,7 +8,7 @@
     x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
-    size = 22;
+    size = 26;
   };
 
   gtk = {
@@ -17,7 +17,7 @@
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
-      size = 20;
+      size = 26;
     };
     theme = {
       package = pkgs.dracula-theme;
