@@ -1,11 +1,10 @@
 # Rime jason custom settings
 # encoding: utf-8
 
-patch: 
+patch:
+  ascii_mode: false
   schema_list:
     - schema: double_pinyin_flypy
 
   menu:
     page_size: 9
-
-
