@@ -20,52 +20,66 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
-    nixosConfigurations = let
-      system = "x86_64-linux";
-      mysys = "x86_64-linux";
-      special-args = {
-        inherit inputs;
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            permittedInsecurePackages = [ "openssl-1.1.1w" ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations =
+        let
+          system = "x86_64-linux";
+          mysys = "x86_64-linux";
+          special-args = {
+            inherit inputs;
+            pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = [];
+              config = {
+                allowUnfree = true;
+                permittedInsecurePackages = [ "openssl-1.1.1w" ];
+              };
+            };
+            pkgs-unstable = import inputs.nixpkgs-unstable {
+              inherit system;
+              config = {
+                allowUnfree = true;
+              };
+            };
           };
-        };
-        pkgs-unstable = import inputs.nixpkgs-unstable {
-          inherit system;
-          config = {
-            allowUnfree = true;
+        in
+        {
+          minimal = nixpkgs.lib.nixosSystem rec {
+            system = mysys;
+            specialArgs = special-args;
+            modules = [
+              ./hardware/pc
+              ./system/minimal
+            ];
           };
+
+          nixos = nixpkgs.lib.nixosSystem rec {
+            system = mysys;
+            specialArgs = special-args;
+            modules = [
+              ./hardware/pc
+              ./system
+              # ./system/proxy.nix
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = special-args;
+                home-manager.backupFileExtension = "backup";
+                home-manager.users.jason = import ./home;
+              }
+            ];
+          };
+
         };
-      };
-    in {
-      minimal = nixpkgs.lib.nixosSystem rec {
-        system = mysys;
-        specialArgs = special-args;
-        modules = [ ./hardware/pc ./system/minimal ];
-      };
-
-      nixos = nixpkgs.lib.nixosSystem rec {
-        system = mysys;
-        specialArgs = special-args;
-        modules = [
-          ./hardware/pc
-          ./system
-          # ./system/proxy.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = special-args;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.jason = import ./home;
-          }
-        ];
-      };
-
     };
-  };
 }
