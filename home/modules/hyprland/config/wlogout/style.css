@@ -28,57 +28,45 @@ button:hover {
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
     background-color: #bd93f9;
     color: transparent;
-    transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682),
-        box-shadow 0.5s ease-in;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682), box-shadow 0.5s ease-in;
 }
 
 #shutdown {
     background-image: image(url("/home/jason/.config/wlogout/icons/power.png"));
 }
+
 #shutdown:hover {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/power-hover.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/power-hover.png"));
 }
 
 #logout {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/logout.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/logout.png"));
 }
+
 #logout:hover {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/logout-hover.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/logout-hover.png"));
 }
 
 #reboot {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/restart.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/restart.png"));
 }
+
 #reboot:hover {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/restart-hover.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/restart-hover.png"));
 }
 
 #lock {
     background-image: image(url("/home/jason/.config/wlogout/icons/lock.png"));
 }
+
 #lock:hover {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/lock-hover.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/lock-hover.png"));
 }
 
 #hibernate {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/hibernate.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/hibernate.png"));
 }
+
 #hibernate:hover {
-    background-image: image(
-        url("/home/jason/.config/wlogout/icons/hibernate-hover.png")
-    );
+    background-image: image(url("/home/jason/.config/wlogout/icons/hibernate-hover.png"));
 }
