@@ -18,6 +18,7 @@
         paramiko
         rapidfuzz
         pyright
+        ipython
       ]))
     virtualenv
     nodejs
