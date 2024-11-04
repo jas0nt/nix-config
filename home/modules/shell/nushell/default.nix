@@ -13,8 +13,8 @@
     extraEnv = (builtins.readFile ./config/env.nu);
     loginFile.text = "print 'Hello World'";
     shellAliases = {
-      lock = "hyprlock";
-      logout = "loginctl terminate-user $env.USER";
+      lock = "bash ~/scripts/desktop.sh lock";
+      logout = "bash ~/scripts/desktop.sh logout";
       fuckGFW = "load-env { 'http_proxy': 'http://127.0.0.1:7890', 'https_proxy': 'http://127.0.0.1:7890', 'all_proxy': 'socks5://127.0.0.1:7890' }";
       icat = "kitten icat";
       ll = "ls -l";
