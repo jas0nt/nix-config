@@ -38,6 +38,9 @@
 
   programs.broot = {
     enable = true;
+    settings = {
+      icon_theme = "nerdfont";
+    };
   };
 
   programs.starship.enableNushellIntegration = true;
