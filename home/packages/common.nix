@@ -13,6 +13,11 @@
     just
     wlrctl
 
+    wineWowPackages.waylandFull
+    winePackages.fonts
+    winetricks
+    bottles
+
     qq
     wechat-uos
     qbittorrent
