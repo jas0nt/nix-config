@@ -31,9 +31,11 @@
     {
       nixosConfigurations =
         let
+          my-username = "jason";
           system = "x86_64-linux";
           mysys = "x86_64-linux";
           special-args = {
+            const.username = my-username;
             inherit inputs;
             pkgs = import inputs.nixpkgs {
               inherit system;
@@ -75,7 +77,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = special-args;
                 home-manager.backupFileExtension = "backup";
-                home-manager.users.jason = import ./home;
+                home-manager.users.${my-username} = import ./home;
               }
             ];
           };

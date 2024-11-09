@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ const, config, pkgs, ... }:
 
 {
   programs.dconf.enable = true;
 
-  users.users.jason.extraGroups = [ "libvirtd" ];
+  users.users.${const.username}.extraGroups = [ "libvirtd" ];
 
   environment.systemPackages = with pkgs; [
     virt-manager

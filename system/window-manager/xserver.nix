@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ const, pkgs, ... }:
 
 {
   services = {
@@ -11,7 +11,7 @@
       displayManager.lightdm = {
         greeters.mini = {
           enable = true;
-          user = "jason";
+          user = const.username;
           extraConfig = ''
             [greeter]
             show-password-label = false
@@ -33,7 +33,7 @@
 
     displayManager = {
       autoLogin.enable = true;
-      autoLogin.user = "jason";
+      autoLogin.user = const.username;
     };
 
   };

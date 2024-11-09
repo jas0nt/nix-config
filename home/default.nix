@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ const, config, pkgs, ... }:
 
 {
   imports = [
@@ -27,8 +27,8 @@
   home = {
     stateVersion = "24.05";
 
-    username = "jason";
-    homeDirectory = "/home/jason";
+    username = const.username;
+    homeDirectory = "/home/${const.username}";
 
     sessionVariables = {
       EDITOR = "lvim";
