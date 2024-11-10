@@ -11,7 +11,6 @@
     enable = true;
     extraConfig = (builtins.readFile ./config/config.nu);
     extraEnv = (builtins.readFile ./config/env.nu);
-    loginFile.text = "print 'Hello World'";
     shellAliases = {
       lock = "bash ~/scripts/desktop.sh lock";
       logout = "bash ~/scripts/desktop.sh logout";
@@ -24,6 +23,8 @@
       vscode-wayland = "code --enable-features=UseOzonePlatform --ozone-platform=wayland";
       venv = "sh -i -c $'source (gum file --directory ~/.venv)/bin/activate; nu'";
       ipy = "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'";
+      te = "trans en:zh";
+      tc = "trans zh:en";
     };
   };
 
@@ -49,5 +50,14 @@
   };
 
   programs.starship.enableNushellIntegration = true;
+
+  programs.translate-shell = {
+    enable = true;
+    settings = {
+      hl = "en";
+      tl = "zh";
+      verbose = true;
+    };
+  };
 
 }
