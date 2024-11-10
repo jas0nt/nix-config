@@ -13,9 +13,6 @@
   environment.systemPackages = with pkgs; [
     # Modern unix tools
     htop
-    bottom
-    glances
-    bat # cat
     choose # cut
     du-dust
     dua # du
@@ -26,12 +23,9 @@
     procs # ps
     silver-searcher
     ripgrep # grep
-    jq
     fx # json
     tree
-    cht-sh
     tmux
-    byobu
     systemctl-tui
     bluez
     bluetuith

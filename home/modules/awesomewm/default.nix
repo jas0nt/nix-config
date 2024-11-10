@@ -1,7 +1,10 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ../dunst ];
+  imports = [
+    ../dunst
+    ../rofi
+  ];
 
   home.packages = with pkgs; [
     xdotool

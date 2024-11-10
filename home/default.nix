@@ -7,20 +7,13 @@
     # ./modules/awesomewm
     ./modules/hyprland
     ./modules/firefox
-    ./modules/btop
-    ./modules/rofi
     ./modules/kitty
-    ./modules/fastfetch
-    ./modules/scripts
-    ./modules/shell/bash
-    ./modules/shell/nushell
-    # ./modules/shell/fish
     ./modules/ranger
+    ./modules/scripts
+    ./modules/shell
     ./modules/input-method
     ./modules/emacs
     ./modules/lunarvim
-    ./modules/helix
-    ./modules/cava
     ./packages
   ];
   
