@@ -43,6 +43,11 @@
     };
   };
 
+  programs.mcfly = {
+    enable = true;
+    fzf.enable = true;
+  };
+
   programs.starship.enableNushellIntegration = true;
 
 }
