@@ -53,7 +53,7 @@ toggle-im)
     ;;
 
 file-manager)
-    $TERMINAL --class fm ranger
+    $TERMINAL --class fm yazi
     ;;
 
 screenshot)

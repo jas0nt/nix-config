@@ -8,7 +8,7 @@
     ./modules/hyprland
     ./modules/firefox
     ./modules/kitty
-    ./modules/ranger
+    ./modules/yazi
     ./modules/scripts
     ./modules/shell
     ./modules/input-method
