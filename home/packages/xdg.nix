@@ -26,12 +26,27 @@ let
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
     "image/*" = [ "imv.desktop" ];
-    "inode/directory" = [ "pcmanfm.desktop" ];
+    "inode/directory" = [ "yazi.desktop" ];
+
+    "application/x-bittorrent" = [ "org.qbittorrent.qBittorrent.desktop" ];
   };
-in {
+in
+{
   xdg = {
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
+
+    desktopEntries = {
+      yazi = {
+        name = "yazi";
+        genericName = "File Manager";
+        exec = "kitty --class fm yazi %f";
+        terminal = false;
+        mimeType = [
+          "inode/directory"
+        ];
+      };
+    };
 
     mimeApps = {
       enable = true;
