@@ -26,7 +26,9 @@ let
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
     "image/*" = [ "imv.desktop" ];
+    "text/*"  = [ "vim.desktop" ];
     "inode/directory" = [ "yazi.desktop" ];
+    "text/plain"  = [ "vim.desktop" ];
 
     "application/x-bittorrent" = [ "org.qbittorrent.qBittorrent.desktop" ];
   };
