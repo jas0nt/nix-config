@@ -25,6 +25,8 @@
       ipy = "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'";
       te = "trans en:zh";
       tc = "trans zh:en";
+      win_docker = "docker compose -f ~/dkr/compose.yaml up";
+      win_rdp = "xfreerdp /u:docker /p: /size:2560x1440 /v:127.0.0.1:3389";
     };
   };
 
