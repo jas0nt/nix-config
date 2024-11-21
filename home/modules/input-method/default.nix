@@ -11,8 +11,9 @@
   };
 
   home.file = {
-    ".local/share/fcitx5/themes/dracula"                                   = { recursive = true; source = ./fcitx5/themes/dracula; };
+    ".config/fcitx5/profile".source                                        = ./fcitx5/conf/profile;
     ".config/fcitx5/conf/classicui.conf".source                            = ./fcitx5/conf/classicui.conf;
+    ".local/share/fcitx5/themes/dracula"                                   = { recursive = true; source = ./fcitx5/themes/dracula; };
     ".local/share/fcitx5/rime/default.custom.yaml".source                  = ./fcitx5/rime/default.custom.yaml;
     ".local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml".source      = ./fcitx5/rime/double_pinyin_flypy.schema.yaml;
   };
