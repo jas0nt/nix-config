@@ -1,6 +1,6 @@
 title-text: ""
 title-font: "Dersu Uzala brush Regular 60"
-desktop-image: "sekiro_2560x1440.png"
+desktop-image: "sekiro.png"
 terminal-font: "Fira Code Regular 16"
 terminal-left: "0"
 terminal-top: "0"

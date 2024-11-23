@@ -10,7 +10,7 @@
       efiSupport = true;
       device = "nodev";
       theme = ./sekiro_grub_theme;
-      splashImage = ./sekiro_grub_theme/sekiro_2560x1440.png;
+      splashImage = ./sekiro_grub_theme/sekiro.png;
     };
   };
 
