@@ -5,7 +5,7 @@
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
-    # package = pkgs.pulseaudioFull;
+    package = pkgs.pulseaudioFull;
   };
 
   services = {
