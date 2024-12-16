@@ -7,41 +7,33 @@
 
   programs.fish = {
     enable = true;
-    shellAliases = {
-      lock = "hyprlock";
-      logout = "loginctl terminate-user $USER";
-      fuckGFW  = "export http_proxy=http://127.0.0.1:7890; and export https_proxy=http://127.0.0.1:7890; and export all_proxy=socks5://127.0.0.1:7890";
-    };
     shellAbbrs = {
+      lock = "bash ~/scripts/desktop.sh lock";
+      logout = "bash ~/scripts/desktop.sh logout";
+      fuckGFW  = "export http_proxy=http://127.0.0.1:7890; and export https_proxy=http://127.0.0.1:7890; and export all_proxy=socks5://127.0.0.1:7890";
       icat = "kitten icat";
-      ll = "eza --icons -l";
-      la = "eza --icons -la";
       showcert = "nmap -p 443 --script ssl-cert";
       dota = "steam steam://rungameid/570";
-      vscode-wayland = "code --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      ipy = "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'";
+      te = "trans en:zh";
+      tc = "trans zh:en";
+      venv = "source (gum file --directory ~/.venv)/bin/activate.fish";
+      win_docker = "docker compose -f ~/dkr/compose.yaml up";
+      win_rdp = "xfreerdp /u:docker /p: /size:2560x1440 /v:127.0.0.1:3389";
+    };
+    shellAliases = {
+      ls = "eza";
+      ll = "eza --icons -l";
+      la = "eza --icons -la";
     };
     functions = {
-      my_audio_notify.body   = "notify-send -r 1 -t 2000 -i volume \"Vol: $(pulsemixer --get-volume)\"";
-      my_audio_mute.body     = "pulsemixer --toggle-mute";
-      my_audio_up.body       = "pulsemixer --change-volume +1\nmy_audio_notify";
-      my_audio_down.body     = "pulsemixer --change-volume -1\nmy_audio_notify";
-      my_launcher.body       = "sway-launcher-desktop";
-      my_locker.body         = "hyprlock";
-      my_file_manager.body   = "ranger";
-      my_screenshot.body     = "grimblast copysave area";
       gpu_fan.body           = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
-
-      fish_greeting.body     = "fortune -s | pokemonsay -N";
+      fish_greeting.body     = "krabby random --no-title";
       rgc.body               = "rg --json $argv | delta";
     };
   };
 
   programs.starship.enableFishIntegration = true;
-
-  programs.navi = {
-    enable = true;
-    enableFishIntegration = true;
-  };
 
   programs.fzf = {
     enable = true;
@@ -50,6 +42,12 @@
 
   programs.broot = {
     enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.mcfly = {
+    enable = true;
+    fzf.enable = true;
     enableFishIntegration = true;
   };
 

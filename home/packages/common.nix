@@ -38,8 +38,8 @@
   };
 
   home.packages = with pkgs; [
-    fortune
-    pokemonsay
+    krabby
+    figlet
     genact
     lolcat
     nms
@@ -56,7 +56,7 @@
 
     qq
     wechat-uos
-    qbittorrent
+    # qbittorrent
     motrix
     axel
     localsend
