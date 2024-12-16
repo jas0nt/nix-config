@@ -7,6 +7,9 @@
   };
 
   home.packages = with pkgs; [
+    direnv
+    devbox
+
     (python3.withPackages (ps:
       with ps; [
         pip
@@ -22,9 +25,12 @@
       ]))
     virtualenv
     nodejs
+
+    gcc
     rustc
     cargo
     rustfmt
+
     jdk
     lua
 
