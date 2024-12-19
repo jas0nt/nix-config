@@ -2,7 +2,6 @@
 
 {
   security.rtkit.enable = true; # PulseAudio uses this
-  sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;

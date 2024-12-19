@@ -5,7 +5,10 @@
 
   programs = {
     mosh.enable = true;
-    clash-verge.enable = true;
+    clash-verge = {
+      enable = true;
+      package = pkgs.clash-verge-rev;
+    };
   };
 
   # List packages installed in system profile. To search, run:

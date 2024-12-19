@@ -1,7 +1,7 @@
 {
   programs.kitty = {
     enable = true;
-    theme = "Dracula";
+    themeFile = "Dracula";
     font = {
       name = "FiraCode Nerd Font";
       size = 15;

@@ -12,7 +12,7 @@
     puddletag # mp3 tag editor
 
     imv
-    cinnamon.pix
+    pix
     nomacs
 
     yt-dlp
