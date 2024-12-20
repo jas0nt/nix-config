@@ -8,7 +8,7 @@
     };
     settings = {
       dynamic_background_opacity = "no";
-      background_opacity = "0.3";
+      background_opacity = "0.8";
       background_blur = "0";
 
       cursor_shape = "block";
@@ -33,9 +33,5 @@
       "cmd+v" = "paste_from_clipboard";
     };
   };
-
-  # home.file = {
-  #   ".config/kitty" = { recursive = true; source = ./config; };
-  # };
 
 }
