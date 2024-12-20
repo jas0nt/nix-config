@@ -27,6 +27,7 @@
     sway-launcher-desktop
     grim # screenshot wayland
     slurp
+    snipaste
     wl-clipboard
   ];
 }

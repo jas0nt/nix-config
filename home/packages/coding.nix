@@ -31,6 +31,7 @@
     rustc
     cargo
     rustfmt
+    pkg-config
 
     jdk
     lua
