@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     direnv
     devbox
+    code-cursor
 
     (python3.withPackages (ps:
       with ps; [
