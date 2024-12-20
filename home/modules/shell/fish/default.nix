@@ -35,6 +35,8 @@
     };
   };
 
+  programs.thefuck.enable = true;
+
   programs.starship.enableFishIntegration = true;
 
   programs.fzf = {
