@@ -56,7 +56,7 @@
 
     qq
     wechat-uos
-    # qbittorrent
+    qbittorrent
     motrix
     axel
     localsend
