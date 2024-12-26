@@ -48,12 +48,6 @@
     enableFishIntegration = true;
   };
 
-  programs.mcfly = {
-    enable = true;
-    fzf.enable = true;
-    enableFishIntegration = true;
-  };
-
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
