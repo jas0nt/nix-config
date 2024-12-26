@@ -106,11 +106,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1735183884,
-        "narHash": "sha256-YPPXxu/Fyf1N/eZeAet8OGWOECDAO9MifHjjGo7Aba8=",
+        "lastModified": 1735214329,
+        "narHash": "sha256-onWUSt9lp2rdS+oKAXmYOpvzQJa2QlmUOLuyrtERYlM=",
         "owner": "jas0nt",
         "repo": "Rauncher",
-        "rev": "6a8dab91d9aa8abf738ced21e146a9e7405c0ac8",
+        "rev": "bbadf0ff996591957e1629f6220a3b17185fce9b",
         "type": "github"
       },
       "original": {
