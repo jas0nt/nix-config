@@ -14,7 +14,6 @@ let
     "application/pdf" = browser;
     "text/html" = browser;
     "x-scheme-handler/about" = browser;
-    "x-scheme-handler/chrome" = [ "chromium-browser.desktop" ];
     "x-scheme-handler/ftp" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
@@ -24,7 +23,7 @@ let
     "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
 
     "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
+    "video/*" = [ "mpv.desktop" ];
     "image/*" = [ "imv.desktop" ];
     "text/*"  = [ "vim.desktop" ];
     "inode/directory" = [ "yazi.desktop" ];

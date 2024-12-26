@@ -30,6 +30,7 @@
     gcc
     rustc
     cargo
+    rust-analyzer
     rustfmt
     pkg-config
 
