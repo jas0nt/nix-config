@@ -24,7 +24,8 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     hyprpicker
-    sway-launcher-desktop
+    # sway-launcher-desktop
+    inputs.rauncher.defaultPackage."${pkgs.system}"
     grim # screenshot wayland
     slurp
     snipaste

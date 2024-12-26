@@ -14,11 +14,8 @@ debug target = 'nixos':
 build-nosub target = 'nixos':
   sudo nixos-rebuild switch --flake path:.#{{target}} --option substitute false
 
-up:
-  nix flake update
-
-upp input:
-  nix flake lock --update-input {{input}}
+up input = '':
+  nix flake update {{input}}
 
 history:
   nix profile history --profile /nix/var/nix/profiles/system

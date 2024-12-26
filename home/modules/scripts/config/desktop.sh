@@ -9,7 +9,7 @@ monitor)
     ;;
 
 launcher)
-    $TERMINAL --class myfloating sway-launcher-desktop
+    $TERMINAL --class myfloating Rauncher
     ;;
 
 idle-lock)
