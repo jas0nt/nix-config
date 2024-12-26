@@ -36,6 +36,7 @@
 
     jdk
     lua
+    lua-language-server
 
     dprint
     # lsp
