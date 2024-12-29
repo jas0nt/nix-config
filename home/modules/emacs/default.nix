@@ -9,11 +9,26 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs;
-    extraPackages = epkgs: [
-      epkgs.lsp-bridge
-      epkgs.acm-terminal
-    ];
+    package = pkgs.emacs30;
   };
+
+  home.packages = with pkgs; [
+    (python3.withPackages (ps:
+      with ps; [
+        pip
+        epc
+        orjson
+        sexpdata
+        six
+        setuptools
+        paramiko
+        rapidfuzz
+        watchdog
+        packaging
+
+        pyright
+        ipython
+      ]))
+  ];
 
 }

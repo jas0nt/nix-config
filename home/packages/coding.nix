@@ -10,20 +10,7 @@
     direnv
     devbox
     code-cursor
-
-    (python3.withPackages (ps:
-      with ps; [
-        pip
-        epc
-        orjson
-        sexpdata
-        six
-        setuptools
-        paramiko
-        rapidfuzz
-        pyright
-        ipython
-      ]))
+    tree-sitter
     virtualenv
     nodejs
 
