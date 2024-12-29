@@ -27,7 +27,6 @@
     virtualenv
     nodejs
 
-    gcc
     rustc
     cargo
     rust-analyzer

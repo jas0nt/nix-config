@@ -13,6 +13,7 @@
     libGL
     killall
     gnumake
+    gcc
     libgccjit
     cmake
     openssl
