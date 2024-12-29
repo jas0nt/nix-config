@@ -14,9 +14,11 @@
     virtualenv
     nodejs
 
+    jetbrains.rust-rover
     rustc
     cargo
     rust-analyzer
+    pkgs.rustPlatform.rustcSrc
     rustfmt
     pkg-config
 
