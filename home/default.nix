@@ -25,7 +25,7 @@
     homeDirectory = "/home/${const.username}";
 
     sessionVariables = {
-      EDITOR = "lvim";
+      EDITOR = "vim";
       BROWSER = "firefox";
       TERM = "kitty";
       TERMINAL = "kitty";
