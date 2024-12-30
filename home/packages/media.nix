@@ -5,9 +5,7 @@
     ffmpeg
 
     spotify
-    cmus
     playerctl
-    mpc-cli
     vlc
     puddletag # mp3 tag editor
 
@@ -21,6 +19,11 @@
     media-downloader
     yutto  # bilibili downloader
   ];
+
+  programs.cmus = {
+    enable = true;
+    theme = "dracula";
+  };
 
   programs = {
     mpv = {
