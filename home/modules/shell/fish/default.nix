@@ -30,7 +30,7 @@
       gpu_fan.body = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
       fish_greeting.body = "krabby random --no-title";
       rgc.body = "rg --json $argv | delta";
-      win.body = "docker compose -f ~/dkr/compose.yaml up --detach\nsleep 5\nxfreerdp /u:docker /p: /size:2560x1440 /v:127.0.0.1:3389";
+      win.body = "docker compose -f ~/dkr/compose.yaml up --detach\nsleep 5\nxfreerdp /u:docker /p:\"\" /size:2560x1440 /v:127.0.0.1:3389 /cert:ignore /sec:tls";
     };
   };
 

@@ -45,7 +45,7 @@
     nms
 
     miniserve
-    freerdp
+    freerdp3
     just
     wlrctl
 
