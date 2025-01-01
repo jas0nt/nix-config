@@ -9,7 +9,6 @@
     vlc
     puddletag # mp3 tag editor
 
-    imv
     pix
     nomacs
 

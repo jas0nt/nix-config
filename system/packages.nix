@@ -36,6 +36,7 @@
 
     # GUI apps
     kitty
+    feh
     qview
     dmenu
     firefox
