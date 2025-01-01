@@ -14,7 +14,7 @@
     ./modules/shell
     ./modules/input-method
     ./modules/emacs
-    ./modules/lunarvim
+    ./modules/vim
     ./packages
   ];
   
