@@ -30,6 +30,8 @@
     # lsp
     nil
     nixfmt-rfc-style
+    pyright
+    ruff
 
   ];
 }

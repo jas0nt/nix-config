@@ -8,6 +8,17 @@ return {
         rust_analyzer = {
           cmd = { "rust-analyzer" }, -- Use the system-installed rust-analyzer
         },
+        pyright = {
+          cmd = { "pyright-langserver", "--stdio" },
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
       },
     },
   }
