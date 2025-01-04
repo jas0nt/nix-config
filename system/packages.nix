@@ -28,7 +28,6 @@
     ripgrep # grep
     fx # json
     tree
-    tmux
     systemctl-tui
     bluez
     bluetuith
