@@ -15,6 +15,7 @@
     ./modules/input-method
     ./modules/emacs
     ./modules/vim
+    ./modules/helix
     ./packages
   ];
   
