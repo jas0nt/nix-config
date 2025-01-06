@@ -19,6 +19,7 @@
       tc = "trans zh:en";
       venv = "source (gum file --directory ~/.venv)/bin/activate.fish";
       cd = "z";
+      tmuxsesh = "sesh connect $(sesh list | fzf)";
     };
     shellAliases = {
       ls = "eza";
