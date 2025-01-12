@@ -27,6 +27,7 @@
     silver-searcher
     ripgrep # grep
     fx # json
+    hyperfine # time
     tree
     systemctl-tui
     bluez

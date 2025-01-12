@@ -12,6 +12,7 @@
     win-virtio
     win-spice
     virtiofsd
+    lazydocker
   ];
 
   virtualisation = {

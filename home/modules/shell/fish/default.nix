@@ -35,8 +35,6 @@
     };
   };
 
-  programs.thefuck.enable = true;
-
   programs.starship.enableFishIntegration = true;
 
   programs.fzf = {
@@ -50,6 +48,11 @@
   };
 
   programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.navi = {
     enable = true;
     enableFishIntegration = true;
   };
