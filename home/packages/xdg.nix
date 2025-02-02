@@ -24,7 +24,7 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "image/*" = [ "imv.desktop" ];
+    "image/*" = [ "qView.desktop" "com.interversehq.qView.desktop" ];
     "text/*"  = [ "vim.desktop" ];
     "inode/directory" = [ "yazi.desktop" ];
     "text/plain"  = [ "vim.desktop" ];
