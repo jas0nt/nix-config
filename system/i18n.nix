@@ -23,6 +23,7 @@
       fira-code
       fira-code-nerdfont
       noto-fonts-emoji
+      recursive
     ];
 
     fontconfig = {
