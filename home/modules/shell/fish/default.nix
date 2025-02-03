@@ -10,7 +10,8 @@
     shellAbbrs = {
       lock = "bash ~/scripts/desktop.sh lock";
       logout = "bash ~/scripts/desktop.sh logout";
-      fuckGFW = "export http_proxy=http://127.0.0.1:7890; and export https_proxy=http://127.0.0.1:7890; and export all_proxy=socks5://127.0.0.1:7890";
+      fuckgfw = "export http_proxy=http://127.0.0.1:7890; and export https_proxy=http://127.0.0.1:7890; and export all_proxy=socks5://127.0.0.1:7890";
+      gfw = "set -e http_proxy; and set -e https_proxy; and set -e all_proxy";
       icat = "kitten icat";
       showcert = "nmap -p 443 --script ssl-cert";
       dota = "steam steam://rungameid/570";
@@ -31,7 +32,7 @@
       gpu_fan.body = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
       fish_greeting.body = "krabby random --no-title";
       rgc.body = "rg --json $argv | delta";
-      win.body = "docker compose -f ~/dkr/compose.yaml up --detach\nsleep 5\nxfreerdp /u:docker /p:\"\" /size:2560x1440 /v:127.0.0.1:3389 /cert:ignore /sec:tls";
+      win.body = "docker compose -f ~/dkr/compose.yaml up --detach\nsleep 5\nsdl-freerdp /u:docker /p:\"\" /size:2560x1440 /v:127.0.0.1:3389 /cert:ignore /sec:tls";
     };
   };
 
