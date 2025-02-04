@@ -14,6 +14,7 @@
     ./modules/scripts
     ./modules/shell
     ./modules/input-method
+    ./modules/git
     ./modules/emacs
     ./modules/vim
     ./modules/helix
