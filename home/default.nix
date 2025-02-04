@@ -9,6 +9,7 @@
     ./modules/hyprland
     ./modules/firefox
     ./modules/kitty
+    ./modules/launcher
     ./modules/yazi
     ./modules/scripts
     ./modules/shell

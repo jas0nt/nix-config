@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ ./login-manager.nix ];
@@ -24,8 +24,6 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     hyprpicker
-    # sway-launcher-desktop
-    inputs.rauncher.defaultPackage."${pkgs.system}"
     grim # screenshot wayland
     slurp
     snipaste
