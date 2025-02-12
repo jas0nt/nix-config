@@ -5,7 +5,7 @@
     font = {
       # name = "FiraCode Nerd Font";
       name = "Recursive Mono Casual Static";
-      size = 16;
+      size = 12;
     };
     settings = {
       dynamic_background_opacity = "no";
