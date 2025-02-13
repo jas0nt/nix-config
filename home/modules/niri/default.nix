@@ -6,13 +6,10 @@
     ../swaync
   ];
 
-  # home.file = {
-  #   ".config/niri/config.kdl" = {
-  #     source = ./config/config.kdl;
-  #   };
-  # };
-
   home.file = {
+    ".config/niri/config.kdl" = {
+      source = ./config/config.kdl;
+    };
     ".config/code-flags.conf" = {
       source = ./config/code-flags.conf;
     };
@@ -33,8 +30,6 @@
   home.packages = with pkgs; [
     xwayland-satellite
     calcure
-    grim # screenshot wayland
-    slurp
     snipaste
     wl-clipboard
   ];
@@ -42,6 +37,8 @@
   programs.niri = { 
     enable = true; 
   };
+
+  programs.hyprlock.enable = true;
 
   programs.wlogout = {
     enable = true;

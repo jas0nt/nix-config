@@ -19,6 +19,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     rauncher.url = "github:jas0nt/Rauncher";
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
@@ -41,6 +42,7 @@
             pkgs = import inputs.nixpkgs {
               inherit system;
               overlays = [];
+              # overlays = [ niri.overlays.niri ];
               config = {
                 allowUnfree = true;
                 permittedInsecurePackages = [ "openssl-1.1.1w" ];
@@ -48,6 +50,7 @@
             };
             pkgs-unstable = import inputs.nixpkgs-unstable {
               inherit system;
+              overlays = [];
               config = {
                 allowUnfree = true;
               };
@@ -61,6 +64,7 @@
             modules = [
               ./hardware/pc
               ./system/minimal
+              ./system/proxy.nix
             ];
           };
 

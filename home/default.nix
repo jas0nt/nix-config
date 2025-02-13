@@ -6,7 +6,8 @@
     ./modules/theme
     # ./modules/awesomewm
     ./modules/docker
-    ./modules/hyprland
+    ./modules/niri
+    # ./modules/hyprland
     ./modules/firefox
     ./modules/kitty
     ./modules/launcher

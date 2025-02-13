@@ -5,7 +5,7 @@ let
   options = "--time --remember --remember-user-session --asterisks";
   sessions = "--sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
   xsessions = "--xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions";
-  cmd = "Hyprland";
+  cmd = "niri-session";
 in
 {
   services.greetd = {
