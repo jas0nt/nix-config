@@ -6,12 +6,25 @@
     waybar
   ];
 
-  services.swayidle = {
+  services.hypridle = {
     enable = true;
-    timeouts = [
-      { timeout = 600; command = "${pkgs.niri}/bin/niri msg action power-off-monitors"; }
-      { timeout = 630; command = "${pkgs.hyprlock}/bin/hyprlock"; }
-    ];
+    settings = {
+      general = {
+        ignore_dbus_inhibit = false;
+        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 1800;
+          on-timeout = "niri msg action power-off-monitors";
+        }
+        {
+          timeout = 3600;
+          on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+        }
+      ];
+    };
   };
 
   systemd.user.services = {
