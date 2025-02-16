@@ -8,7 +8,7 @@
       title-hidden = true;
       font = {
         normal = [ "FiraCode Nerd Font" ];
-        size = 15.0;
+        size = 12.0;
       };
     };
   };

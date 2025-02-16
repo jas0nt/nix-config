@@ -29,6 +29,22 @@
 
   systemd.user.services = {
 
+    xwayland = {
+      Unit = {
+        Description = "xwayland";
+        After = "graphical-session.target";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+        ExecStopPost = "${pkgs.libnotify}/bin/notify-send xwayland stopped";
+        Restart = "on-failure";
+      };
+    };
+
     clash = {
       Unit = {
         Description = "fuckGFW";
@@ -39,6 +55,7 @@
       Service = {
         Type = "simple";
         ExecStart = "${pkgs.clash-meta}/bin/clash-meta -f .config/clash/config.yaml";
+        ExecStopPost = "${pkgs.libnotify}/bin/notify-send clash stopped";
       };
     };
 
@@ -56,6 +73,7 @@
         ExecStart = "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
         ExecStartPost = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
         Restart = "on-failure";
+        RestartSec = "5s";
       };
     };
 

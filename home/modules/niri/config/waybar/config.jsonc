@@ -53,9 +53,9 @@
     "icon-size": 16,
     "tooltip-format": "{app_id} - {title}",
     "on-click": "activate",
-    "ignore-list": [
-       "kitty"
-    ],
+    // "ignore-list": [
+    //    "kitty"
+    // ],
   },
   "custom/playerlabel": {
     "format": "<span>{icon}{}</span>",

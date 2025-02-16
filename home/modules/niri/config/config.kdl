@@ -37,6 +37,13 @@ input {
     }
 }
 
+cursor {
+    xcursor-theme "Fuchsia"
+    xcursor-size 20
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
 layout {
     gaps 0
 
@@ -57,11 +64,12 @@ layout {
         // off
 
         width 2
-        active-color "#bd93f9"
-        inactive-color "#44475a"
+        // active-color "#bd93f9"
+        // inactive-color "#44475a"
 
-        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        active-gradient from="#44475a" to="#bd93f9" angle=90 relative-to="workspace-view"
+        inactive-color "#44475a"
+        // inactive-gradient from="#505050" to="#44475a" angle=45 relative-to="workspace-view"
     }
 
 }
@@ -69,12 +77,10 @@ layout {
 spawn-at-startup "fcitx5"
 spawn-at-startup "nm-applet"
 spawn-at-startup "firefox"
+spawn-at-startup "systemctl --user restart hypridle.service"
 
-spawn-at-startup "xwayland-satellite"
 environment {
-    DISPLAY ":0"
-    GTK_IM_MODULE ""
-    QT_IM_MODULE ""
+    DISPLAY ":0"  // xwayland
     GDK_BACKEND "wayland,x11"
     QT_QPA_PLATFORM "wayland;xcb"
     SDL_VIDEODRIVER "wayland"
@@ -147,7 +153,7 @@ window-rule {
     match app-id="Motrix"
     match app-id=r#".*freerdp$"#
     open-on-workspace "download"
-    open-floating false
+    // open-floating false
 }
 window-rule {
     match app-id="steam"

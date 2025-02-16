@@ -18,7 +18,7 @@
     cursorTheme = {
       package = pkgs.fuchsia-cursor;
       name = "Fuchsia";
-      size = 16;
+      size = 20;
     };
     theme = {
       package = pkgs.dracula-theme;
