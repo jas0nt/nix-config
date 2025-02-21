@@ -1,6 +1,7 @@
 set -x
 
 DIR=$(dirname "$0")
+TERMINAL=kitty
 
 case $1 in
 
