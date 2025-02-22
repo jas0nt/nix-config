@@ -60,11 +60,6 @@
     motrix
     axel
     localsend
-
-    steam
-    gamemode
-    wqy_zenhei
-    wqy_microhei
   ];
 
 }
