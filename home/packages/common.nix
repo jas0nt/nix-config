@@ -56,6 +56,7 @@
 
     qq
     wechat-uos
+    wpsoffice
     qbittorrent
     motrix
     axel
