@@ -25,7 +25,7 @@ idle-lock)
     ;;
 
 logout-menu)
-    pkill wlogout || wlogout -b 5 -B 500 -T 500
+    pkill wlogout || wlogout -b 5 -B 700 -T 700
     ;;
 
 lock)

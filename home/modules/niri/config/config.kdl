@@ -37,9 +37,16 @@ input {
     }
 }
 
+output "HDMI-A-1" {
+    // off
+    mode "3840x2160@60.0"
+    scale 1.0
+    background-color "#000000"
+}
+
 cursor {
     xcursor-theme "Fuchsia"
-    xcursor-size 20
+    xcursor-size 26
     hide-when-typing
 }
 
@@ -66,7 +73,7 @@ layout {
         // active-color "#bd93f9"
         // inactive-color "#44475a"
 
-        active-gradient from="#44475a" to="#bd93f9" angle=90 relative-to="workspace-view"
+        active-gradient from="#8be9fd" to="#bd93f9" angle=45 relative-to="workspace-view"
         inactive-color "#44475a"
         // inactive-gradient from="#505050" to="#44475a" angle=45 relative-to="workspace-view"
     }
@@ -76,7 +83,7 @@ layout {
 spawn-at-startup "fcitx5"
 spawn-at-startup "nm-applet"
 spawn-at-startup "firefox"
-spawn-at-startup "systemctl --user restart hypridle.service"
+spawn-at-startup "systemctl" "--user" "restart" "hypridle.service"
 
 environment {
     DISPLAY ":0"  // xwayland
@@ -132,6 +139,7 @@ window-rule {
 }
 window-rule {
     match app-id="Code"
+    match app-id="code"
     match app-id="Emacs"
     match app-id="neovide"
     open-maximized true

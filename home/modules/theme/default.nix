@@ -7,7 +7,7 @@
     # package = pkgs.bibata-cursors;
     package = pkgs.fuchsia-cursor;
     name = "Fuchsia";
-    size = 24;
+    size = 34;
   };
 
   gtk = {
@@ -16,7 +16,7 @@
     cursorTheme = {
       package = pkgs.fuchsia-cursor;
       name = "Fuchsia";
-      size = 20;
+      size = 26;
     };
     theme = {
       package = pkgs.dracula-theme;

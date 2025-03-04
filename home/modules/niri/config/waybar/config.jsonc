@@ -50,7 +50,7 @@
   },
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 14,
+    "icon-size": 25,
     "tooltip-format": "{app_id} - {title}",
     "on-click": "activate",
     // "ignore-list": [
@@ -154,7 +154,7 @@
     }
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 25,
     "spacing": 8,
     "reverse-direction": true
   },
