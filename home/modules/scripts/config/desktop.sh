@@ -9,7 +9,8 @@ monitor)
     ;;
 
 launcher)
-    $TERMINAL --class myfloating Rauncher
+    # $TERMINAL --class myfloating Rauncher
+    fuzzel
     ;;
 
 idle-lock)

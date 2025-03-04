@@ -122,6 +122,7 @@ window-rule {
     match app-id=r#"myfloating.?"#
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"Code$"# title="^Open .*"
+    match app-id=r#"code$"# title="^Open .*"
     open-floating true
     // min-width 1000
     // max-width 1500
