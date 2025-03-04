@@ -7,8 +7,8 @@
       theme = "auto";
       title-hidden = true;
       font = {
-        normal = [ "FiraCode Nerd Font" ];
-        size = 12.0;
+        normal = [ "Recursive Mono Casual Static" ];
+        size = 18.0;
       };
     };
   };

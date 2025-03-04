@@ -142,6 +142,7 @@ window-rule {
     match app-id="Code"
     match app-id="code"
     match app-id="Emacs"
+    match app-id="emacs"
     match app-id="neovide"
     open-maximized true
     open-on-workspace "code"
