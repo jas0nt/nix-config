@@ -47,6 +47,15 @@ in
           "inode/directory"
         ];
       };
+
+      vscode-wayland = {
+        name = "vscode-wayland";
+        icon = "code";
+        type = "Application";
+        genericName = "VSCode Wayland";
+        exec = "code --enable-features=UseOzonePlatform --ozone-platform=wayland %f";
+        terminal = false;
+      };
     };
 
     mimeApps = {
