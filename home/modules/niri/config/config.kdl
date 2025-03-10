@@ -111,7 +111,6 @@ animations {
 workspace "browser"
 workspace "code"
 workspace "fm"
-workspace "chat"
 workspace "download"
 workspace "game"
 

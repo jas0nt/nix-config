@@ -1,7 +1,7 @@
 {
   imports = [
-    ./cava
     ./fastfetch
+    ./cava.nix
     ./coding.nix
     ./common.nix
     ./media.nix
