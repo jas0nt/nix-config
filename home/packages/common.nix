@@ -48,11 +48,7 @@
     freerdp3
     just
     wlrctl
-
-    wineWowPackages.waylandFull
-    winePackages.fonts
-    winetricks
-    bottles
+    gparted
 
     qq
     # wechat-uos
