@@ -3,7 +3,10 @@ set shell := ["bash", "-uc"]
 default:
   @just --choose
 
-# [ minimal | minimal-proxy | nixos ]
+flake-update:
+  sudo nix flake update
+
+# [ minimal | minimal | nixos ]
 build target = 'nixos':
   sudo nixos-rebuild switch --flake path:.#{{target}}
 
