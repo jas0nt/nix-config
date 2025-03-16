@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     # Modern unix tools
     htop
+    progress
     choose # cut
     du-dust
     dua # du
