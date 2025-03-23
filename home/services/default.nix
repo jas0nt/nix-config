@@ -59,23 +59,23 @@
       };
     };
 
-    mybt = {
-      Unit = {
-        Description = "Bluetooth device";
-        After = [ "pulseaudio.service" ];
-        Requires = [ "pulseaudio.service" ];
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
-        ExecStartPost = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
-        Restart = "on-failure";
-        RestartSec = "5s";
-      };
-    };
+    # mybt = {
+    #   Unit = {
+    #     Description = "Bluetooth device";
+    #     After = [ "pulseaudio.service" ];
+    #     Requires = [ "pulseaudio.service" ];
+    #   };
+    #   Install = {
+    #     WantedBy = [ "default.target" ];
+    #   };
+    #   Service = {
+    #     Type = "simple";
+    #     ExecStart = "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
+    #     ExecStartPost = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
+    #     Restart = "on-failure";
+    #     RestartSec = "5s";
+    #   };
+    # };
 
     waybar = {
       Unit = {
