@@ -41,4 +41,8 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    font-manager
+  ];
+
 }
