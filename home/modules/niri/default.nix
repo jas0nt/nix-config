@@ -26,7 +26,7 @@
   home.packages = with pkgs; [
     xwayland-satellite
     calcure
-    snipaste
+    # snipaste
     wl-clipboard
   ];
 

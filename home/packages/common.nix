@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
 
@@ -52,6 +52,7 @@
 
     qq
     # wechat-uos
+    pkgs-unstable.xunlei-uos
     qbittorrent
     motrix
     axel
