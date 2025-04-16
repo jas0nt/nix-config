@@ -29,6 +29,9 @@
         pyright
         ipython
       ]))
+
+      vips
+      ffmpegthumbnailer
   ];
 
 }
