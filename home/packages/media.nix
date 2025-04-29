@@ -16,7 +16,7 @@
     ytdownloader
     clipgrab
     media-downloader
-    yutto  # bilibili downloader
+    yutto # bilibili downloader
   ];
 
   programs.cmus = {
@@ -27,8 +27,18 @@
   programs = {
     mpv = {
       enable = true;
-      defaultProfiles = [ "gpu-hq" ];
-      scripts = [ pkgs.mpvScripts.mpris ];
+      config = {
+        profile = "gpu-hq";
+        gpu-context = "wayland";
+        fullscreen = true;
+      };
+
+      scripts = with pkgs.mpvScripts; [
+        mpris
+        mpv-cheatsheet
+        thumbfast
+        uosc
+      ];
     };
 
     obs-studio.enable = true;
