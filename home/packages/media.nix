@@ -29,15 +29,10 @@
       enable = true;
       config = {
         profile = "gpu-hq";
-        gpu-context = "wayland";
-        fullscreen = true;
       };
 
       scripts = with pkgs.mpvScripts; [
         mpris
-        mpv-cheatsheet
-        thumbfast
-        uosc
       ];
     };
 

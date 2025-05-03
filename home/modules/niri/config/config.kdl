@@ -165,7 +165,7 @@ window-rule {
     open-on-workspace "chat"
 }
 window-rule {
-    match app-id="com.xunlei.download" title="迅雷"
+    match app-id="com.xunlei.download" title=r#"迅雷.*"#
     match app-id="org.qbittorrent.qBittorrent"
     match app-id="Motrix"
     match app-id=r#".*freerdp$"#
