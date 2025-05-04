@@ -45,7 +45,10 @@
               # overlays = [ niri.overlays.niri ];
               config = {
                 allowUnfree = true;
-                permittedInsecurePackages = [ "openssl-1.1.1w" ];
+                permittedInsecurePackages = [
+                  "openssl-1.1.1w"
+                  "clash-verge-rev-1.7.7"
+                ];
               };
             };
             pkgs-unstable = import inputs.nixpkgs-unstable {

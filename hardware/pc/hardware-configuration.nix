@@ -37,4 +37,9 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+
+  nix.settings.max-jobs = 8;
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 200;
 }
