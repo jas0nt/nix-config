@@ -42,7 +42,6 @@
             pkgs = import inputs.nixpkgs {
               inherit system;
               overlays = [];
-              # overlays = [ niri.overlays.niri ];
               config = {
                 allowUnfree = true;
                 permittedInsecurePackages = [

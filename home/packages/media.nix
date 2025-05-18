@@ -8,6 +8,7 @@
     playerctl
     vlc
     puddletag # mp3 tag editor
+    tagger
 
     pix
     nomacs

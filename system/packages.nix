@@ -3,6 +3,16 @@
 {
   imports = [ ./minimal/sys-pkgs.nix ];
 
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    configPackages = [
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+  services.flatpak.enable = true;
+
   programs = {
     mosh.enable = true;
     clash-verge = {
@@ -34,6 +44,7 @@
     bluez
     bluetuith
     libnotify
+    kooha
 
     # GUI apps
     kitty
