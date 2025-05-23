@@ -32,12 +32,14 @@
       home-manager,
       ...
     }:
+    let
+      my-username = "jason";
+      my-system = "x86_64-linux";
+    in
     {
       nixosConfigurations =
         let
-          my-username = "jason";
-          system = "x86_64-linux";
-          mysys = "x86_64-linux";
+          system = my-system;
           special-args = {
             const.username = my-username;
             inherit inputs;
@@ -52,7 +54,7 @@
         in
         {
           minimal = nixpkgs.lib.nixosSystem rec {
-            system = mysys;
+            system = my-system;
             specialArgs = special-args;
             modules = [
               ./hardware/pc
@@ -62,7 +64,7 @@
           };
 
           nixos = nixpkgs.lib.nixosSystem rec {
-            system = mysys;
+            system = my-system;
             specialArgs = special-args;
             modules = [
               ./hardware/pc
