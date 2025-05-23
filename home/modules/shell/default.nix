@@ -11,13 +11,6 @@
     sesh
   ];
 
-  programs.zellij = {
-    enable = true;
-    settings = {
-      theme = "dracula";
-    };
-  };
-
   programs.tmux = {
     enable = true;
     tmuxinator.enable = true;

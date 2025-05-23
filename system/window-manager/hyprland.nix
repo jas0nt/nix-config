@@ -11,7 +11,15 @@
       xwayland.enable = true;
     };
 
+    hyprlock.enable = true;
+
+    waybar = {
+      enable = true;
+      package = pkgs.waybar;
+    };
   };
+
+  services.hypridle.enable = true;
 
   environment.systemPackages = with pkgs; [
     hyprpaper

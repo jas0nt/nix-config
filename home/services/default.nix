@@ -92,20 +92,5 @@
       };
     };
 
-    waybar = {
-      Unit = {
-        Description = "Waybar";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.waybar}/bin/waybar";
-        Restart = "on-failure";
-        RestartSec = "15s";
-      };
-    };
-
   };
 }
