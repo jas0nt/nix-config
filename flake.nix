@@ -16,8 +16,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rauncher.url = "github:jas0nt/Rauncher";
     niri.url = "github:sodiboo/niri-flake";
   };
@@ -39,20 +41,9 @@
           special-args = {
             const.username = my-username;
             inherit inputs;
-            pkgs = import inputs.nixpkgs {
-              inherit system;
-              overlays = [];
-              config = {
-                allowUnfree = true;
-                permittedInsecurePackages = [
-                  "openssl-1.1.1w"
-                  "clash-verge-rev-1.7.7"
-                ];
-              };
-            };
             pkgs-unstable = import inputs.nixpkgs-unstable {
               inherit system;
-              overlays = [];
+              # overlays = [ ];
               config = {
                 allowUnfree = true;
               };
