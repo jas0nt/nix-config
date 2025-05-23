@@ -34,6 +34,7 @@
 
       scripts = with pkgs.mpvScripts; [
         mpris
+        webtorrent-mpv-hook
       ];
     };
 
