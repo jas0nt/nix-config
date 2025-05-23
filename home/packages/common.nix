@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
 
@@ -48,19 +48,21 @@
     freerdp3
     just
     wlrctl
-
-    wineWowPackages.waylandFull
-    winePackages.fonts
-    winetricks
-    bottles
+    gparted
 
     qq
-    wechat-uos
-    wpsoffice
+    # wechat-uos
+    pkgs-unstable.xunlei-uos
     qbittorrent
     motrix
     axel
     localsend
+
+    steam
+    adwsteamgtk
+    gamemode
+    wqy_zenhei
+    wqy_microhei
   ];
 
 }

@@ -17,18 +17,33 @@
       listener = [
         {
           timeout = 1800;
-          on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+          on-timeout = "niri msg action power-off-monitors";
         }
         {
-          timeout = 1830;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          timeout = 3600;
+          on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
         }
       ];
     };
   };
 
   systemd.user.services = {
+
+    xwayland = {
+      Unit = {
+        Description = "xwayland";
+        After = "graphical-session.target";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+        ExecStopPost = "${pkgs.libnotify}/bin/notify-send xwayland stopped";
+        Restart = "on-failure";
+      };
+    };
 
     clash = {
       Unit = {
@@ -40,21 +55,39 @@
       Service = {
         Type = "simple";
         ExecStart = "${pkgs.clash-meta}/bin/clash-meta -f .config/clash/config.yaml";
+        ExecStopPost = "${pkgs.libnotify}/bin/notify-send clash stopped";
       };
     };
 
-    mybt = {
+    # mybt = {
+    #   Unit = {
+    #     Description = "Bluetooth device";
+    #     After = [ "pulseaudio.service" ];
+    #     Requires = [ "pulseaudio.service" ];
+    #   };
+    #   Install = {
+    #     WantedBy = [ "default.target" ];
+    #   };
+    #   Service = {
+    #     Type = "simple";
+    #     ExecStart = "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
+    #     ExecStartPost = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
+    #     Restart = "on-failure";
+    #     RestartSec = "5s";
+    #   };
+    # };
+
+    waybar = {
       Unit = {
-        Description = "Bluetooth device";
-        Requires = [ "pulseaudio.service" ];
+        Description = "Waybar";
+        After = "graphical-session.target";
       };
       Install = {
         WantedBy = [ "default.target" ];
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.bluez}/bin/bluetoothctl connect D8:37:3B:66:E2:64";
-        ExecStartPost = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
+        ExecStart = "${pkgs.waybar}/bin/waybar";
         Restart = "on-failure";
       };
     };

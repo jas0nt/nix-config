@@ -10,7 +10,8 @@ monitor)
     ;;
 
 launcher)
-    $TERMINAL --class myfloating Rauncher
+    # $TERMINAL --class myfloating Rauncher
+    fuzzel
     ;;
 
 idle-lock)
@@ -26,7 +27,7 @@ idle-lock)
     ;;
 
 logout-menu)
-    pkill wlogout || wlogout -b 5 -B 650 -T 650
+    pkill wlogout || wlogout -b 5 -B 700 -T 700
     ;;
 
 lock)

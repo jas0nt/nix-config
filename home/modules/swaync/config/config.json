@@ -7,8 +7,8 @@
 	"control-center-margin-bottom": 0,
 	"control-center-margin-right": 0,
 	"control-center-margin-left": 0,
-	"control-center-width": 750,
-	"control-center-height": 1200,
+	"control-center-width": 650,
+	"control-center-height": 1000,
 	"fit-to-screen": false,
 
 	"layer": "top",
@@ -31,7 +31,7 @@
 		"title",
 		"dnd",
 		"mpris",
-    "volume",
+		"volume",
 		"notifications"
 	],
 	"widget-config": {

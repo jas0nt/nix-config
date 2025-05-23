@@ -24,12 +24,16 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "image/*" = [ "qView.desktop" "com.interversehq.qView.desktop" ];
+    "image/png" = [ "com.interversehq.qView.desktop" ];
+    "image/jpg" = [ "com.interversehq.qView.desktop" ];
+    "image/jpeg" = [ "com.interversehq.qView.desktop" ];
+    "image/webp" = [ "com.interversehq.qView.desktop" ];
+    "image/*" = [ "com.interversehq.qView.desktop" ];
     "text/*"  = [ "vim.desktop" ];
     "inode/directory" = [ "yazi.desktop" ];
     "text/plain"  = [ "vim.desktop" ];
 
-    "application/x-bittorrent" = [ "org.qbittorrent.qBittorrent.desktop" ];
+    "application/x-bittorrent" = [ "com.xunlei.download.desktop" ];
   };
 in
 {
@@ -46,6 +50,15 @@ in
         mimeType = [
           "inode/directory"
         ];
+      };
+
+      vscode-wayland = {
+        name = "vscode-wayland";
+        icon = "code";
+        type = "Application";
+        genericName = "VSCode Wayland";
+        exec = "code --enable-features=UseOzonePlatform --ozone-platform=wayland %f";
+        terminal = false;
       };
     };
 

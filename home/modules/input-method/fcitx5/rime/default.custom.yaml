@@ -8,3 +8,8 @@ patch:
 
   menu:
     page_size: 9
+
+  switches:
+    - name: simplification
+      reset: 1
+      states: [ 汉字, 漢字 ]

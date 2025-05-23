@@ -44,4 +44,6 @@
     # services.xserver.libinput.enable = true;  Enable touchpad support.
   };
 
+  nixpkgs.config.allowUnfree = true;
+
 }

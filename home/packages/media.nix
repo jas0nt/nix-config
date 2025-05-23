@@ -8,6 +8,7 @@
     playerctl
     vlc
     puddletag # mp3 tag editor
+    tagger
 
     pix
     nomacs
@@ -16,7 +17,7 @@
     ytdownloader
     clipgrab
     media-downloader
-    yutto  # bilibili downloader
+    yutto # bilibili downloader
   ];
 
   programs.cmus = {
@@ -27,8 +28,14 @@
   programs = {
     mpv = {
       enable = true;
-      defaultProfiles = [ "gpu-hq" ];
-      scripts = [ pkgs.mpvScripts.mpris ];
+      config = {
+        profile = "gpu-hq";
+      };
+
+      scripts = with pkgs.mpvScripts; [
+        mpris
+        webtorrent-mpv-hook
+      ];
     };
 
     obs-studio.enable = true;

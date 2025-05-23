@@ -12,5 +12,6 @@
       "wheel"
       "docker"
     ];
+    uid = 1000;
   };
 }

@@ -21,7 +21,7 @@
     packages = with pkgs; [
       source-han-sans
       fira-code
-      fira-code-nerdfont
+      nerd-fonts.fira-code
       noto-fonts-emoji
       recursive
     ];
@@ -40,5 +40,9 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    font-manager
+  ];
 
 }

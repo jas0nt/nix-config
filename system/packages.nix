@@ -3,6 +3,16 @@
 {
   imports = [ ./minimal/sys-pkgs.nix ];
 
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    configPackages = [
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+  services.flatpak.enable = true;
+
   programs = {
     mosh.enable = true;
     clash-verge = {
@@ -16,6 +26,7 @@
   environment.systemPackages = with pkgs; [
     # Modern unix tools
     htop
+    progress
     choose # cut
     du-dust
     dua # du
@@ -33,6 +44,7 @@
     bluez
     bluetuith
     libnotify
+    kooha
 
     # GUI apps
     kitty

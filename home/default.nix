@@ -6,7 +6,8 @@
     ./modules/theme
     # ./modules/awesomewm
     ./modules/docker
-    ./modules/hyprland
+    ./modules/niri
+    # ./modules/hyprland
     ./modules/firefox
     ./modules/kitty
     ./modules/launcher
@@ -22,7 +23,7 @@
   ];
   
   home = {
-    stateVersion = "24.11";
+    stateVersion = "25.05";
 
     username = const.username;
     homeDirectory = "/home/${const.username}";

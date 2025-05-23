@@ -9,7 +9,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs30;
+    package = pkgs.emacs30-pgtk;
   };
 
   home.packages = with pkgs; [
@@ -29,6 +29,9 @@
         pyright
         ipython
       ]))
+
+      vips
+      ffmpegthumbnailer
   ];
 
 }

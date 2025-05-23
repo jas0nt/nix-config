@@ -5,6 +5,8 @@ services:
     environment:
       VERSION: "11"
       RAM_SIZE: 2G
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
     devices:
       - /dev/kvm
     cap_add:

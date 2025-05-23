@@ -2,13 +2,14 @@
 
 {
   security.rtkit.enable = true; # PulseAudio uses this
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudioFull;
-  };
 
   services = {
-    pipewire = { # Enable sound with pipewire.
+    pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+    };
+    pipewire = {
+      # Enable sound with pipewire.
       enable = false;
       alsa.enable = true;
       alsa.support32Bit = true;
