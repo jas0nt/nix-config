@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, pkgs-unstable, config, inputs, ... }:
 
 {
   imports = [
@@ -32,6 +32,7 @@
 
   programs.niri = { 
     enable = true; 
+    package = pkgs-unstable.niri;
   };
 
   programs.hyprlock = {
