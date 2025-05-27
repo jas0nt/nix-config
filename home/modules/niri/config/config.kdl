@@ -170,6 +170,7 @@ window-rule {
     match app-id="Motrix"
     match app-id=r#".*freerdp$"#
     open-on-workspace "download"
+    open-focused false
     open-floating false
 }
 window-rule {

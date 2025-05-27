@@ -50,8 +50,9 @@
     wlrctl
     gparted
 
+    wpsoffice-cn
     qq
-    # wechat-uos
+    wechat-uos
     pkgs-unstable.xunlei-uos
     qbittorrent
     motrix
