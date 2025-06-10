@@ -9,7 +9,7 @@
       log = {
         enabled = false;
       };
-      manager = {
+      mgr = {
         show_hidden = false;
         linemode = "mtime";
         sort_by = "mtime";
@@ -21,7 +21,7 @@
       lazygit = pkgs.yaziPlugins.lazygit;
     };
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           run = "plugin zoxide";
           on = [ "z" ];
