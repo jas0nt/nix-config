@@ -44,7 +44,6 @@
     bluez
     bluetuith
     libnotify
-    kooha
 
     # GUI apps
     kitty
