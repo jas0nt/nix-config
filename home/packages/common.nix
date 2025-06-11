@@ -64,8 +64,6 @@
     gamemode
     wqy_zenhei
     wqy_microhei
-
-    genymotion
   ];
 
 }
