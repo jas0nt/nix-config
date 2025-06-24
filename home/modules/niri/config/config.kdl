@@ -114,6 +114,7 @@ workspace "code"
 workspace "fm"
 workspace "download"
 workspace "game"
+workspace "chat"
 
 window-rule {
     geometry-corner-radius 12
