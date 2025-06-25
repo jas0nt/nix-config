@@ -1,6 +1,4 @@
-# https://github.com/nushell/nushell/blob/main/crates/nu-utils/src/sample_config/default_env.nu
-
-$env.EDITOR = 'lvim'
+$env.EDITOR = 'vim'
 $env.BROWSER = 'firefox'
 $env.TERM = 'kitty'
 $env.TERMINAL = 'kitty'

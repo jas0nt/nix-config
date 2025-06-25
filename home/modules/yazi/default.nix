@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.yazi;
     enableFishIntegration = true;
+    enableNushellIntegration = true;
     settings = {
       log = {
         enabled = false;
