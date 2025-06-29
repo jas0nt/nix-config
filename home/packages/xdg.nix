@@ -19,6 +19,7 @@ let
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
     "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
+    "x-scheme-handler/magnet" = [ "qbittorrent.desktop" ];
     "x-scheme-handler/spotify" = [ "spotify.desktop" ];
     "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
 
@@ -33,7 +34,7 @@ let
     "inode/directory" = [ "yazi.desktop" ];
     "text/plain"  = [ "vim.desktop" ];
 
-    "application/x-bittorrent" = [ "com.xunlei.download.desktop" ];
+    "application/x-bittorrent" = [ "qbittorrent.desktop" ];
   };
 in
 {

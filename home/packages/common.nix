@@ -54,7 +54,7 @@
     qq
     wechat-uos
     pkgs-unstable.xunlei-uos
-    qbittorrent
+    qbittorrent qbittorrent-cli
     motrix
     axel
     localsend
