@@ -4,13 +4,11 @@
   home.packages = with pkgs; [
     ffmpeg
 
-    spotify
     playerctl
     vlc
     puddletag # mp3 tag editor
     tagger
 
-    pix
     nomacs
 
     yt-dlp
