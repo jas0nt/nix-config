@@ -53,4 +53,3 @@ proxyoff:
   sudo rm -f /run/systemd/system/nix-daemon.service.d/override.conf
   sudo systemctl daemon-reload
   sudo systemctl restart nix-daemon
-
