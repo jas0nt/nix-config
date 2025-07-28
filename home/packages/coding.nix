@@ -7,6 +7,7 @@
   };
 
   home.packages = with pkgs; [
+    devcontainer
     direnv
     devbox
     code-cursor
