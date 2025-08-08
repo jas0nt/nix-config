@@ -24,6 +24,10 @@
     keymap = {
       mgr.prepend_keymap = [
         {
+          run = "shell --orphan --confirm kitty";
+          on = [ "T" ];
+        }
+        {
           run = "plugin zoxide";
           on = [ "z" ];
         }
