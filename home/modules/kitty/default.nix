@@ -16,7 +16,7 @@
       cursor_blink_interval = "0";
 
       allow_hyperlinks = "no";
-      confirm_os_window_close = 0;
+      confirm_os_window_close = "-1 count-background";
       copy_on_select = "clipboard";
       detect_urls = "no";
       focus_follows_mouse = "yes";
