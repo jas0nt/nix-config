@@ -48,6 +48,13 @@ output "HDMI-A-1" {
     background-color "#000000"
 }
 
+// Disable the hot corners.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 cursor {
     xcursor-theme "Fuchsia"
     xcursor-size 26
@@ -125,22 +132,29 @@ window-rule {
 
 // floating windows
 window-rule {
-    match app-id=r#"myfloating.?"#
+    match app-id=r#"myfloatings"#
+    open-floating true
+    default-window-height { proportion 0.3; }
+    default-column-width { proportion 0.3; }
+}
+window-rule {
+    match app-id=r#"myfloatingm"#
+    open-floating true
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.5; }
+}
+window-rule {
+    match app-id=r#"myfloatingl"#
     open-floating true
     default-window-height { proportion 0.8; }
     default-column-width { proportion 0.8; }
 }
 
 window-rule {
-    match app-id=r#"myfloating.?"#
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"Code$"# title="^Open .*"
     match app-id=r#"code$"# title="^Open .*"
     open-floating true
-    // min-width 1000
-    // max-width 1500
-    // min-height 800
-    // max-height 1000
 }
 
 window-rule {
@@ -202,6 +216,7 @@ binds {
     Mod+Shift+Q { quit; }
     Ctrl+Alt+Delete { quit; }
 
+    Mod+A {toggle-overview;}
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+grave { spawn "bash" "-c" "~/scripts/desktop.sh lock"; }
     Mod+Space { spawn "bash" "-c" "~/scripts/desktop.sh toggle-im"; }

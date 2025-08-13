@@ -29,7 +29,9 @@
     "on-click": "bash ~/scripts/desktop.sh calendar"
   },
   "niri/window": {
-    "format": "{title}"
+    "format": "{title}",
+    "on-scroll-up": "niri msg action focus-column-left",
+    "on-scroll-down": "niri msg action focus-column-right",
   },
   "niri/workspaces": {
     "current-only": false,
@@ -42,20 +44,19 @@
       "chat": "󰭹",
       "download": "󰅢",
       "game": "󰓓",
-      "default": "󰊠",
+      "default": "",
       "sort-by-number": true
     },
-    "on-scroll-up": "niri msg action focus-column-left",
-    "on-scroll-down": "niri msg action focus-column-right",
+    "on-scroll-up": "niri msg action focus-workspace-up",
+    "on-scroll-down": "niri msg action focus-workspace-down",
   },
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 25,
     "tooltip-format": "{app_id} - {title}",
     "on-click": "activate",
-    // "ignore-list": [
-    //    "kitty"
-    // ],
+    "on-scroll-up": "niri msg action focus-column-left",
+    "on-scroll-down": "niri msg action focus-column-right",
   },
   "custom/playerlabel": {
     "format": "<span>{icon}{}</span>",
@@ -193,7 +194,7 @@
   },
   "custom/launcher": {
     "format": " ",
-    "on-click": "bash ~/scripts/desktop.sh monitor",
+    "on-click": "niri msg action toggle-overview",
     "on-click-right": "bash ~/scripts/desktop.sh logout-menu",
     "on-scroll-up": "niri msg action focus-workspace-up",
     "on-scroll-down": "niri msg action focus-workspace-down",

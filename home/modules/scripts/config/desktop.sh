@@ -62,7 +62,7 @@ screenshot)
     ;;
 
 calendar)
-    pkill calcure || $TERMINAL --class myfloating calcure
+    pkill calcure || $TERMINAL --class myfloatingm calcure
     ;;
 
 notification-center)
