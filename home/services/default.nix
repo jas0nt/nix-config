@@ -39,6 +39,20 @@
 
   systemd.user.services = {
 
+    mute_on_start = {
+      Unit = {
+        Description = "mute";
+        After = "graphical-session.target";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
+      };
+    };
+
     xwayland = {
       Unit = {
         Description = "xwayland";
