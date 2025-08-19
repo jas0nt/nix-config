@@ -1,202 +1,127 @@
 {
-  "output": "HDMI-A-1",
-  "position": "bottom",
-  "layer": "top",
-  "height": 10,
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
-  "modules-left": [
-    "custom/launcher",
-    "niri/workspaces",
-    "wlr/taskbar",
-    "niri/window"
-  ],
-  "modules-center": [
-    "clock"
-  ],
-  "modules-right": [
-    "custom/playerlabel",
-    "pulseaudio",
-    "tray",
-    // "group/hardware"
-    "gamemode",
-    "custom/notification",
-  ],
-  "clock": {
-    "format": "{:%H:%M %a %b %d}",
-    "on-click": "bash ~/scripts/desktop.sh calendar"
-  },
-  "niri/window": {
-    "format": "{title}",
-    "on-scroll-up": "niri msg action focus-column-left",
-    "on-scroll-down": "niri msg action focus-column-right",
-  },
-  "niri/workspaces": {
-    "current-only": false,
-    "all-outputs": true,
-    "format": "{icon}",
-    "format-icons": {
-      "browser": "",
-      "code": "",
-      "fm": "",
-      "chat": "󰭹",
-      "download": "󰅢",
-      "game": "󰓓",
-      "default": "",
-      "sort-by-number": true
-    },
-    "on-scroll-up": "niri msg action focus-workspace-up",
-    "on-scroll-down": "niri msg action focus-workspace-down",
-  },
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 25,
-    "tooltip-format": "{app_id} - {title}",
-    "on-click": "activate",
-    "on-scroll-up": "niri msg action focus-column-left",
-    "on-scroll-down": "niri msg action focus-column-right",
-  },
-  "custom/playerlabel": {
-    "format": "<span>{icon}{}</span>",
-    "return-type": "json",
-    "max-length": 48,
-    "exec": "playerctl -i firefox -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click": "playerctl -i firefox play-pause",
-    "on-scroll-up": "playerctl previous",
-    "on-scroll-down": "playerctl next",
-    "format-icons": {
-      "Playing": "<span foreground='#bd93f9'>▶</span>",
-      "Paused": "<span foreground='#6272a4'>⏸</span>"
-    },
-  },
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon}  {capacity}%",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{icon} {time}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  "memory": {
-    "format": "󰍛 {}%",
-    "format-alt": "󰍛 {used}/{total} GiB",
-    "interval": 5
-  },
-  "cpu": {
-    "format": "󰻠 {usage}%",
-    "format-alt": "󰻠 {avg_frequency} GHz",
-    "interval": 5
-  },
-  "disk": {
-    "format": "󰋊 {}%",
-    "format-alt": "󰋊 {used}/{total} GiB",
-    "interval": 5,
-    "path": "/"
-  },
-  "network": {
-    "format-wifi": "󰤨",
-    "format-ethernet": " {ifname}: Aesthetic",
-    "format-linked": " {ifname} (No IP)",
-    "format-disconnected": "󰤭",
-    "format-alt": " {ifname}: {ipaddr}/{cidr}",
-    "tooltip-format": "{essid}",
-    "on-click-right": "nm-connection-editor"
-  },
-  "custom/mytray": {
-    "format": "󰥺",
-    "on-click-right": "bash ~/scripts/desktop.sh lock"
-  },
-  "custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "bash ~/scripts/desktop.sh notification-center",
-    "on-click-right": "bash ~/scripts/desktop.sh notification-dnd",
-    "escape": true
-  },
-  "group/hardware": {
-    "orientation": "horizontal",
-    "modules": [
-      "custom/notification",
-      "cpu",
-      "memory",
-      "disk",
-      "battery"
+    "output": "HDMI-A-1",
+    "position": "bottom",
+    "layer": "top",
+    "height": 10,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+        "custom/launcher",
+        "niri/workspaces",
+        "wlr/taskbar",
+        "niri/window"
     ],
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true
-    }
-  },
-  "tray": {
-    "icon-size": 25,
-    "spacing": 8,
-    "reverse-direction": true
-  },
-  "backlight": {
-    // "device": "acpi_video1",
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
+    "modules-center": ["clock"],
+    "modules-right": [
+        "custom/playerlabel",
+        "pulseaudio",
+        "tray",
+        "custom/notification"
     ],
-    //	"on-scroll-up":,
-    //	"on-scroll-down":,
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume} 󱙝 ",
-    "format-muted": "{icon} {volume} 󱙜 ",
-    "format-icons": {
-      "default": [
-        "󰕿",
-        "",
-        "󱄡"
-      ]
+    "custom/launcher": {
+        "format": "",
+        "on-click": "niri msg action toggle-overview",
+        "on-click-right": "bash ~/scripts/desktop.sh logout-menu",
+        "on-scroll-up": "niri msg action focus-workspace-up",
+        "on-scroll-down": "niri msg action focus-workspace-down"
     },
-    "on-click": "bash ~/scripts/volume.sh mute",
-    "on-click-right": "bash ~/scripts/volume.sh gui",
-    "on-scroll-up": "bash ~/scripts/volume.sh up",
-    "on-scroll-down": "bash ~/scripts/volume.sh down",
-    "scroll-step": 5
-  },
-  "custom/launcher": {
-    "format": " ",
-    "on-click": "niri msg action toggle-overview",
-    "on-click-right": "bash ~/scripts/desktop.sh logout-menu",
-    "on-scroll-up": "niri msg action focus-workspace-up",
-    "on-scroll-down": "niri msg action focus-workspace-down",
-  }
+    "niri/workspaces": {
+        "current-only": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "browser": "",
+            "code": "",
+            "fm": "",
+            "chat": "󰭹",
+            "download": "󰅢",
+            "game": "󰓓",
+            "default": "",
+            "sort-by-number": true
+        },
+        "on-scroll-up": "niri msg action focus-workspace-up",
+        "on-scroll-down": "niri msg action focus-workspace-down"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 25,
+        "tooltip-format": "{app_id} - {title}",
+        "on-click": "activate",
+        "on-scroll-up": "niri msg action focus-column-left",
+        "on-scroll-down": "niri msg action focus-column-right"
+    },
+    "niri/window": {
+        "format": "{title}",
+        "on-scroll-up": "niri msg action focus-column-left",
+        "on-scroll-down": "niri msg action focus-column-right"
+    },
+    "clock": {
+        "tooltip": false,
+        "format": "{:%H:%M %a %b %d}",
+        "on-click": "bash ~/scripts/desktop.sh calendar"
+    },
+    "custom/playerlabel": {
+        "format": "<span>{icon}{}</span>",
+        "return-type": "json",
+        "max-length": 48,
+        "exec": "playerctl -i firefox -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl -i firefox play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next",
+        "format-icons": {
+            "Playing": "<span foreground='#bd93f9'>▶</span>",
+            "Paused": "<span foreground='#6272a4'>⏸</span>"
+        }
+    },
+    "pulseaudio": {
+        "format": "{volume}",
+        "format-muted": "{volume}",
+        "format-icons": {
+            "default": ["", "󰔷", "", ""]
+        },
+        "on-click": "bash ~/scripts/volume.sh mute",
+        "on-click-right": "bash ~/scripts/volume.sh gui",
+        "on-scroll-up": "bash ~/scripts/volume.sh up",
+        "on-scroll-down": "bash ~/scripts/volume.sh down",
+        "scroll-step": 5
+    },
+    "tray": {
+        "icon-size": 25,
+        "spacing": 7,
+        "reverse-direction": true
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "bash ~/scripts/desktop.sh notification-center",
+        "on-click-right": "bash ~/scripts/desktop.sh notification-dnd",
+        "escape": true
+    },
 }

@@ -10,6 +10,7 @@
       log = {
         enabled = false;
       };
+      tasks.image_alloc = 1073741824;
       mgr = {
         show_hidden = false;
         linemode = "mtime";
