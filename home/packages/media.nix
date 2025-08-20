@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     ffmpeg
+    pasystray
 
     playerctl
     vlc

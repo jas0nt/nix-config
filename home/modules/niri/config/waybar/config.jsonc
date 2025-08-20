@@ -35,27 +35,23 @@
             "browser": "",
             "code": "",
             "fm": "",
-            "chat": "󰭹",
             "download": "󰅢",
             "game": "󰓓",
+            "chat": "󰭹",
             "default": "",
             "sort-by-number": true
         },
-        "on-scroll-up": "niri msg action focus-workspace-up",
-        "on-scroll-down": "niri msg action focus-workspace-down"
+        "on-scroll-up": "niri msg action focus-column-left",
+        "on-scroll-down": "niri msg action focus-column-right"
     },
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 25,
         "tooltip-format": "{app_id} - {title}",
-        "on-click": "activate",
-        "on-scroll-up": "niri msg action focus-column-left",
-        "on-scroll-down": "niri msg action focus-column-right"
+        "on-click": "activate"
     },
     "niri/window": {
-        "format": "{title}",
-        "on-scroll-up": "niri msg action focus-column-left",
-        "on-scroll-down": "niri msg action focus-column-right"
+        "format": "{title}"
     },
     "clock": {
         "tooltip": false,
@@ -90,7 +86,16 @@
     "tray": {
         "icon-size": 25,
         "spacing": 7,
-        "reverse-direction": true
+        "reverse-direction": true,
+        "icons": {
+            "blueman": "bluetooth",
+            "fcitx5": "fcitx",
+            "qBittorrent": "qbittorrent-tray",
+            "steam": "steam",
+            "obs": "obs",
+            "wechat": "wechat",
+            "QQ": "qq"
+        }
     },
     "battery": {
         "states": {
