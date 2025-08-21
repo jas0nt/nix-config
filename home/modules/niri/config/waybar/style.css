@@ -20,7 +20,6 @@
     font-family: FiraCode Nerd Font;
     font-size: 22px;
     font-style: normal;
-    min-height: 0;
 }
 
 window#waybar {
@@ -37,7 +36,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0.25em 0.25em;
+    padding: 0px 0.25em;
     margin: 0px 0.25em;
     color: @foreground;
 }
@@ -82,13 +81,13 @@ window#waybar {
 #pulseaudio,
 #custom-launcher {
     background: transparent;
-    margin: 0 0.1em;
+    margin: 0px 0.1em;
     border-radius: 20%;
 }
 
 #custom-notification,
 #custom-launcher {
-    padding: 0 0.5em;
+    padding: 0px 0.5em;
     color: @Nix-Logo;
     background: transparent;
 }
@@ -97,21 +96,10 @@ window#waybar {
     color: @purple;
 }
 
-#custom-power {
-    color: @background;
-    background-color: @red;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0px;
-    padding: 5px 10px;
-}
-
 #tray {
     background: @background-darker;
     border-radius: 30%;
-    padding: 0 0.5em;
+    padding: 0px 0.5em;
 }
 
 #clock {
@@ -141,10 +129,12 @@ window#waybar {
 #pulseaudio.muted {
     background: transparent;
     color: #928374;
+    text-decoration: line-through;
+    font-style: oblique;
 }
 
 #custom-playerlabel,
 #window {
     background: transparent;
-    margin: 0 0.5em;
+    margin: 0px 0.5em;
 }
