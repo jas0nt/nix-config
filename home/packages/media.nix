@@ -10,6 +10,7 @@
     puddletag # mp3 tag editor
     nomacs
 
+    qqmusic
     yt-dlp
     ytdownloader
     clipgrab
