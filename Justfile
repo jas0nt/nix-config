@@ -18,7 +18,8 @@ build-nosub target = 'nixos':
   sudo nixos-rebuild switch --flake path:.#{{target}} --option substitute false
 
 up input = '':
-  nix flake update {{input}}
+  sudo nix flake update {{input}}
+  just build
 
 history:
   nix profile history --profile /nix/var/nix/profiles/system
