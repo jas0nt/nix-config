@@ -226,6 +226,7 @@ binds {
     Mod+W { close-window; }
     Mod+D { spawn "bash" "-c" "~/scripts/desktop.sh launcher"; }
     Mod+E { spawn "bash" "-c" "~/scripts/desktop.sh file-manager"; }
+    Mod+Shift+I { spawn "bash" "-c" "~/scripts/desktop.sh record"; }
     Mod+Shift+S { screenshot; }
     Print { screenshot-screen; }
     Alt+Print { screenshot-window; }

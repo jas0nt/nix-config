@@ -16,6 +16,8 @@
     clipgrab
     media-downloader
     yutto # bilibili downloader
+    slurp
+    wf-recorder
   ];
 
   programs.cmus = {
@@ -42,7 +44,7 @@
       enable = true;
       settings = {
         general.framerate = 60;
-        input.method = "pulse";
+        input.method = "pipewire";
         input.source = "auto";
         smoothing.noise_reduction = 88;
         color = {

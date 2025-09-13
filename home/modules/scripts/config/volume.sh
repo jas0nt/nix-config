@@ -1,27 +1,23 @@
 case $1 in
 up)
-    pulsemixer --change-volume +1
-    notify-send -r 1 -t 2000 -i volume "Vol: $(pulsemixer --get-volume)"
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
+    notify-send -r 1 -t 2000 -i volume "Vol: $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
     ;;
 
 down)
-    pulsemixer --change-volume -1
-    notify-send -r 1 -t 2000 -i volume "Vol: $(pulsemixer --get-volume)"
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
+    notify-send -r 1 -t 2000 -i volume "Vol: $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
     ;;
 
 mute)
-    pulsemixer --toggle-mute
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     ;;
 
 gui)
-    pkill pavucontrol || pavucontrol
-    ;;
-
-tui)
-    pkill pulsemixer || $TERMINAL --class myfloating pulsemixer
+    pkill pwvucontrol || pwvucontrol
     ;;
 
 *)
-    notify-send -r 1 -t 2000 -i volume "Vol: $(pulsemixer --get-volume)"
+    notify-send -r 1 -t 2000 -i volume "Vol: $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
     ;;
 esac

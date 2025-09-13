@@ -1,16 +1,15 @@
 { pkgs, ... }:
 
 {
-  security.rtkit.enable = true; # PulseAudio uses this
-
+  security.rtkit.enable = true;
   services = {
     pulseaudio = {
-      enable = true;
+      enable = false;
       package = pkgs.pulseaudioFull;
     };
     pipewire = {
-      # Enable sound with pipewire.
-      enable = false;
+      enable = true;
+      wireplumber.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
@@ -19,9 +18,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    pasystray
-    pulsemixer
-    pavucontrol
+    pwvucontrol
+    pw-volume
   ];
 
 }

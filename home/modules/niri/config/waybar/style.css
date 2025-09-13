@@ -122,11 +122,11 @@ window#waybar {
     border-radius: 5px 5px 5px 5px;
 }
 
-#pulseaudio {
+#wireplumber {
     color: #f4d9e1;
 }
 
-#pulseaudio.muted {
+#wireplumber.muted {
     background: transparent;
     color: #928374;
     text-decoration: line-through;

@@ -61,6 +61,23 @@ screenshot)
     grim -g "$(slurp)" - | wl-copy
     ;;
 
+record)
+    RECORDING_DIR=~/Videos/Recording
+    FILENAME="$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+    RECORDING_FILE=$RECORDING_DIR/$FILENAME
+    mkdir -p $RECORDING_DIR
+    pkill wf-recorder || (wf-recorder --audio --audio-backend=pipewire -g "$(slurp)" -f $RECORDING_FILE && notify-send -i camera "Recording saved $RECORDING_FILE")
+    ;;
+
+record-screen)
+    RECORDING_DIR=~/Videos/Recording
+    FILE_DATE="$(date +'%Y-%m-%d_%H-%M-%S')"
+    RECORDING_FILE=$RECORDING_DIR/$FILE_DATE.mp4
+    mkdir -p $RECORDING_DIR
+    swaync-client -dn
+    pkill wf-recorder || (wf-recorder --audio --audio-backend=pipewire -f $RECORDING_FILE && swaync-client -df)
+    ;;
+
 calendar)
     pkill calcure || $TERMINAL --class myfloatingm calcure
     ;;

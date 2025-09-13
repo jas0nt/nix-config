@@ -16,7 +16,7 @@
     "modules-center": ["clock"],
     "modules-right": [
         "custom/playerlabel",
-        "pulseaudio",
+        "wireplumber",
         "tray",
         "custom/notification"
     ],
@@ -56,7 +56,8 @@
     "clock": {
         "tooltip": false,
         "format": "{:%H:%M %a %b %d}",
-        "on-click": "bash ~/scripts/desktop.sh calendar"
+        "on-click": "bash ~/scripts/desktop.sh calendar",
+        "on-click-right": "bash ~/scripts/desktop.sh record-screen",
     },
     "custom/playerlabel": {
         "format": "<span>{icon}{}</span>",
@@ -70,6 +71,14 @@
             "Playing": "<span foreground='#bd93f9'>▶</span>",
             "Paused": "<span foreground='#6272a4'>⏸</span>"
         }
+    },
+    "wireplumber": {
+        "format": "{volume}",
+        "format-muted": "{volume}",
+        "on-click": "bash ~/scripts/volume.sh mute",
+        "on-click-right": "bash ~/scripts/volume.sh gui",
+        "max-volume": 100,
+        "scroll-step": 1
     },
     "pulseaudio": {
         "format": "{volume}",

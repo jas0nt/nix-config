@@ -53,7 +53,7 @@
     wpsoffice-cn
     qq
     wechat-uos
-    pkgs-unstable.xunlei-uos
+    # pkgs-unstable.xunlei-uos
     qbittorrent qbittorrent-cli
     motrix
     axel

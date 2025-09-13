@@ -49,7 +49,8 @@
       };
       Service = {
         Type = "oneshot";
-        ExecStart = "${pkgs.pulsemixer}/bin/pulsemixer --mute";
+        ExecStart = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ 1";
+        Restart = "on-failure";
       };
     };
 
