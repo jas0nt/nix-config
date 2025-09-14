@@ -1,4 +1,4 @@
 $env.EDITOR = 'vim'
 $env.BROWSER = 'firefox'
-$env.TERM = 'kitty'
-$env.TERMINAL = 'kitty'
+$env.TERM = '@TERM@'
+$env.TERMINAL = '@TERM@'

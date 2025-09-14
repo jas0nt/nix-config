@@ -30,8 +30,8 @@
     sessionVariables = {
       EDITOR = "vim";
       BROWSER = "firefox";
-      TERM = "kitty";
-      TERMINAL = "kitty";
+      TERM = const.terminal;
+      TERMINAL = const.terminal;
     };
   };
 

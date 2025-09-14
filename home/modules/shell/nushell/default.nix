@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{ lib, const, pkgs, ... }:
 
 {
   imports = [
@@ -7,7 +7,7 @@
 
   programs.nushell = {
     enable = true;
-    extraEnv = (builtins.readFile ./config/env.nu);
+    extraEnv = builtins.replaceStrings [ "@TERM@" ] [ const.terminal ] (builtins.readFile ./config/env.nu);
     extraConfig = (builtins.readFile ./config/config.nu);
     extraLogin = (builtins.readFile ./config/login.nu);
     shellAliases = {

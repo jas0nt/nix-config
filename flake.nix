@@ -42,6 +42,7 @@
           system = my-system;
           special-args = {
             const.username = my-username;
+            const.terminal = "kitty";
             inherit inputs;
             pkgs-unstable = import inputs.nixpkgs-unstable {
               inherit system;

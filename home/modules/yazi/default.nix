@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ const, pkgs, ... }:
 
 {
   programs.yazi = {
@@ -25,7 +25,7 @@
     keymap = {
       mgr.prepend_keymap = [
         {
-          run = "shell --orphan --confirm kitty";
+          run = "shell --orphan --confirm ${const.terminal}";
           on = [ "T" ];
         }
         {
