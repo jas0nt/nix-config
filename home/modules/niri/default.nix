@@ -17,9 +17,9 @@
       recursive = true;
       source = ./config/waybar;
     };
-    ".config/wlogout" = {
+    ".config/wlogout/icons" = {
       recursive = true;
-      source = ./config/wlogout;
+      source = ./config/wlogout/icons;
     };
   };
 
@@ -133,7 +133,7 @@
         keybind = "s";
       }
     ];
-    style = (builtins.readFile ./config/wlogout/style.css);
+    style = builtins.replaceStrings [ "@HOME@" ] [ config.home.homeDirectory ] (builtins.readFile ./config/wlogout/style.css);
   };
 
 }
