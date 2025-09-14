@@ -11,7 +11,6 @@
     ./virtualisation.nix
     ./window-manager/login-manager.nix
     # ./window-manager/hyprland.nix
-    # ./window-manager/awesomewm.nix
   ];
 
 }

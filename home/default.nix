@@ -4,7 +4,6 @@
   imports = [
     ./services
     ./modules/theme
-    # ./modules/awesomewm
     ./modules/docker
     ./modules/niri
     # ./modules/hyprland
