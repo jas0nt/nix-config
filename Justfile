@@ -30,12 +30,13 @@ list:
 
 clean:
   # remove all generations older than 7 days
-  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+  nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager --older-than 7d
+  nix-collect-garbage --delete-older-than 7d
 
 gc:
   # garbage collect all unused nix store entries
-  sudo nix store gc --debug
-  sudo nix-collect-garbage --delete-old
+  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+  sudo nix-collect-garbage --delete-older-than 7d
 
 repl:
   nix repl -f flake:nixpkgs
