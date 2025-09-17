@@ -3,7 +3,6 @@
     enable = true;
     themeFile = "Dracula";
     font = {
-      # name = "FiraCode Nerd Font";
       name = "Recursive Mono Casual Static";
       size = 16;
     };

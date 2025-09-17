@@ -39,6 +39,21 @@
 
   systemd.user.services = {
 
+    fcitx5 = {
+      Unit = {
+        Description = "fcitx5";
+        After = "graphical-session.target";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.fcitx5}/bin/fcitx5";
+        Restart = "on-failure";
+      };
+    };
+
     mute_on_start = {
       Unit = {
         Description = "mute";

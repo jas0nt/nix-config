@@ -92,11 +92,11 @@ layout {
 
 }
 
-spawn-at-startup "fcitx5"
 spawn-at-startup "nm-applet"
 spawn-at-startup "firefox"
 spawn-at-startup "qbittorrent"
 spawn-at-startup "systemctl" "--user" "restart" "hypridle.service"
+spawn-at-startup "qbt" "torrent" "resume" "ALL"
 
 environment {
     DISPLAY ":0"  // xwayland
