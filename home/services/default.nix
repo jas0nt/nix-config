@@ -49,7 +49,7 @@
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.fcitx5}/bin/fcitx5";
+        ExecStart = "fcitx5";
         Restart = "on-failure";
       };
     };
