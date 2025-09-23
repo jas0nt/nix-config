@@ -152,6 +152,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"com.interversehq.qView$"#
     match app-id=r#"Code$"# title="^Open .*"
     match app-id=r#"code$"# title="^Open .*"
     open-floating true

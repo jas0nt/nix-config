@@ -25,6 +25,7 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
+    "image/gif" = [ "com.interversehq.qView.desktop" ];
     "image/png" = [ "com.interversehq.qView.desktop" ];
     "image/jpg" = [ "com.interversehq.qView.desktop" ];
     "image/jpeg" = [ "com.interversehq.qView.desktop" ];
