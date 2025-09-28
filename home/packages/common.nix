@@ -52,7 +52,7 @@
 
     wpsoffice-cn
     qq
-    wechat-uos
+    wechat
     # pkgs-unstable.xunlei-uos
     qbittorrent qbittorrent-cli
     motrix
