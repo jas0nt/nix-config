@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, const, inputs, ... }:
 
 {
   programs.fuzzel = {
@@ -7,7 +7,7 @@
       main = {
         terminal = "${pkgs.kitty}/bin/kitty";
         layer = "overlay";
-        font = "FiraCode Nerd Font:size=16";
+        font = "${const.font}:size=16";
         lines = 15;
         width = 50;
         horizontal-pad = 40;

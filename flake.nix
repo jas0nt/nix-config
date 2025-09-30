@@ -43,6 +43,7 @@
           special-args = {
             const.username = my-username;
             const.terminal = "kitty";
+            const.font = "FiraCode Nerd Font";
             inherit inputs;
             pkgs-unstable = import inputs.nixpkgs-unstable {
               inherit system;

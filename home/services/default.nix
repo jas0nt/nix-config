@@ -2,10 +2,6 @@
 
 {
 
-  home.packages = with pkgs; [
-    waybar
-  ];
-
   services.hypridle = {
     enable = true;
     settings = {
@@ -80,8 +76,8 @@
       Service = {
         Type = "simple";
         ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-        ExecStartPost = "${pkgs.libnotify}/bin/notify-send xwayland started";
-        ExecStopPost = "${pkgs.libnotify}/bin/notify-send xwayland stopped";
+        ExecStartPost = "${pkgs.libnotify}/bin/notify-send -i wayland xwayland started";
+        ExecStopPost = "${pkgs.libnotify}/bin/notify-send -i wayland xwayland stopped";
         Restart = "on-failure";
       };
     };
@@ -117,21 +113,6 @@
     #     RestartSec = "5s";
     #   };
     # };
-
-    waybar = {
-      Unit = {
-        Description = "Waybar";
-        After = "graphical-session.target";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.waybar}/bin/waybar";
-        Restart = "on-failure";
-      };
-    };
 
   };
 }

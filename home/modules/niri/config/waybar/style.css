@@ -17,7 +17,7 @@
 
 * {
     border: none;
-    font-family: FiraCode Nerd Font;
+    font-family: @FONT@;
     font-size: 22px;
     font-style: normal;
 }

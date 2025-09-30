@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, const, ... }:
 
 {
   home.pointerCursor = {
@@ -12,7 +12,10 @@
 
   gtk = {
     enable = true;
-    font.name = "Fira Code";
+    font = {
+      name = const.font;
+      size = 10;
+    };
     cursorTheme = {
       package = pkgs.fuchsia-cursor;
       name = "Fuchsia";
