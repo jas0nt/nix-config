@@ -25,18 +25,6 @@
   };
 
   programs = {
-    mpv = {
-      enable = true;
-      config = {
-        profile = "gpu-hq";
-      };
-
-      scripts = with pkgs.mpvScripts; [
-        mpris
-        webtorrent-mpv-hook
-      ];
-    };
-
     obs-studio.enable = true;
 
     cava = {

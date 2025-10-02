@@ -38,4 +38,15 @@
     };
   };
 
+  services.wpaperd = {
+    enable = false;
+    settings = {
+      default = {
+        path = "./wallpaper";
+        duration = "30m";
+      };
+    };
+  };
+
+
 }

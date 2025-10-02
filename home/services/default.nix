@@ -23,16 +23,6 @@
     };
   };
 
-  services.wpaperd = {
-    enable = false;
-    settings = {
-      default = {
-        path = config.home.homeDirectory + "/wallpaper";
-        duration = "30m";
-      };
-    };
-  };
-
   systemd.user.services = {
 
     fcitx5 = {

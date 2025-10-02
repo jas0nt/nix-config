@@ -4,13 +4,12 @@
   imports = [
     ./services
     ./modules/theme
-    ./modules/docker
     ./modules/niri
     # ./modules/hyprland
     ./modules/firefox
     ./modules/kitty
     ./modules/launcher
-    ./modules/yazi
+    ./modules/file-manager
     ./modules/scripts
     ./modules/shell
     ./modules/input-method
@@ -18,6 +17,8 @@
     ./modules/emacs
     ./modules/vim
     ./modules/helix
+    ./modules/docker
+    ./modules/player
     ./packages
   ];
   
