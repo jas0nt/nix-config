@@ -8,8 +8,8 @@
     };
     settings = {
       dynamic_background_opacity = "no";
-      background_opacity = "0.8";
-      background_blur = "0";
+      background_opacity = "0.7";
+      background_blur = "15";
 
       cursor_shape = "block";
       cursor_blink_interval = "0";
