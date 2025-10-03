@@ -1,4 +1,9 @@
-{ pkgs, const, ... }:
+{
+  pkgs,
+  config,
+  const,
+  ...
+}:
 
 {
   home.pointerCursor = {
@@ -38,6 +43,23 @@
     };
   };
 
+  services.hyprpaper = {
+    enable = true;
+    settings =
+      let
+        dune = "${config.home.homeDirectory}/wallpaper/dune.jpg";
+        mojave = "${config.home.homeDirectory}/wallpaper/mojave.png";
+      in
+      {
+        preload = [
+          dune mojave
+        ];
+        wallpaper = [
+          "HDMI-A-1,${dune}"
+        ];
+      };
+  };
+
   services.wpaperd = {
     enable = false;
     settings = {
@@ -47,6 +69,5 @@
       };
     };
   };
-
 
 }
