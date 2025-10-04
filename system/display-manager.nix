@@ -3,16 +3,20 @@
 let
   theme = "--theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
   options = "--time --remember --remember-user-session --asterisks";
-  sessions = "--sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
-  xsessions = "--xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions";
-  cmd = "niri-session";
+  cmd = "${pkgs.niri}/bin/niri-session";
 in
 {
+
+  services.displayManager = {
+    enable = true;
+    sessionPackages = [ pkgs.niri ];
+  };
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet ${theme} ${options} ${sessions} ${xsessions} --cmd ${cmd}";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet ${theme} ${options}";
         user = "greeter";
       };
       initial_session = {

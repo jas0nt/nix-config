@@ -9,7 +9,7 @@
     ./device.nix
     ./packages.nix
     ./virtualisation.nix
-    ./window-manager/login-manager.nix
+    ./display-manager.nix
     # ./window-manager/hyprland.nix
   ];
 
