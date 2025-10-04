@@ -21,7 +21,7 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
-    wpaperd
+    pecita
     calcure
     # snipaste
     wl-clipboard
@@ -202,7 +202,7 @@
       background = [
         {
           monitor = "";
-          path = "$HOME/wallpaper/sekiro.png";
+          path = "$HOME/wallpaper/dune.jpg";
           blur_passes = 0;
           blur_size = 8;
         }
@@ -218,8 +218,8 @@
           dots_center = true;
           fade_on_empty = true;
           font_color = "rgb(40, 42, 54)";
-          inner_color = "rgb(248, 248, 242)";
-          outer_color = "rgb(248, 248, 242)";
+          inner_color = "rgb(243, 156, 54)";
+          outer_color = "rgb(243, 156, 54)";
           outline_thickness = 3;
           placeholder_text = "<i>Password...</i>";
           shadow_passes = 2;
@@ -232,9 +232,9 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
-          font_family = "Recursive Mono Casual Static";
-          font_size = 96;
-          color = "rgb(40, 42, 54)";
+          font_family = "Pecita";
+          font_size = 110;
+          color = "rgb(0, 0, 0)";
           position = "0, 200";
           halign = "center";
           valign = "center";
@@ -242,9 +242,9 @@
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%A, %-d %B %Y')\" </b>\"";
-          font_family = "Recursive Mono Casual Static";
-          font_size = 40;
-          color = "rgb(40, 42, 54)";
+          font_family = "Pecita";
+          font_size = 50;
+          color = "rgb(0, 0, 0)";
           position = "0, 0";
           halign = "center";
           valign = "center";
