@@ -22,7 +22,7 @@
         text = "f8f8f2ff";
         match = "8be9fdff";
         selection-match = "8be9fdff";
-        selection = "44475add";
+        selection = "ff79c6dd";
         selection-text = "f8f8f2ff";
         border = "bd93f9ff";
       };
