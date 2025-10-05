@@ -5,7 +5,7 @@
     extra-substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -20,7 +20,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rauncher.url = "github:jas0nt/Rauncher";
     niri.url = "github:sodiboo/niri-flake";
   };
 
@@ -33,57 +32,49 @@
       ...
     }:
     let
-      my-username = "jason";
-      my-system = "x86_64-linux";
+      system = "x86_64-linux";
+      const = import ./const.nix;
+      my-username = const.username;
+      special-args = {
+        const = const;
+        inherit inputs;
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          };
+        };
+      };
     in
     {
-      nixosConfigurations =
-        let
-          system = my-system;
-          special-args = {
-            const.username = my-username;
-            const.terminal = "kitty";
-            const.font = "FiraCode Nerd Font";
-            inherit inputs;
-            pkgs-unstable = import inputs.nixpkgs-unstable {
-              inherit system;
-              # overlays = [ ];
-              config = {
-                allowUnfree = true;
-              };
-            };
-          };
-        in
-        {
-          minimal = nixpkgs.lib.nixosSystem rec {
-            system = my-system;
-            specialArgs = special-args;
-            modules = [
-              ./hardware/pc
-              ./system/minimal
-              ./system/proxy.nix
-            ];
-          };
-
-          nixos = nixpkgs.lib.nixosSystem rec {
-            system = my-system;
-            specialArgs = special-args;
-            modules = [
-              ./hardware/pc
-              ./system
-              # ./system/proxy.nix
-
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = special-args;
-                home-manager.backupFileExtension = "backup";
-                home-manager.users.${my-username} = import ./home;
-              }
-            ];
-          };
-
+      nixosConfigurations = {
+        minimal = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = special-args;
+          modules = [
+            ./hardware/pc
+            ./system/minimal
+            ./system/proxy.nix
+          ];
         };
+
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = special-args;
+          modules = [
+            ./hardware/pc
+            ./system
+            # ./system/proxy.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = special-args;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${my-username} = import ./home;
+            }
+          ];
+        };
+      };
     };
 }

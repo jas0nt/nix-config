@@ -32,9 +32,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    inputs.rauncher.defaultPackage."${pkgs.system}"
-  ];
-
 }

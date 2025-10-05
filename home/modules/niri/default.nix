@@ -7,9 +7,6 @@
   ];
 
   home.file = {
-    ".config/niri/config.kdl" = {
-      source = ./config/config.kdl;
-    };
     ".config/code-flags.conf" = {
       source = ./config/code-flags.conf;
     };
@@ -30,6 +27,7 @@
   programs.niri = { 
     enable = true; 
     package = pkgs.niri;
+    config = (builtins.readFile ./config/config.kdl);
   };
 
   programs.waybar = {

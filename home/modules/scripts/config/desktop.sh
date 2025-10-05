@@ -9,7 +9,6 @@ monitor)
     ;;
 
 launcher)
-    # $TERMINAL --class myfloating Rauncher
     fuzzel
     ;;
 
