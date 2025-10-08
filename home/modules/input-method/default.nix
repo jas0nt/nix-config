@@ -135,7 +135,7 @@
   home.file = {
     ".local/share/fcitx5/rime" =
       let
-        language-model = pkgs.fetchurl {
+        grammar-model = pkgs.fetchurl {
           url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
           sha256 = "sha256-bO06YO3lfdvWmMTq/FIZl3VRKWxnDVLTTVm958Gftm0=";
         };
@@ -151,7 +151,7 @@
             cp ${fcitx5/rime/default.yaml} $out/default.yaml
             cp ${fcitx5/rime/double_pinyin_flypy.custom.yaml} $out/double_pinyin_flypy.custom.yaml
             cp ${fcitx5/rime/custom_phrase_double.txt} $out/custom_phrase_double.txt
-            cp ${language-model} $out/wanxiang-lts-zh-hans.gram
+            cp ${grammar-model} $out/wanxiang-lts-zh-hans.gram
           '';
         };
         recursive = true;
