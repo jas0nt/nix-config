@@ -2,6 +2,7 @@
 
 patch:
   grammar:
+    # https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
     language: wanxiang-lts-zh-hans
     collocation_max_length: 5
     collocation_min_length: 2
