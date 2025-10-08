@@ -20,7 +20,7 @@ build-nosub target = 'nixos':
   sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}} --option substitute false
 
 up input = '':
-  sudo nix flake update {{input}}
+  sudo {{proxy_env}} nix flake update {{input}}
   just build
 
 history:
