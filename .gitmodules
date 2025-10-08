@@ -1,3 +1,0 @@
-[submodule "home/modules/emacs/config/.emacs.d"]
-	path = home/modules/emacs/config/.emacs.d
-	url = https://github.com/jas0nt/.emacs.d.git
