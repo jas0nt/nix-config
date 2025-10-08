@@ -1,5 +1,7 @@
 set shell := ["bash", "-uc"]
 
+proxy_env := 'env "http_proxy=http://127.0.0.1:7890" "https_proxy=http://127.0.0.1:7890"'
+
 default:
   @just --choose
 
@@ -8,14 +10,14 @@ flake-update:
 
 # [ minimal | minimal | nixos ]
 build target = 'nixos':
-  sudo nixos-rebuild switch --flake path:.#{{target}}
+  sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}}
 
 debug target = 'nixos':
-  sudo nixos-rebuild switch --flake path:.#{{target}} --show-trace --verbose
+  sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}} --show-trace --verbose
 
 # no substitute
 build-nosub target = 'nixos':
-  sudo nixos-rebuild switch --flake path:.#{{target}} --option substitute false
+  sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}} --option substitute false
 
 up input = '':
   sudo nix flake update {{input}}
@@ -40,18 +42,3 @@ gc:
 
 repl:
   nix repl -f flake:nixpkgs
-
-proxy:
-  sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
-  sudo sh -c 'echo -e "[Service]\n\
-  Environment=\"http_proxy=http://127.0.0.1:7890\"\n\
-  Environment=\"https_proxy=http://127.0.0.1:7890\"\n\
-  Environment=\"all_proxy=socks5h://127.0.0.1:7890\"\n"\
-  > /run/systemd/system/nix-daemon.service.d/override.conf'
-  sudo systemctl daemon-reload
-  sudo systemctl restart nix-daemon
-
-proxyoff:
-  sudo rm -f /run/systemd/system/nix-daemon.service.d/override.conf
-  sudo systemctl daemon-reload
-  sudo systemctl restart nix-daemon
