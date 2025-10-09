@@ -1,5 +1,5 @@
-$env.EDITOR = 'vim'
-$env.BROWSER = 'firefox'
+$env.EDITOR = '@EDITOR@'
+$env.BROWSER = '@BROWSER@'
 $env.TERM = '@TERM@'
 $env.TERMINAL = '@TERM@'
 $env.http_proxy = '@HTTP_PROXY@'

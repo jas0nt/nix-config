@@ -34,8 +34,8 @@
     homeDirectory = "/home/${const.username}";
 
     sessionVariables = {
-      EDITOR = "vim";
-      BROWSER = "firefox";
+      EDITOR = const.editor;
+      BROWSER = const.browser;
       TERM = const.terminal;
       TERMINAL = const.terminal;
     };

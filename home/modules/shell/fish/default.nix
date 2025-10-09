@@ -10,7 +10,7 @@
     shellAbbrs = {
       lock = "bash ~/scripts/desktop.sh lock";
       logout = "bash ~/scripts/desktop.sh logout";
-      fuckgfw = "export http_proxy=${const.my-http-proxy}; and export https_proxy=${const.my-http-proxy}; and export all_proxy=${const.my-socks-proxy}";
+      fuckgfw = "export http_proxy=${const.http-proxy}; and export https_proxy=${const.http-proxy}; and export all_proxy=${const.socks-proxy}";
       gfw = "set -e http_proxy; and set -e https_proxy; and set -e all_proxy";
       icat = "kitten icat";
       showcert = "nmap -p 443 --script ssl-cert";
