@@ -163,6 +163,7 @@ window-rule {
     match app-id=r#"Code$"# title="^Open .*"
     match app-id=r#"code$"# title="^Open .*"
     match app-id=r#"wechat$"# title="预览"
+    match app-id=r#"pot$"# title="Translate"
     open-floating true
 }
 

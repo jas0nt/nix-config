@@ -58,6 +58,7 @@
     motrix
     axel
     localsend
+    pot
 
     steam
     adwsteamgtk
