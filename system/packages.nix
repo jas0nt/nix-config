@@ -19,6 +19,12 @@
       enable = true;
       package = pkgs.clash-verge-rev;
     };
+
+    nix-ld = {
+      enable = true;
+      package = pkgs.nix-ld;
+    };
+
   };
 
   # List packages installed in system profile. To search, run:

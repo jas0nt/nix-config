@@ -11,7 +11,6 @@
     extraConfig = (builtins.readFile ./config/config.nu);
     extraLogin = (builtins.readFile ./config/login.nu);
     shellAliases = {
-      cd = "z";
       tree = "eza --icons --tree";
 
       lock = "bash ~/scripts/desktop.sh lock";
