@@ -10,7 +10,7 @@
     devcontainer
     direnv
     devbox
-    code-cursor
+    gh
     tree-sitter
     virtualenv
     nodejs
