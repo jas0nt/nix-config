@@ -20,6 +20,9 @@
     extraConfig = (builtins.readFile ./config/config.nu);
     extraLogin = (builtins.readFile ./config/login.nu);
     shellAliases = {
+      la = "ls -a";
+      ll = "ls -l";
+      lla = "ls -la";
       tree = "eza --icons --tree";
       lock = "bash ~/scripts/desktop.sh lock";
       logout = "bash ~/scripts/desktop.sh logout";
