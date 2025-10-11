@@ -52,7 +52,8 @@
       in
       {
         preload = [
-          dune mojave
+          dune
+          mojave
         ];
         wallpaper = [
           "HDMI-A-1,${dune}"

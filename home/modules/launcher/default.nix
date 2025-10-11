@@ -1,4 +1,4 @@
-{ pkgs, const, inputs, ... }:
+{ pkgs, const, config, inputs, ... }:
 
 {
   programs.fuzzel = {
@@ -14,7 +14,7 @@
         vertical-pad = 10;
         inner-pad = 10;
         image-size-ratio = 0.8;
-        icon-theme = "BeautyLine";
+        icon-theme = config.gtk.iconTheme.name;
         exit-on-keyboard-focus-loss = "yes";
       };
       colors = {

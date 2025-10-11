@@ -28,6 +28,7 @@
     calcure
     # snipaste
     wl-clipboard
+    libsForQt5.qt5.qttools
   ];
 
   programs.niri = {
@@ -154,7 +155,6 @@
           reverse-direction = true;
           icons = {
             blueman = "bluetooth";
-            fcitx5 = "fcitx";
             qBittorrent = "qbittorrent-tray";
             steam = "steam";
             obs = "obs";

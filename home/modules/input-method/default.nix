@@ -1,6 +1,11 @@
 { pkgs, const, ... }:
 
 {
+  home.sessionVariables = {
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -11,6 +16,29 @@
         fcitx5-configtool
       ];
       settings = {
+        globalOptions = {
+          Behavior = {
+            ActiveByDefault = false;
+          };
+          Hotkey = {
+            ActivateKeys = "";
+            AltTriggerKeys = "";
+            DeactivateKeys = "";
+            EnumerateBackwardKeys = "";
+            EnumerateForwardKeys = "";
+            EnumerateGroupBackwardKeys = "";
+            EnumerateGroupForwardKeys = "";
+            EnumerateSkipFirst = "False";
+            EnumerateWithTriggerKeys = "True";
+            ModifierOnlyKeyTimeout = "250";
+            NextCandidate = "";
+            NextPage = "";
+            PrevCandidate = "";
+            PrevPage = "";
+            TogglePreedit = "";
+            TriggerKeys = "";
+          };
+        };
         addons = {
           classicui.globalSection = {
             "Vertical Candidate List" = "False";
