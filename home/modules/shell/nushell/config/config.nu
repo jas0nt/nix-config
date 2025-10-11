@@ -19,9 +19,9 @@ def gpu_fan [
 
 def win [] {
 	niri msg action move-window-to-workspace download
-	docker compose -f ~/dkr/compose.yaml up --detach
+	docker compose -f ~/dkr/windows.yaml up --detach
 	sleep 5sec
-	xfreerdp /u:docker /p:"" /size:3456x1944 /v:127.0.0.1:3389 /cert:ignore /sec:tls
+  env "http_proxy=" "https_proxy=" xfreerdp /u:docker /p:"" /size:3456x1944 /v:127.0.0.1:3389 /cert:ignore /sec:tls
 }
 
 

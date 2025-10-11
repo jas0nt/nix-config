@@ -1,5 +1,8 @@
 {
   home.file = {
-    "dkr/compose.yaml" = { source = ./config/compose.yaml; };
+    "dkr" = {
+      source = ./config;
+      recursive = true;
+    };
   };
 }
