@@ -1,5 +1,9 @@
-{
+let
   username = "jason";
+in
+{
+  username = username;
+  home = "/home/${username}";
   terminal = "kitty";
   font = "FiraCode Nerd Font";
   font-cn = "Source Han Sans";

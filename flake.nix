@@ -34,9 +34,11 @@
     let
       system = "x86_64-linux";
       const = import ./const.nix;
+      tools = import ./tools.nix;
       my-username = const.username;
       special-args = {
         const = const;
+        tools = tools;
         inherit inputs;
         pkgs-unstable = import inputs.nixpkgs-unstable {
           inherit system;

@@ -17,7 +17,7 @@
 
 * {
     border: none;
-    font-family: @FONT@;
+    font-family: @font@;
     font-size: 22px;
     font-style: normal;
 }

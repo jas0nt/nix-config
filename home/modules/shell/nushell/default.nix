@@ -1,6 +1,7 @@
 {
   lib,
   const,
+  tools,
   pkgs,
   ...
 }:
@@ -12,11 +13,7 @@
 
   programs.nushell = {
     enable = true;
-    extraEnv =
-      builtins.replaceStrings
-        [ "@EDITOR@" "@BROWSER@" "@TERM@" "@HTTP_PROXY@" "@SOCKS_PROXY@" ]
-        [ const.editor const.browser const.terminal const.http-proxy const.socks-proxy ]
-        (builtins.readFile ./config/env.nu);
+    extraEnv = tools.substitute-file ./config/env.nu;
     extraConfig = (builtins.readFile ./config/config.nu);
     extraLogin = (builtins.readFile ./config/login.nu);
     shellAliases = {

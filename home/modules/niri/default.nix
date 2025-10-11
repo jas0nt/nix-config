@@ -1,6 +1,6 @@
 {
   pkgs,
-  const,
+  tools,
   config,
   inputs,
   ...
@@ -42,9 +42,7 @@
       enable = true;
       target = "graphical-session.target";
     };
-    style = builtins.replaceStrings [ "@FONT@" ] [ const.font ] (
-      builtins.readFile ./config/waybar/style.css
-    );
+    style = tools.substitute-file ./config/waybar/style.css;
     settings = {
       mainBar = {
         output = [
@@ -304,9 +302,7 @@
         keybind = "s";
       }
     ];
-    style = builtins.replaceStrings [ "@HOME@" "@FONT@" ] [ config.home.homeDirectory const.font ] (
-      builtins.readFile ./config/wlogout/style.css
-    );
+    style = tools.substitute-file ./config/wlogout/style.css;
   };
 
 }

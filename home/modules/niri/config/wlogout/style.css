@@ -1,5 +1,5 @@
 window {
-    font-family: @FONT@;
+    font-family: @font@;
     font-size: 20pt;
     color: #f8f8f2;
     background-color: rgba(24, 27, 32, 0.2);
@@ -32,41 +32,41 @@ button:hover {
 }
 
 #shutdown {
-    background-image: image(url("@HOME@/.config/wlogout/icons/power.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/power.png"));
 }
 
 #shutdown:hover {
-    background-image: image(url("@HOME@/.config/wlogout/icons/power-hover.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/power-hover.png"));
 }
 
 #logout {
-    background-image: image(url("@HOME@/.config/wlogout/icons/logout.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/logout.png"));
 }
 
 #logout:hover {
-    background-image: image(url("@HOME@/.config/wlogout/icons/logout-hover.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/logout-hover.png"));
 }
 
 #reboot {
-    background-image: image(url("@HOME@/.config/wlogout/icons/restart.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/restart.png"));
 }
 
 #reboot:hover {
-    background-image: image(url("@HOME@/.config/wlogout/icons/restart-hover.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/restart-hover.png"));
 }
 
 #lock {
-    background-image: image(url("@HOME@/.config/wlogout/icons/lock.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/lock.png"));
 }
 
 #lock:hover {
-    background-image: image(url("@HOME@/.config/wlogout/icons/lock-hover.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/lock-hover.png"));
 }
 
 #hibernate {
-    background-image: image(url("@HOME@/.config/wlogout/icons/hibernate.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/hibernate.png"));
 }
 
 #hibernate:hover {
-    background-image: image(url("@HOME@/.config/wlogout/icons/hibernate-hover.png"));
+    background-image: image(url("@home@/.config/wlogout/icons/hibernate-hover.png"));
 }
