@@ -1,4 +1,4 @@
-{ const, config, pkgs, ... }:
+{ const, pkgs, ... }:
 
 {
   programs.dconf.enable = true;
