@@ -28,6 +28,7 @@
     calcure
     # snipaste
     wl-clipboard
+    wev
     libsForQt5.qt5.qttools
   ];
 
