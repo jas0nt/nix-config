@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ const, pkgs, ... }:
 
 {
   programs.neovide = {
@@ -7,7 +7,7 @@
       theme = "auto";
       title-hidden = true;
       font = {
-        normal = [ "Recursive Mono Casual Static" ];
+        normal = [ const.font-code ];
         size = 18.0;
       };
     };

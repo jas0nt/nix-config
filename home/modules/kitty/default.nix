@@ -1,9 +1,11 @@
+{ const, ... }:
+
 {
   programs.kitty = {
     enable = true;
     themeFile = "Dracula";
     font = {
-      name = "Recursive Mono Casual Static";
+      name = const.font-code;
       size = 16;
     };
     settings = {
