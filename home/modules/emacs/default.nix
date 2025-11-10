@@ -6,9 +6,19 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [
+      epkgs.rime
+      epkgs.liberime
+    ];
+    extraConfig = ''
+      (setq rime-librime-root "${pkgs.librime}"
+            rime-emacs-module-header-root "${pkgs.emacs-pgtk}/include")
+    '';
   };
 
   home.packages = with pkgs; [
+    gcc13
+    librime
     (python3.withPackages (ps:
       with ps; [
         pip
