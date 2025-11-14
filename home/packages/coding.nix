@@ -17,19 +17,11 @@
 
     rustc
     cargo
-    rust-analyzer
     pkgs.rustPlatform.rustcSrc
-    rustfmt
     pkg-config
 
     jdk
 
     dprint
-    # lsp
-    nil
-    nixfmt-rfc-style
-    pyright
-    ruff
-
   ];
 }

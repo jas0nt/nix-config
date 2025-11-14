@@ -9,6 +9,7 @@
     extraPackages = epkgs: [
       epkgs.rime
       epkgs.liberime
+      epkgs.lsp-bridge
     ];
     extraConfig = ''
       (setq rime-librime-root "${pkgs.librime}"
@@ -31,13 +32,17 @@
         rapidfuzz
         watchdog
         packaging
-
-        pyright
         ipython
-      ]))
 
-      vips
-      ffmpegthumbnailer
+      ]))
+    # lsp
+    nixd nixfmt-rfc-style
+    basedpyright pyright ruff
+    rust-analyzer rustfmt
+
+    # dirvish
+    vips
+    ffmpegthumbnailer
   ];
 
   # home.file = {
