@@ -43,6 +43,8 @@
     # dirvish
     vips
     ffmpegthumbnailer
+    mediainfo
+    file
   ];
 
   # home.file = {
