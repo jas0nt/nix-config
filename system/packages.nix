@@ -34,7 +34,7 @@
     htop
     progress
     choose # cut
-    du-dust
+    dust
     dua # du
     duf # df
     eza # ls

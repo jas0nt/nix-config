@@ -16,7 +16,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet ${theme} ${options}";
+        command = "${pkgs.tuigreet}/bin/tuigreet ${theme} ${options}";
         user = "greeter";
       };
       initial_session = {

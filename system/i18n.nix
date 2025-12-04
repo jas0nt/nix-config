@@ -22,7 +22,7 @@
       source-han-sans
       fira-code
       nerd-fonts.fira-code
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       recursive
     ];
 

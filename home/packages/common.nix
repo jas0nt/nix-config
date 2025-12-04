@@ -45,7 +45,7 @@
     nms
 
     miniserve
-    freerdp3
+    freerdp
     just
     wlrctl
     gparted
@@ -59,7 +59,6 @@
     motrix
     axel
     localsend
-    pot
 
     steam
     adwsteamgtk

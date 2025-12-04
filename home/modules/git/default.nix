@@ -3,12 +3,20 @@
 {
   programs.git = {
     enable = true;
-    userName = "Jas0nT";
-    userEmail = "taoeta@gmail.com";
-    delta.enable = true;
+    settings = {
+      user = {
+        name = "Jas0nT";
+        email = "taoeta@gmail.com";
+      };
+    };
     includes = [
       { path = ./config/theme; }
     ];
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 
   programs.lazygit = {
