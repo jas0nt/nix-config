@@ -61,7 +61,6 @@
     localsend
 
     steam
-    adwsteamgtk
     gamemode
     wqy_zenhei
     wqy_microhei
