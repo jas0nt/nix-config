@@ -35,6 +35,10 @@
       enable = true;
     };
 
+    aria2 = {
+      enable = true;
+    };
+
   };
 
   home.packages = with pkgs; [
