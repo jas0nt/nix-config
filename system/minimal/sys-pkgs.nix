@@ -20,6 +20,7 @@
     nmap
 
     clash-meta
+    zip
     unzip
     p7zip
     vim

@@ -6,8 +6,13 @@
     package = pkgs.vscode;
   };
 
+  programs.uv = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     devcontainer
+    devenv
     direnv
     devbox
     gh
