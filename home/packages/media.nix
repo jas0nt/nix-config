@@ -9,6 +9,16 @@
     vlc
     puddletag # mp3 tag editor
     nomacs
+    # pix
+    (pkgs.symlinkJoin {
+      name = "wrapped-pix";
+      paths = [ pix ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+      wrapProgram $out/bin/pix \
+        --set GDK_DPI_SCALE "2.0"
+    '';
+    })
 
     yt-dlp
     ytdownloader
