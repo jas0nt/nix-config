@@ -6,7 +6,7 @@
     themeFile = "Dracula";
     font = {
       name = const.font-code;
-      size = 16;
+      size = 18;
     };
     settings = {
       dynamic_background_opacity = "no";
