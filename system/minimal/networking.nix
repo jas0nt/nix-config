@@ -1,11 +1,21 @@
+{ pkgs, ... }:
+
 {
   networking = {
-    networkmanager.enable = true;
+    wireless.iwd.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
     hostName = "nixos"; # Define your hostname.
     firewall = {
       enable = false;
       allowedTCPPorts = [ 8080 ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    impala  # TUI for managing wifi
+  ];
 
 }

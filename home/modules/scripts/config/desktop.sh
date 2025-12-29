@@ -52,6 +52,10 @@ toggle-im)
     fcitx5-remote -t
     ;;
 
+network-manager)
+    pkill impala || $TERMINAL --class myfloatingm impala
+    ;;
+
 file-manager)
     $TERMINAL --class fm yazi
     ;;

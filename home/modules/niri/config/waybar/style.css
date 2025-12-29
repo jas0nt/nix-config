@@ -78,6 +78,7 @@ window#waybar {
 #custom-date,
 #clock,
 #battery,
+#network,
 #pulseaudio,
 #custom-launcher {
     background: transparent;
@@ -108,12 +109,22 @@ window#waybar {
     font-weight: bold;
 }
 
+#network {
+    margin: 0px 0.3em;
+    color: @green;
+}
+
+#network.disabled,
+#network.disconnected {
+    color: @red;
+}
+
 #battery {
-    color: #9ece6a;
+    color: @green;
 }
 
 #battery.charging {
-    color: #9ece6a;
+    color: @green;
 }
 
 #battery.warning:not(.charging) {

@@ -163,6 +163,18 @@
             QQ = "qq";
           };
         };
+        "network" = {
+          format = "{iframe}";
+          format-wifi = "󰖩";
+          format-ethernet = "󰈀";
+          format-disconnected = "󰖪";
+          format-alt = "{bandwidthTotalBytes}";
+          tooltip-format = "{essid}";
+          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-ethernet = "{ifname} ";
+          tooltip-format-disconnected = "Disconnected";
+          on-click-right = "bash ~/scripts/desktop.sh network-manager";
+        };
         "battery" = {
           states = {
             good = 95;
