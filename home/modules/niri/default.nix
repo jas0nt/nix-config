@@ -69,6 +69,7 @@
           "custom/playerlabel"
           "wireplumber"
           "tray"
+          "network"
           "custom/notification"
         ];
 
@@ -168,7 +169,6 @@
           format-wifi = "󰖩";
           format-ethernet = "󰈀";
           format-disconnected = "󰖪";
-          format-alt = "{bandwidthTotalBytes}";
           tooltip-format = "{essid}";
           tooltip-format-wifi = "{essid} ({signalStrength}%) ";
           tooltip-format-ethernet = "{ifname} ";
