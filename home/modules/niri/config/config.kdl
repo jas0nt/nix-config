@@ -99,8 +99,8 @@ layer-rule {
     place-within-backdrop true
 }
 
-spawn-at-startup "nm-applet"
 spawn-at-startup "firefox"
+spawn-at-startup "emacs"
 spawn-at-startup "systemctl" "--user" "restart" "hypridle.service"
 
 environment {
