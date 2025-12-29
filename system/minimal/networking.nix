@@ -2,10 +2,17 @@
 
 {
   networking = {
-    wireless.iwd.enable = true;
+    wireless.iwd = {
+      enable = false;
+      settings = {
+        General = {
+          EnableNetworkConfiguration = true;
+        };
+      };
+    };
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
+      # wifi.backend = "iwd";
     };
     hostName = "nixos"; # Define your hostname.
     firewall = {
@@ -15,6 +22,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    mihomo
     net-tools
     impala  # TUI for managing wifi
   ];

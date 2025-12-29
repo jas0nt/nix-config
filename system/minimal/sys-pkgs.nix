@@ -19,7 +19,6 @@
     openssl
     nmap
 
-    clash-meta
     zip
     unzip
     p7zip

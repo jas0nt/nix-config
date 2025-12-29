@@ -57,17 +57,17 @@
       };
     };
 
-    clash = {
+    fuckgfw = {
       Unit = {
-        Description = "fuckGFW";
+        Description = "fuckgfw";
       };
       Install = {
         WantedBy = [ "default.target" ];
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.clash-meta}/bin/clash-meta -f .config/clash/config.yaml";
-        ExecStopPost = "${pkgs.libnotify}/bin/notify-send clash stopped";
+        ExecStart = "${pkgs.mihomo}/bin/mihomo -f .config/fuckgfw/config.yaml";
+        ExecStopPost = "${pkgs.libnotify}/bin/notify-send fuckgfw stopped";
       };
     };
 
