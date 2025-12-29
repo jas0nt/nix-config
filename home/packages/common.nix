@@ -53,6 +53,7 @@
     just
     wlrctl
     gparted
+    tray-tui
 
     wpsoffice-cn
     qq
