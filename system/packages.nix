@@ -55,11 +55,9 @@
     kitty
     feh
     qview
-    dmenu
     firefox
     pcmanfm
     networkmanagerapplet
-    nwg-look
   ];
 
 }

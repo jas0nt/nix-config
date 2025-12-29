@@ -15,6 +15,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    net-tools
     impala  # TUI for managing wifi
   ];
 
