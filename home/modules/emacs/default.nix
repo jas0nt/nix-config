@@ -45,6 +45,7 @@
     ffmpegthumbnailer
     mediainfo
     file
+    poppler-utils
   ];
 
   # home.file = {
