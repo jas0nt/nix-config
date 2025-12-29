@@ -2,10 +2,12 @@
 
 {
   networking = {
+    useDHCP = false;
     wireless.iwd = {
       enable = true;
       settings = {
         General = {
+          # Network config: https://wiki.archlinux.org/title/Iwd#WPA-PSK
           EnableNetworkConfiguration = true;
         };
       };
@@ -25,7 +27,6 @@
     mihomo
     net-tools
     dnsutils
-    iwgtk
     impala  # TUI for managing wifi
   ];
 
