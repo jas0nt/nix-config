@@ -10,6 +10,7 @@
     ./packages.nix
     ./virtualisation.nix
     ./display-manager.nix
+    ./game.nix
     # ./window-manager/hyprland.nix
   ];
 

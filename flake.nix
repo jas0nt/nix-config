@@ -57,7 +57,7 @@
           modules = [
             ./hardware/pc
             ./system/minimal
-            ./system/proxy.nix
+            # ./system/proxy.nix
           ];
         };
 
