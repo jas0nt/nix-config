@@ -5,6 +5,6 @@
     ./common.nix
     ./media.nix
     ./xdg.nix
-    ./ai.nix
+    # ./ai.nix
   ];
 }
