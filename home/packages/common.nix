@@ -55,6 +55,7 @@
     gparted
     tray-tui
 
+    snipaste
     wpsoffice-cn
     qq
     wechat

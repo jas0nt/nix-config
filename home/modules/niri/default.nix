@@ -24,12 +24,9 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
-    pecita
     calcure
-    # snipaste
     wl-clipboard
     wev
-    libsForQt5.qt5.qttools
   ];
 
   programs.niri = {
