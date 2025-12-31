@@ -57,7 +57,6 @@
     qview
     firefox
     pcmanfm
-    networkmanagerapplet
   ];
 
 }
