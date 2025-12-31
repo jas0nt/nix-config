@@ -39,5 +39,8 @@ gc:
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
   sudo nix-collect-garbage --delete-older-than 7d
 
+val path:
+    printf ":lf .\nnixosConfigurations.$(hostname).config.{{path}}\n" | nix repl --quiet
+
 repl:
   nix repl -f flake:nixpkgs
