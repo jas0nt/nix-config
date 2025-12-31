@@ -8,16 +8,15 @@ default:
 flake-update:
   sudo nix flake update
 
-# [ minimal | minimal | nixos ]
-build target = 'nixos':
-  sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}}
+build:
+  sudo {{proxy_env}} nixos-rebuild switch --flake path:.
 
-debug target = 'nixos':
-  sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}} --show-trace --verbose
+debug:
+  sudo {{proxy_env}} nixos-rebuild switch --flake path:. --show-trace --verbose
 
 # no substitute
-build-nosub target = 'nixos':
-  sudo {{proxy_env}} nixos-rebuild switch --flake path:.#{{target}} --option substitute false
+build-nosub:
+  sudo {{proxy_env}} nixos-rebuild switch --flake path:. --option substitute false
 
 up input = '':
   sudo {{proxy_env}} nix flake update {{input}}

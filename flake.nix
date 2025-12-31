@@ -27,10 +27,10 @@
   outputs =
     inputs@{
       self,
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      ...
+        nixpkgs,
+        nixpkgs-unstable,
+        home-manager,
+        ...
     }:
     let
       system = "x86_64-linux";
@@ -48,41 +48,38 @@
           };
         };
       };
-    in
-    {
-      nixosConfigurations = {
-        minimal = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = special-args;
-          modules = [
-            ./hardware/pc
-            ./system/minimal
-            # ./system/proxy.nix
-          ];
-        };
 
-        nixos = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = special-args;
-          modules = [
-            ./hardware/pc
-            ./system
-            # ./system/proxy.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = special-args;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.${my-username} = import ./home;
-            }
-            {
-              nixpkgs.config.permittedInsecurePackages = [
-                "qtwebengine-5.15.19"
-              ];
-            }
+      commonModules = [
+        ./system
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = special-args;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.${my-username} = import ./home;
+        }
+        {
+          nixpkgs.config.permittedInsecurePackages = [
+            "qtwebengine-5.15.19"
           ];
+        }
+      ];
+
+    in
+      {
+        nixosConfigurations = {
+
+          pc = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = special-args;
+            modules = commonModules ++ [
+              ./hosts/pc
+              # ./system/proxy.nix
+            ];
+          };
+          
+
         };
       };
-    };
 }
