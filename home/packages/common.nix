@@ -64,9 +64,6 @@
     motrix
     axel
     localsend
-
-    wqy_zenhei
-    wqy_microhei
   ];
 
 }
