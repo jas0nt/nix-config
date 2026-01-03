@@ -21,7 +21,6 @@
     ./modules/git
     ./modules/emacs
     ./modules/vim
-    ./modules/helix
     ./modules/docker
     ./modules/player
     ./packages
