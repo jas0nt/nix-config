@@ -1,7 +1,7 @@
 title-text: ""
 title-font: "Dersu Uzala brush Regular 60"
 desktop-image: "sekiro.png"
-terminal-font: "Fira Code Regular 16"
+terminal-font: "Maple Mono NF 16"
 terminal-left: "0"
 terminal-top: "0"
 terminal-width: "100%"
@@ -34,7 +34,7 @@ terminal-border: "0"
     top = 90%
     width = 300
     height = 20
-    font = "Fira Code Regular 20"
+    font = "Maple Mono NF 20"
     color = "#000000"
     align = "center"
     text = "Hesitation is defeat: %ds"

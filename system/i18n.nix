@@ -19,18 +19,15 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      source-han-sans
-      fira-code
-      nerd-fonts.fira-code
+      maple-mono.NF
+      maple-mono.CN
       noto-fonts-color-emoji
-      recursive
     ];
 
     fontconfig = {
       defaultFonts = let my-fonts = [
-        "Source Han Sans"
-        "Fira Code"
-        "FiraCode Nerd Font"
+        "Maple Mono CN"
+        "Maple Mono NF"
       ];
       in {
         serif = my-fonts;

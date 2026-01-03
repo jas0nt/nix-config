@@ -19,7 +19,7 @@
     enable = true;
     font = {
       name = const.font;
-      size = 10;
+      size = 12;
     };
     cursorTheme = {
       package = pkgs.fuchsia-cursor;

@@ -5,9 +5,9 @@ in
   username = username;
   home = "/home/${username}";
   terminal = "kitty";
-  font = "FiraCode Nerd Font";
-  font-cn = "Source Han Sans";
-  font-code = "Recursive Mono Casual Static";
+  font = "Maple Mono NF";
+  font-cn = "Maple Mono CN";
+  font-code = "Maple Mono NF";
   editor = "vim";
   browser = "firefox";
   http-proxy = "http://127.0.0.1:7890";
