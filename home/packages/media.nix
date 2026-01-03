@@ -9,7 +9,6 @@
     vlc
     puddletag # mp3 tag editor
     nomacs
-    # pix
     (pkgs.symlinkJoin {
       name = "wrapped-pix";
       paths = [ pix ];
