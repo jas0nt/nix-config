@@ -7,17 +7,19 @@
     settings = {
       general = {
         ignore_dbus_inhibit = false;
-        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+        lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+        after_sleep_cmd = "loginctl lock-session"; 
       };
 
       listener = [
         {
           timeout = 1800;
-          on-timeout = "niri msg action power-off-monitors";
+          on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 3600;
-          on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+          timeout = 1830;
+          on-timeout = "niri msg action power-off-monitors";
+          on-resume = "niri msg action power-on-monitors";
         }
       ];
     };

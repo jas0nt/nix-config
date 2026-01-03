@@ -227,7 +227,7 @@
       background = [
         {
           monitor = "";
-          path = "$HOME/wallpaper/dune.jpg";
+          path = "${config.home.homeDirectory}/wallpaper/dune.jpg";
           blur_passes = 0;
           blur_size = 8;
         }
