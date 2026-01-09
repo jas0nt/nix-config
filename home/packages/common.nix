@@ -60,7 +60,16 @@
     qq
     wechat
     pkgs-unstable.xunlei-uos
-    qbittorrent
+    # qbittorrent
+    (pkgs.symlinkJoin {
+      name = "qbittorrent-scaled";
+      paths = [ pkgs.qbittorrent ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+      wrapProgram $out/bin/qbittorrent \
+        --set QT_SCALE_FACTOR 1.5
+    '';
+    })
     qbittorrent-cli
     motrix
     axel
