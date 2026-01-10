@@ -71,7 +71,15 @@
     '';
     })
     qbittorrent-cli
-    motrix
+    (pkgs.symlinkJoin {
+      name = "wrapped-motrix";
+      paths = [ motrix ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+      wrapProgram $out/bin/motrix \
+        --set GDK_DPI_SCALE "1.4"
+    '';
+    })
     axel
     localsend
   ];
