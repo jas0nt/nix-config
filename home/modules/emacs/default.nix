@@ -9,7 +9,6 @@
     extraPackages = epkgs: [
       epkgs.rime
       epkgs.liberime
-      epkgs.lsp-bridge
     ];
     extraConfig = ''
       (setq rime-librime-root "${pkgs.librime}"
