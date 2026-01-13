@@ -46,6 +46,9 @@
             Font = "${const.font-cn} 15";
             Theme = "dracula";
           };
+          clipboard.globalSection = {
+            "TriggerKey" = "";
+          };
         };
         inputMethod = {
           GroupOrder."0" = "Default";
