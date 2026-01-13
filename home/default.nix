@@ -37,6 +37,9 @@
       BROWSER = const.browser;
       TERM = const.terminal;
       TERMINAL = const.terminal;
+      http_proxy = const.http-proxy;
+      https_proxy = const.http-proxy;
+      all_proxy = const.socks-proxy;
     };
   };
 

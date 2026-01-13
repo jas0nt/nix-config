@@ -1,10 +1,10 @@
 { const, pkgs, lib, ... }:
 
 {
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
   nix.settings.trusted-users = [ const.username ];
   users.users.${const.username} = {
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
     isNormalUser = true;
     description = const.username;
     extraGroups = [

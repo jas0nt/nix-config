@@ -16,9 +16,6 @@
       showcert = "nmap -p 443 --script ssl-cert";
       dota = "steam steam://rungameid/570";
       ipy = "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'";
-      te = "trans en:zh";
-      tc = "trans zh:en";
-      venv = "source (gum file --directory ~/.venv)/bin/activate.fish";
       cd = "z";
       tmuxsesh = "sesh connect $(sesh list | fzf)";
     };
@@ -29,6 +26,19 @@
       tree = "eza --icons --tree";
     };
     functions = {
+      va.body = ''
+        set venv_dir "$HOME/.venv"
+        set selected (ls -1 "$venv_dir" | fzf --height=20% --layout=reverse --border --prompt="Activate venv > ")
+        if test -n "$selected"
+            set activate_script "$venv_dir/$selected/bin/activate.fish"
+            if test -f "$activate_script"
+                source "$activate_script"
+                echo "Activated $selected"
+            else
+                echo "Error: Not a valid venv (missing activate.fish)"
+            end
+        end
+        '';
       gpu_fan.body = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
       fish_greeting.body = "krabby random --no-title";
       rgc.body = "rg --json $argv | delta";
@@ -46,6 +56,9 @@
   programs.broot = {
     enable = true;
     enableFishIntegration = true;
+    settings = {
+      icon_theme = "nerdfont";
+    };
   };
 
   programs.zoxide = {
