@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-unstable, tools, ... }:
 
 {
 
@@ -60,26 +60,9 @@
     qq
     wechat
     pkgs-unstable.xunlei-uos
-    # qbittorrent
-    (pkgs.symlinkJoin {
-      name = "qbittorrent-scaled";
-      paths = [ pkgs.qbittorrent ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-      wrapProgram $out/bin/qbittorrent \
-        --set QT_SCALE_FACTOR 1.5
-    '';
-    })
+    (tools.scale pkgs qbittorrent 1.5)
     qbittorrent-cli
-    (pkgs.symlinkJoin {
-      name = "wrapped-motrix";
-      paths = [ motrix ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-      wrapProgram $out/bin/motrix \
-        --set GDK_DPI_SCALE "1.4"
-    '';
-    })
+    (tools.scale pkgs motrix 1.4)
     axel
     localsend
   ];

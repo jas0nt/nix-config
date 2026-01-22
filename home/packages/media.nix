@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, tools, ... }:
 
 {
   home.packages = with pkgs; [
@@ -7,17 +7,9 @@
 
     playerctl
     vlc
-    puddletag # mp3 tag editor
+    (tools.scale pkgs puddletag 1.4)
     nomacs
-    (pkgs.symlinkJoin {
-      name = "wrapped-pix";
-      paths = [ pix ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-      wrapProgram $out/bin/pix \
-        --set GDK_DPI_SCALE "2.0"
-    '';
-    })
+    (tools.scale pkgs pix 1.6)
 
     yt-dlp
     ytdownloader
