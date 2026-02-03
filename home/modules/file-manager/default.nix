@@ -1,4 +1,4 @@
-{ const, pkgs, ... }:
+{ const, config, pkgs, ... }:
 
 {
   programs.yazi = {
@@ -18,9 +18,26 @@
         sort_dir_first = true;
         sort_reverse = true;
       };
+      preview = {
+        cache_dir = config.home.homeDirectory + "/.cache/yazi";
+      };
+      plugin = {
+        prepend_preloaders = [
+          { mime = "{audio,video,image}/*"; run = "mediainfo"; }
+          { mime = "application/subrip"; run = "mediainfo"; }
+          { mime = "application/postscript"; run = "mediainfo"; }
+        ];
+        prepend_previewers = [
+          { mime = "{audio,video,image}/*"; run = "mediainfo"; }
+          { mime = "application/subrip"; run = "mediainfo"; }
+          { mime = "application/postscript"; run = "mediainfo"; }
+        ];
+      };
     };
     plugins = {
       lazygit = pkgs.yaziPlugins.lazygit;
+      mediainfo = pkgs.yaziPlugins.mediainfo;
+      mount = pkgs.yaziPlugins.mount;
     };
     keymap = {
       mgr.prepend_keymap = [
@@ -39,6 +56,10 @@
         {
           run = "plugin lazygit";
           on = [ "g" "i" ];
+        }
+        {
+          run = "plugin mount";
+          on = [ "M" ];
         }
       ];
     };
