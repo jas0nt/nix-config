@@ -8,6 +8,10 @@
     };
   };
 
+  programs.codex = {
+    enable = true;
+  };
+
   programs.uv = {
     enable = true;
   };
