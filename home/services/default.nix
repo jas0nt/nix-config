@@ -53,8 +53,6 @@
       Service = {
         Type = "simple";
         ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-        ExecStartPost = "${pkgs.libnotify}/bin/notify-send -i wayland xwayland started";
-        ExecStopPost = "${pkgs.libnotify}/bin/notify-send -i wayland xwayland stopped";
         Restart = "on-failure";
       };
     };
