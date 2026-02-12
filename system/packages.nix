@@ -31,11 +31,14 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Modern unix tools
+    xcp # cp
+    rclone
     htop
     progress
     choose # cut
     dust
     dua # du
+    gdu
     duf # df
     eza # ls
     fd # find
