@@ -100,7 +100,6 @@ layer-rule {
 }
 
 spawn-at-startup "firefox"
-spawn-at-startup "emacs"
 spawn-at-startup "systemctl" "--user" "restart" "hypridle.service"
 
 environment {

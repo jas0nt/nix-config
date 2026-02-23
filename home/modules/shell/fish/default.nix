@@ -3,6 +3,7 @@
 {
   imports = [
     ../starship
+    ./functions.nix
   ];
 
   programs.fish = {
@@ -24,25 +25,6 @@
       ll = "eza --icons -l";
       la = "eza --icons -la";
       tree = "eza --icons --tree";
-    };
-    functions = {
-      va.body = ''
-        set venv_dir "$HOME/.venv"
-        set selected (ls -1 "$venv_dir" | fzf --height=20% --layout=reverse --border --prompt="Activate venv > ")
-        if test -n "$selected"
-            set activate_script "$venv_dir/$selected/bin/activate.fish"
-            if test -f "$activate_script"
-                source "$activate_script"
-                echo "Activated $selected"
-            else
-                echo "Error: Not a valid venv (missing activate.fish)"
-            end
-        end
-        '';
-      gpu_fan.body = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
-      fish_greeting.body = "krabby random --no-title";
-      rgc.body = "rg --json $argv | delta";
-      win.body = "niri msg action move-window-to-workspace download\ndocker compose -f ~/dkr/compose.yaml up --detach\nsleep 5\nxfreerdp /u:docker /p:\"\" /size:3456x1944 /v:127.0.0.1:3389 /cert:ignore /sec:tls";
     };
   };
 
