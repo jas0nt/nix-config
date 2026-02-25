@@ -53,6 +53,7 @@
       lazygit = pkgs.yaziPlugins.lazygit;
       mount = pkgs.yaziPlugins.mount;
       compress = pkgs.yaziPlugins.compress;
+      task-queue = ./plugins/task-queue;
     };
     keymap = {
       input.prepend_keymap = [
@@ -65,6 +66,7 @@
         { run = "shell 'dua i .' --block";     on = [ "m" "S" ]; }
         { run = "linemode size_and_mtime";     on = [ "m" "a" ]; }
 
+        { run = "plugin task-queue insert";  on = [ "I" ]; }
         { run = "plugin --sync smart-enter";   on = [ "<Enter>" ]; }
         { run = "plugin zoxide";               on = [ "z" ]; }
         { run = "plugin fzf";                  on = [ "Z" ]; }

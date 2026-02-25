@@ -16,26 +16,11 @@ end
 -- projects
 require("projects"):setup({
     event = {
-        save = {
-            enable = true,
-            name = "project-saved",
-        },
-        load = {
-            enable = true,
-            name = "project-loaded",
-        },
-        delete = {
-            enable = true,
-            name = "project-deleted",
-        },
-        delete_all = {
-            enable = true,
-            name = "project-deleted-all",
-        },
-        merge = {
-            enable = true,
-            name = "project-merged",
-        },
+        save = { enable = true, name = "project-saved", },
+        load = { enable = true, name = "project-loaded", },
+        delete = { enable = true, name = "project-deleted", },
+        delete_all = { enable = true, name = "project-deleted-all", },
+        merge = { enable = true, name = "project-merged", },
     },
     save = {
         method = "yazi", -- yazi | lua
