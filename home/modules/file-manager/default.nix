@@ -63,31 +63,33 @@
         { run = "shell --orphan --confirm ${const.terminal}"; on = [ "T" ]; }
         { run = "shell 't=$(mktemp --suffix=.jpg); ffmpegthumbnailer -i \"$0\" -o \"$t\" -s 0 -c jpeg -f >/dev/null 2>&1; qview \"$t\" >/dev/null 2>&1; rm \"$t\"' --block"; on = [ "e" ]; }
 
-        { run = "shell 'dua i .' --block";     on = [ "m" "S" ]; }
-        { run = "linemode size_and_mtime";     on = [ "m" "a" ]; }
+        { run = "remove";                         on = [ "D" ]; }
+        { run = "remove --permanently";           on = [ "d" ]; }
+        { run = "shell 'dua i .' --block";        on = [ "m" "S" ]; }
+        { run = "linemode size_and_mtime";        on = [ "m" "a" ]; }
 
-        { run = "plugin task-queue insert";  on = [ "I" ]; }
-        { run = "plugin --sync smart-enter";   on = [ "<Enter>" ]; }
-        { run = "plugin zoxide";               on = [ "z" ]; }
-        { run = "plugin fzf";                  on = [ "Z" ]; }
-        { run = "plugin lazygit";              on = [ "g" "i" ]; }
-        { run = "plugin mount";                on = [ "M" ]; }
+        { run = "plugin task-queue insert";       on = [ "I" ]; }
+        { run = "plugin --sync smart-enter";      on = [ "<Enter>" ]; }
+        { run = "plugin zoxide";                  on = [ "z" ]; }
+        { run = "plugin fzf";                     on = [ "Z" ]; }
+        { run = "plugin lazygit";                 on = [ "g" "i" ]; }
+        { run = "plugin mount";                   on = [ "M" ]; }
 
-        { run = "plugin projects save";        on = [ "P" "s" ]; }
-        { run = "plugin projects load_last";   on = [ "P" "p" ]; }
-        { run = "plugin projects load";        on = [ "P" "l" ]; }
-        { run = "plugin projects delete";      on = [ "P" "d" ]; }
-        { run = "plugin projects delete_all";  on = [ "P" "D" ]; }
+        { run = "plugin projects save";           on = [ "P" "s" ]; }
+        { run = "plugin projects load_last";      on = [ "P" "p" ]; }
+        { run = "plugin projects load";           on = [ "P" "l" ]; }
+        { run = "plugin projects delete";         on = [ "P" "d" ]; }
+        { run = "plugin projects delete_all";     on = [ "P" "D" ]; }
 
-        { run = "plugin bookmarks jump";       on = [ "'" ]; }
-        { run = "plugin bookmarks save";       on = [ "b" "b" ]; }
-        { run = "plugin bookmarks delete";     on = [ "b" "d" ]; }
-        { run = "plugin bookmarks delete_all"; on = [ "b" "D" ]; }
+        { run = "plugin bookmarks jump";          on = [ "'" ]; }
+        { run = "plugin bookmarks save";          on = [ "b" "b" ]; }
+        { run = "plugin bookmarks delete";        on = [ "b" "d" ]; }
+        { run = "plugin bookmarks delete_all";    on = [ "b" "D" ]; }
 
-        { run = "plugin compress";             on = [ "C" "c" ]; desc = "Archive selected files"; }
-        { run = "plugin compress -p";          on = [ "C" "p" ]; desc = "Archive selected files (password)"; }
-        { run = "plugin compress -ph";         on = [ "C" "h" ]; desc = "Archive selected files (password+header)"; }
-        { run = "plugin compress -phl";        on = [ "C" "l" ]; desc = "Archive selected files (password+header+level)"; }
+        { run = "plugin compress";                on = [ "C" "c" ]; desc = "Archive selected files"; }
+        { run = "plugin compress -p";             on = [ "C" "p" ]; desc = "Archive selected files (password)"; }
+        { run = "plugin compress -ph";            on = [ "C" "h" ]; desc = "Archive selected files (password+header)"; }
+        { run = "plugin compress -phl";           on = [ "C" "l" ]; desc = "Archive selected files (password+header+level)"; }
       ];
     };
   };
