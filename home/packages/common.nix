@@ -54,6 +54,7 @@
     wlrctl
     gparted
     tray-tui
+    sshfs
 
     snipaste
     wpsoffice-cn
@@ -65,6 +66,7 @@
     (tools.scale pkgs motrix 1.4)
     axel
     localsend
+    tigervnc
   ];
 
 }

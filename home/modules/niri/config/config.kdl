@@ -199,6 +199,7 @@ window-rule {
     match app-id="org.qbittorrent.qBittorrent" title="^qBittorrent.*$"
     match app-id="Motrix"
     match app-id=r#".*freerdp$"#
+    match app-id="Vncviewer"
     open-on-workspace "download"
     open-floating false
 }

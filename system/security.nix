@@ -5,4 +5,6 @@
       rootOK = true;
     };
   };
+
+  programs.fuse.userAllowOther = true;
 }
