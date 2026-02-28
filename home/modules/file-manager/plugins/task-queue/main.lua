@@ -45,10 +45,12 @@ local generate_rsync = ya.sync(function()
 
         for _, url in pairs(cx.yanked) do
             local cmd
+            local quoted_src = ya.quote(tostring(url))
+            local quoted_dst = ya.quote(target_dir)
             if operation == "copy" then
-                cmd = "rsync -avh --progress --no-compress --inplace '" .. tostring(url) .. "' '" .. target_dir .. "'\n"
+                cmd = "rsync -avh --progress --no-compress --inplace " .. quoted_src .. " " .. quoted_dst .. "\n"
             else
-                cmd = "rsync -avh --progress --no-compress --inplace --remove-source-files '" .. tostring(url) .. "' '" .. target_dir .. "'\n"
+                cmd = "rsync -avh --progress --no-compress --inplace --remove-source-files " .. quoted_src .. " " .. quoted_dst .. "\n"
             end
             f:write(cmd)
             count = count + 1
