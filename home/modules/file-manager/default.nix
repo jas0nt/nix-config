@@ -13,8 +13,8 @@
       };
       mgr = {
         show_hidden = false;
-        linemode = "size_and_mtime";
-        sort_by = "mtime";
+        linemode = "none";
+        sort_by = "natural";
         sort_dir_first = true;
         sort_reverse = true;
       };
@@ -33,6 +33,10 @@
         image_bound = [ 0 0 ];
       };
       plugin = {
+        prepend_fetchers = [
+          { id = "mime"; url = "local://*"; run = "mime-ext.local"; prio = "high"; }
+          { id = "mime"; url = "remote://*"; run = "mime-ext.remote"; prio = "high"; }
+        ];
         prepend_preloaders = [
           { mime = "{audio,video,image}/*"; run = "mediainfo"; }
           { mime = "application/subrip"; run = "mediainfo"; }
@@ -53,6 +57,7 @@
       lazygit = pkgs.yaziPlugins.lazygit;
       mount = pkgs.yaziPlugins.mount;
       compress = pkgs.yaziPlugins.compress;
+      mime-ext = pkgs.yaziPlugins.mime-ext;
       task-queue = ./plugins/task-queue;
     };
     keymap = {
@@ -60,6 +65,7 @@
         { run = "close"; on = [ "<Esc>" ]; }
       ];
       mgr.prepend_keymap = [
+        { run = "shell \"$SHELL\" --block"; on = [ "!" ]; }
         { run = "shell --orphan --confirm ${const.terminal}"; on = [ "T" ]; }
         { run = "shell 't=$(mktemp --suffix=.jpg); ffmpegthumbnailer -i \"$0\" -o \"$t\" -s 0 -c jpeg -f >/dev/null 2>&1; qview \"$t\" >/dev/null 2>&1; rm \"$t\"' --block"; on = [ "e" ]; }
 
