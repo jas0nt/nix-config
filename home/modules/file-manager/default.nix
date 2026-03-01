@@ -1,12 +1,30 @@
-{ const, config, pkgs, ... }:
+{ const, config, pkgs, pkgs-unstable, ... }:
 
 {
+  home.packages = with pkgs; [
+    file
+    ffmpegthumbnailer
+    mediainfo
+    poppler-utils
+  ];
+
   programs.yazi = {
     enable = true;
     package = pkgs.yazi;
     enableFishIntegration = true;
     enableNushellIntegration = true;
     initLua = ./init.lua;
+    plugins = {
+      smart-enter = pkgs.yaziPlugins.smart-enter;
+      mediainfo = pkgs.yaziPlugins.mediainfo;
+      projects = pkgs.yaziPlugins.projects;
+      bookmarks = pkgs.yaziPlugins.bookmarks;
+      lazygit = pkgs.yaziPlugins.lazygit;
+      mount = pkgs.yaziPlugins.mount;
+      compress = pkgs.yaziPlugins.compress;
+      mime-ext = pkgs-unstable.yaziPlugins.mime-ext;
+      task-queue = ./plugins/task-queue;
+    };
     settings = {
       log = {
         enabled = false;
@@ -48,17 +66,6 @@
           { mime = "application/postscript"; run = "mediainfo"; }
         ];
       };
-    };
-    plugins = {
-      smart-enter = pkgs.yaziPlugins.smart-enter;
-      mediainfo = pkgs.yaziPlugins.mediainfo;
-      projects = pkgs.yaziPlugins.projects;
-      bookmarks = pkgs.yaziPlugins.bookmarks;
-      lazygit = pkgs.yaziPlugins.lazygit;
-      mount = pkgs.yaziPlugins.mount;
-      compress = pkgs.yaziPlugins.compress;
-      mime-ext = pkgs.yaziPlugins.mime-ext;
-      task-queue = ./plugins/task-queue;
     };
     keymap = {
       input.prepend_keymap = [
