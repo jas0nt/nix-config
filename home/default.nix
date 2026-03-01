@@ -9,7 +9,7 @@
   imports = [
     ./services
     ./modules/theme
-    ./modules/niri
+    ./modules/window-manager
     # ./modules/hyprland
     ./modules/firefox
     ./modules/kitty
