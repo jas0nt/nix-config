@@ -10,18 +10,18 @@
 
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi;
+    package = pkgs-unstable.yazi;
     enableFishIntegration = true;
     enableNushellIntegration = true;
     initLua = ./init.lua;
     plugins = {
-      smart-enter = pkgs.yaziPlugins.smart-enter;
-      mediainfo = pkgs.yaziPlugins.mediainfo;
-      projects = pkgs.yaziPlugins.projects;
-      bookmarks = pkgs.yaziPlugins.bookmarks;
-      lazygit = pkgs.yaziPlugins.lazygit;
-      mount = pkgs.yaziPlugins.mount;
-      compress = pkgs.yaziPlugins.compress;
+      smart-enter = pkgs-unstable.yaziPlugins.smart-enter;
+      mediainfo = pkgs-unstable.yaziPlugins.mediainfo;
+      projects = pkgs-unstable.yaziPlugins.projects;
+      bookmarks = pkgs-unstable.yaziPlugins.bookmarks;
+      lazygit = pkgs-unstable.yaziPlugins.lazygit;
+      mount = pkgs-unstable.yaziPlugins.mount;
+      compress = pkgs-unstable.yaziPlugins.compress;
       mime-ext = pkgs-unstable.yaziPlugins.mime-ext;
       task-queue = ./plugins/task-queue;
     };
@@ -44,13 +44,15 @@
         image_delay = 0;
       };
       tasks = {
-        image_alloc = 536870912;
-        file_workers = 5;
-        preload_workers = 8;
-        process_workers = 5;
+        image_alloc = 1073741824; 
+        file_workers = 4;
+        preload_workers = 16;
+        process_workers = 4;
         image_bound = [ 0 0 ];
       };
       plugin = {
+        default_fetchers = [];
+        append_fetchers = [];
         prepend_fetchers = [
           { id = "mime"; url = "local://*"; run = "mime-ext.local"; prio = "high"; }
           { id = "mime"; url = "remote://*"; run = "mime-ext.remote"; prio = "high"; }
