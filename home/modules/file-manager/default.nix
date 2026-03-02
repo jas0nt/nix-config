@@ -46,13 +46,12 @@
       tasks = {
         image_alloc = 1073741824; 
         file_workers = 4;
+        micro_workers = 16;
         preload_workers = 16;
         process_workers = 4;
         image_bound = [ 0 0 ];
       };
       plugin = {
-        default_fetchers = [];
-        append_fetchers = [];
         prepend_fetchers = [
           { id = "mime"; url = "local://*"; run = "mime-ext.local"; prio = "high"; }
           { id = "mime"; url = "remote://*"; run = "mime-ext.remote"; prio = "high"; }
