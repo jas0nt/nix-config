@@ -63,6 +63,7 @@ local generate_rsync = ya.sync(function()
             content = operation .. ": " .. count .. " files",
             timeout = 1,
         }
+        ya.emit("unyank", {})
     else
         ya.notify {
             title = "Task Queue",
