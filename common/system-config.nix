@@ -1,15 +1,20 @@
-inputs@{
-  self,
-  nixpkgs,
+{
+  inputs,
   nixpkgs-unstable,
-  home-manager,
+  constFile,
+  extraModules ? [ ],
+  extraConfig ? { },
+  homeManagerModule,
+  systemType,
+  hostname,
   ...
 }:
+
 let
-  constCommon = import ../common/const/common.nix;
-  const = constCommon // import ../common/const/nixos.nix;
+  constCommon = import ./const/common.nix;
+  const = constCommon // import constFile;
   system = const.system;
-  tools = (import ../common/tools.nix) { const = const; };
+  tools = (import ./tools.nix) { const = const; };
 
   specialArgs = {
     inherit inputs const tools;
@@ -22,7 +27,7 @@ let
   my-username = const.username;
   commonModules = [
     ../system
-    home-manager.nixosModules.home-manager
+    homeManagerModule
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
@@ -30,24 +35,21 @@ let
       home-manager.backupFileExtension = "backup";
       home-manager.users.${my-username} = import ../home;
     }
-    {
-      nixpkgs.config.permittedInsecurePackages = [
-        "qtwebengine-5.15.19"
-      ];
-    }
-  ];
+  ]
+  ++ extraModules;
 
-  nixosConfigurations = import ./configurations.nix {
-    inherit
-      inputs
-      specialArgs
-      system
-      const
-      commonModules
-      ;
-  };
+  config = {
+    nixpkgs.config.allowUnfree = true;
+  }
+  // extraConfig;
+
+  commonModulesWithConfig = commonModules ++ [ config ];
 
 in
 {
-  inherit nixosConfigurations;
+  system = system;
+  specialArgs = specialArgs;
+  modules = commonModulesWithConfig ++ [
+    ../hosts/${hostname}
+  ];
 }

@@ -1,4 +1,9 @@
-{ pkgs, const, lib, ... }:
+{
+  pkgs,
+  const,
+  lib,
+  ...
+}:
 
 {
   services.emacs.enable = true;
@@ -16,37 +21,45 @@
     '';
   };
 
-  home.packages = with pkgs; [
-    librime
-    (python3.withPackages (ps:
-      with ps; [
-        pip
-        epc
-        orjson
-        sexpdata
-        six
-        setuptools
-        paramiko
-        rapidfuzz
-        watchdog
-        packaging
-        ipython
+  home.packages =
+    with pkgs;
+    [
+      librime
+      (python3.withPackages (
+        ps: with ps; [
+          pip
+          epc
+          orjson
+          sexpdata
+          six
+          setuptools
+          paramiko
+          rapidfuzz
+          watchdog
+          packaging
+          ipython
 
-      ]))
-    # lsp
-    nixd nixfmt-rfc-style
-    basedpyright pyright ruff
-    rust-analyzer rustfmt
+        ]
+      ))
+      # lsp
+      nixd
+      nixfmt-rfc-style
+      basedpyright
+      pyright
+      ruff
+      rust-analyzer
+      rustfmt
 
-    # dirvish
-    vips
-    ffmpegthumbnailer
-    mediainfo
-    file
-    poppler-utils
-  ] ++ lib.optionals const.is-linux [
-    gcc13
-  ];
+      # dirvish
+      vips
+      ffmpegthumbnailer
+      mediainfo
+      file
+      poppler-utils
+    ]
+    ++ lib.optionals const.is-linux [
+      gcc13
+    ];
 
   # home.file = {
   #   ".emacs.d" = {

@@ -17,7 +17,8 @@
     ./modules/vim
     ./modules/docker
     ./packages
-  ] ++ lib.optionals const.is-linux [
+  ]
+  ++ lib.optionals const.is-linux [
     ./services
     ./modules/theme
     ./modules/window-manager
@@ -25,7 +26,8 @@
     ./modules/scripts
     ./modules/input-method
     ./modules/player
-  ] ++ lib.optionals const.is-darwin [];
+  ]
+  ++ lib.optionals const.is-darwin [ ];
 
   home = {
     stateVersion = "25.11";

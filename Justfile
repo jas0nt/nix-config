@@ -33,7 +33,7 @@ debug:
 build-nosub:
   #!/usr/bin/env bash
   if [[ "{{os}}" == "darwin" ]]; then
-    sudo {{proxy_env}} nix run nix-darwin/master#darwin-rebuild -- switch --flake path:.#{{hostname}} --option substitute false
+    sudo {{proxy_env}} nix run nix-darwin/master#darwin-rebuild -- switch --flake path:. --option substitute false
   else
     sudo {{proxy_env}} nixos-rebuild switch --flake path:. --option substitute false
   fi

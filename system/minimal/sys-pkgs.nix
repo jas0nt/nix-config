@@ -1,4 +1,9 @@
-{ pkgs, const, lib, ... }:
+{
+  pkgs,
+  const,
+  lib,
+  ...
+}:
 
 {
   programs = lib.optionalAttrs const.is-linux {
@@ -9,23 +14,26 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    killall
-    gnumake
-    cmake
-    openssl
-    nmap
+  environment.systemPackages =
+    with pkgs;
+    [
+      killall
+      gnumake
+      cmake
+      openssl
+      nmap
 
-    zip
-    unzip
-    p7zip
-    unrar
-    vim
-    wget
-  ] ++ lib.optionals const.is-linux [
-    libGL
-    gcc
-    libgccjit
-  ];
+      zip
+      unzip
+      p7zip
+      unrar
+      vim
+      wget
+    ]
+    ++ lib.optionals const.is-linux [
+      libGL
+      gcc
+      libgccjit
+    ];
 
 }

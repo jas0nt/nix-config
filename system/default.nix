@@ -1,4 +1,9 @@
-{ const, pkgs, lib, ... }:
+{
+  const,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [

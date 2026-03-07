@@ -37,8 +37,8 @@
       ...
     }:
     let
-      nixosOutputs = (import ./nixos/default.nix) inputs;
-      darwinOutputs = (import ./darwin/default.nix) inputs;
+      nixosOutputs = (import ./os/nixos.nix) inputs;
+      darwinOutputs = (import ./os/darwin.nix) inputs;
     in
     {
       inherit (nixosOutputs) nixosConfigurations;
