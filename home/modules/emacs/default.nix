@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, const, lib, ... }:
 
 {
   services.emacs.enable = true;
@@ -17,7 +17,6 @@
   };
 
   home.packages = with pkgs; [
-    gcc13
     librime
     (python3.withPackages (ps:
       with ps; [
@@ -45,6 +44,8 @@
     mediainfo
     file
     poppler-utils
+  ] ++ lib.optionals const.is-linux [
+    gcc13
   ];
 
   # home.file = {

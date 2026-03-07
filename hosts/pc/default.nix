@@ -5,7 +5,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      # ../hardware/nvidia-config.nix
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime

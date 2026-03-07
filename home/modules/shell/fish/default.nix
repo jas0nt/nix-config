@@ -6,6 +6,12 @@
     ./functions.nix
   ];
 
+  # Ensure fish has access to system and user profiles on Darwin
+  home.sessionPath = lib.optionals const.is-darwin [
+    "/run/current-system/sw/bin"
+    "/etc/profiles/per-user/${const.username}/bin"
+  ];
+
   programs.fish = {
     enable = true;
     shellAbbrs = {

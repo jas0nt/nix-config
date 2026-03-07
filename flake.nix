@@ -17,6 +17,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,63 +28,20 @@
     niri.url = "github:sodiboo/niri-flake";
   };
 
-
   outputs =
     inputs@{
       self,
-        nixpkgs,
-        nixpkgs-unstable,
-        home-manager,
-        ...
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
     }:
     let
-      system = "x86_64-linux";
-      const = import ./const.nix;
-      tools = import ./tools.nix;
-      my-username = const.username;
-      special-args = {
-        const = const;
-        tools = tools;
-        inherit inputs;
-        pkgs-unstable = import inputs.nixpkgs-unstable {
-          inherit system;
-          config = {
-            allowUnfree = true;
-          };
-        };
-      };
-
-      commonModules = [
-        ./system
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = special-args;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.${my-username} = import ./home;
-        }
-        {
-          nixpkgs.config.permittedInsecurePackages = [
-            "qtwebengine-5.15.19"
-          ];
-        }
-      ];
-
+      nixosOutputs = (import ./nixos/default.nix) inputs;
+      darwinOutputs = (import ./darwin/default.nix) inputs;
     in
-      {
-        nixosConfigurations = {
-
-          pc = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = special-args;
-            modules = commonModules ++ [
-              ./hosts/pc
-              # ./system/proxy.nix
-            ];
-          };
-          
-
-        };
-      };
+    {
+      inherit (nixosOutputs) nixosConfigurations;
+      inherit (darwinOutputs) darwinConfigurations;
+    };
 }

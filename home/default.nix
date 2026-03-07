@@ -2,35 +2,36 @@
   const,
   config,
   pkgs,
+  lib,
   ...
 }:
 
 {
   imports = [
-    ./services
-    ./modules/theme
-    ./modules/window-manager
-    # ./modules/hyprland
     ./modules/firefox
-    ./modules/kitty
-    ./modules/launcher
     ./modules/file-manager
-    ./modules/scripts
+    ./modules/kitty
     ./modules/shell
-    ./modules/input-method
     ./modules/git
     ./modules/emacs
     ./modules/vim
     ./modules/docker
-    ./modules/player
     ./packages
-  ];
+  ] ++ lib.optionals const.is-linux [
+    ./services
+    ./modules/theme
+    ./modules/window-manager
+    ./modules/launcher
+    ./modules/scripts
+    ./modules/input-method
+    ./modules/player
+  ] ++ lib.optionals const.is-darwin [];
 
   home = {
     stateVersion = "25.11";
 
     username = const.username;
-    homeDirectory = "/home/${const.username}";
+    homeDirectory = lib.mkForce const.home;
 
     sessionVariables = {
       EDITOR = const.editor;

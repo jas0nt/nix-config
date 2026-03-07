@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, const, lib, ... }:
 
 {
-  programs = {
+  programs = lib.optionalAttrs const.is-linux {
     git = {
       enable = true;
       package = pkgs.gitFull;
@@ -10,11 +10,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    libGL
     killall
     gnumake
-    gcc
-    libgccjit
     cmake
     openssl
     nmap
@@ -25,6 +22,10 @@
     unrar
     vim
     wget
+  ] ++ lib.optionals const.is-linux [
+    libGL
+    gcc
+    libgccjit
   ];
 
 }

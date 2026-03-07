@@ -1,6 +1,4 @@
-let
-  const = import ./const.nix;
-in
+{ const }:
 {
   substitute-file =
     file:

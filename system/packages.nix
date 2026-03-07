@@ -1,31 +1,7 @@
-{ pkgs, pkgs-unstable, ... }:
+{ const, pkgs, pkgs-unstable, lib, ... }:
 
 {
   imports = [ ./minimal/sys-pkgs.nix ];
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    configPackages = [
-      pkgs.xdg-desktop-portal
-      pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-  services.flatpak.enable = true;
-
-  programs = {
-    mosh.enable = true;
-    clash-verge = {
-      enable = true;
-      package = pkgs.clash-verge-rev;
-    };
-
-    nix-ld = {
-      enable = true;
-      package = pkgs.nix-ld;
-    };
-
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -49,17 +25,39 @@
     fx # json
     hyperfine # time
     tree
+
+    # GUI apps
+    kitty
+    firefox
+  ] ++ lib.optionals const.is-linux [
     systemctl-tui
     bluez
     bluetuith
     libnotify
-
-    # GUI apps
-    kitty
     feh
-    qview
-    firefox
     pcmanfm
   ];
+} // lib.optionalAttrs const.is-linux {
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    configPackages = [
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
 
+  services.flatpak.enable = true;
+
+  programs = {
+    mosh.enable = true;
+    nix-ld = {
+      enable = true;
+      package = pkgs.nix-ld;
+    };
+    clash-verge = {
+      enable = true;
+      package = pkgs.clash-verge-rev;
+    };
+  };
 }

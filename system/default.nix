@@ -1,17 +1,18 @@
-{ pkgs, ... }:
+{ const, pkgs, lib, ... }:
 
 {
   imports = [
+    ./packages.nix
+  ]
+  ++ lib.optionals const.is-linux [
     ./minimal
     ./security.nix
     ./i18n.nix
     ./audio.nix
     ./device.nix
-    ./packages.nix
     ./virtualisation.nix
     ./display-manager.nix
     ./game.nix
-    # ./window-manager/hyprland.nix
   ];
 
 }
