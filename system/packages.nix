@@ -39,6 +39,7 @@
 
       # GUI apps
       kitty
+      qview
       firefox
     ]
     ++ lib.optionals const.is-linux [
