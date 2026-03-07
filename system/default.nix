@@ -13,6 +13,9 @@
     ./virtualisation.nix
     ./display-manager.nix
     ./game.nix
+  ]
+  ++ lib.optionals const.is-darwin [
+    ./minimal/darwin-basic.nix
   ];
 
 }
