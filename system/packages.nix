@@ -7,7 +7,10 @@
 }:
 
 {
-  imports = [ ./minimal/sys-pkgs.nix ];
+  imports = [
+    ./minimal/sys-pkgs.nix
+  ]
+  ++ lib.optionals const.is-darwin [ ./packages-darwin.nix ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
