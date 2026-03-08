@@ -20,6 +20,7 @@
     ./game.nix
   ]
   ++ lib.optionals const.is-darwin [
+    ./minimal/user.nix
     ./minimal/darwin-basic.nix
   ];
 

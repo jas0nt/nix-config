@@ -5,13 +5,14 @@
   nix.settings.trusted-users = [ const.username ];
   users.users.${const.username} = {
     shell = pkgs.fish;
-    isNormalUser = true;
     description = const.username;
+    uid = 1000;
+  } // lib.optionalAttrs const.is-linux {
+    isNormalUser = true;
     extraGroups = [
       "networkmanager"
       "wheel"
       "docker"
     ];
-    uid = 1000;
   };
 }
