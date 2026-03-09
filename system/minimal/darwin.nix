@@ -1,16 +1,8 @@
-{const, pkgs, ...}:
+{const, ...}:
 
 {
+  system.stateVersion = 6;
   system.primaryUser = const.username;
-
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
-
-  nixpkgs.config.allowUnfree = true;
 
   nix.gc = {
     automatic = true;

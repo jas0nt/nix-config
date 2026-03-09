@@ -48,8 +48,12 @@
 
       rgc.body = "rg --json $argv | delta";
 
-      win.body = "niri msg action move-window-to-workspace download\ndocker compose -f ~/dkr/compose.yaml up --detach\nsleep 5\nxfreerdp /u:docker /p:\"\" /size:3456x1944 /v:127.0.0.1:3389 /cert:ignore /sec:tls";
-
+      win.body = ''
+        niri msg action move-window-to-workspace download
+        docker compose -f ~/dkr/windows.yaml up --detach
+        sleep 5
+        xfreerdp /u:docker /p:\"\" /size:3456x1944 /v:127.0.0.1:3389 /cert:ignore /sec:tls
+        '';
     };
   };
 

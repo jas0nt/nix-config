@@ -24,6 +24,7 @@
     ];
 
     casks = [
+      "clash-verge-rev"
       "visual-studio-code"
       "motrix"
     ];

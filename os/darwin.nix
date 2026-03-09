@@ -16,7 +16,6 @@ let
     hostname = "mbp2018";
     extraConfig = {
       nixpkgs.config.allowUnsupportedSystem = true;
-      system.stateVersion = 6;
     };
   };
 

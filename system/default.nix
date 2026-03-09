@@ -7,10 +7,10 @@
 
 {
   imports = [
-    ./packages.nix
+    ./minimal
+    ./packages
   ]
   ++ lib.optionals const.is-linux [
-    ./minimal
     ./security.nix
     ./i18n.nix
     ./audio.nix
@@ -18,10 +18,5 @@
     ./virtualisation.nix
     ./display-manager.nix
     ./game.nix
-  ]
-  ++ lib.optionals const.is-darwin [
-    ./minimal/user.nix
-    ./minimal/darwin-basic.nix
   ];
-
 }
