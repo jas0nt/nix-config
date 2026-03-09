@@ -8,20 +8,29 @@ inputs@{
 }:
 
 let
-  systemConfig = import ../common/system-config.nix {
-    inherit inputs nixpkgs-unstable;
-    constFile = ../common/const/darwin.nix;
-    homeManagerModule = home-manager.darwinModules.home-manager;
-    systemType = "darwin";
-    hostname = "mbp2018";
-    extraConfig = {
-      nixpkgs.config.allowUnsupportedSystem = true;
-    };
-  };
-
+  mkConfig =
+    {
+      hostname,
+    }:
+    inputs.nix-darwin.lib.darwinSystem (
+      let
+        systemConfig = import ../common/system-config.nix {
+          inherit inputs nixpkgs-unstable hostname;
+          constFile = ../common/const/darwin.nix;
+          homeManagerModule = home-manager.darwinModules.home-manager;
+          systemType = "darwin";
+          extraConfig = {
+            nixpkgs.config.allowUnsupportedSystem = true;
+          };
+        };
+      in
+      {
+        inherit (systemConfig) system specialArgs modules;
+      }
+    );
 in
 {
-  darwinConfigurations.mbp2018 = inputs.nix-darwin.lib.darwinSystem {
-    inherit (systemConfig) system specialArgs modules;
+  darwinConfigurations.mbp2018 = mkConfig {
+    hostname = "mbp2018";
   };
 }

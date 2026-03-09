@@ -17,14 +17,18 @@ let
   tools = (import ./tools.nix) { const = const; };
 
   specialArgs = {
-    inherit inputs const tools;
+    inherit
+      inputs
+      const
+      tools
+      hostname
+      ;
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
   };
 
-  my-username = const.username;
   commonModules = [
     ../system
     homeManagerModule
@@ -33,7 +37,7 @@ let
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = specialArgs;
       home-manager.backupFileExtension = "backup";
-      home-manager.users.${my-username} = import ../home;
+      home-manager.users.${const.username} = import ../home;
     }
   ]
   ++ extraModules;

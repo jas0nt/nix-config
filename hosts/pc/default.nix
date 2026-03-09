@@ -1,7 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, hostname, ... }:
 
 {
-  networking.hostName = "pc";
+  networking.hostName = hostname;
   imports =
     [
       ./hardware-configuration.nix

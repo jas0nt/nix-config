@@ -7,24 +7,33 @@ inputs@{
 }:
 
 let
-  systemConfig = import ../common/system-config.nix {
-    inherit inputs nixpkgs-unstable;
-    constFile = ../common/const/nixos.nix;
-    homeManagerModule = home-manager.nixosModules.home-manager;
-    systemType = "nixos";
-    hostname = "pc";
-    extraModules = [
+  mkConfig =
+    {
+      hostname,
+    }:
+    inputs.nixpkgs.lib.nixosSystem (
+      let
+        systemConfig = import ../common/system-config.nix {
+          inherit inputs nixpkgs-unstable hostname;
+          constFile = ../common/const/nixos.nix;
+          homeManagerModule = home-manager.nixosModules.home-manager;
+          systemType = "nixos";
+          extraModules = [
+            {
+              nixpkgs.config.permittedInsecurePackages = [
+                "qtwebengine-5.15.19"
+              ];
+            }
+          ];
+        };
+      in
       {
-        nixpkgs.config.permittedInsecurePackages = [
-          "qtwebengine-5.15.19"
-        ];
+        inherit (systemConfig) system specialArgs modules;
       }
-    ];
-  };
-
+    );
 in
 {
-  nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-    inherit (systemConfig) system specialArgs modules;
+  nixosConfigurations.pc = mkConfig {
+    hostname = "pc";
   };
 }
