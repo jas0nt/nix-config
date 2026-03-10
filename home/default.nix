@@ -8,7 +8,6 @@
 
 {
   imports = [
-    ./modules/firefox
     ./modules/file-manager
     ./modules/kitty
     ./modules/shell
@@ -19,6 +18,7 @@
     ./packages
   ]
   ++ lib.optionals const.is-linux [
+    ./modules/firefox
     ./services
     ./modules/theme
     ./modules/window-manager
