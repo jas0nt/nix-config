@@ -33,6 +33,8 @@
     stateVersion = "25.11";
 
     username = const.username;
+
+    # Use mkForce to prevent Home Manager from trying to guess the home directory
     homeDirectory = lib.mkForce const.home;
 
     sessionVariables = {

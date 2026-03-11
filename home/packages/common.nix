@@ -60,7 +60,7 @@
     wpsoffice-cn
     qq
     wechat
-    pkgs-unstable.xunlei-uos
+    xunlei-uos
     (tools.scale pkgs qbittorrent 1.5)
     qbittorrent-cli
     (tools.scale pkgs motrix 1.4)
