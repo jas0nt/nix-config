@@ -26,7 +26,11 @@
     casks = [
       "clash-verge-rev"
       "visual-studio-code"
+      "wechat"
+      "snipaste"
+      "google-chrome"
       "motrix"
+      "adrive"
     ];
   };
 
