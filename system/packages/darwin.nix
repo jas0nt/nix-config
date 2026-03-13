@@ -29,6 +29,7 @@
       "wechat"
       "snipaste"
       "google-chrome"
+      "localsend"
       "motrix"
       "adrive"
     ];

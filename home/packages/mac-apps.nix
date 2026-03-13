@@ -7,5 +7,6 @@
     iterm2
     iina
     the-unarchiver
+    qbittorrent
   ];
 }
