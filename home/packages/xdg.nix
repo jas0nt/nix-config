@@ -47,6 +47,7 @@ in
     desktopEntries = {
       yazi = {
         name = "yazi";
+        icon = "yazi";
         genericName = "File Manager";
         exec = "kitty --class fm yazi %f";
         terminal = false;
