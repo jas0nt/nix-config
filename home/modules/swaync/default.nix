@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  stylix.targets.swaync = {
+    enable = true;
+    fonts.enable = true;
+    colors.enable = true;
+  };
+
   services.swaync = {
     enable = true;
     style = builtins.readFile ./config/style.css;

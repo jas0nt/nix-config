@@ -4,6 +4,14 @@
 }:
 
 {
+  stylix.targets.waybar = {
+    enable = true;
+    addCss = false;
+    fonts.enable = true;
+    colors.enable = true;
+    opacity.enable = true;
+  };
+
   programs.waybar = {
     enable = true;
     systemd = {

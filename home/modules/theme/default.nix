@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   const,
@@ -6,33 +7,51 @@
 }:
 
 {
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    # package = pkgs.bibata-cursors;
-    package = pkgs.fuchsia-cursor;
-    name = "Fuchsia";
-    size = 34;
-  };
-
-  gtk = {
+  stylix = {
     enable = true;
-    font = {
-      name = const.font;
-      size = 12;
-    };
-    cursorTheme = {
+    image = ./wallpaper/dune.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    
+    cursor = {
       package = pkgs.fuchsia-cursor;
       name = "Fuchsia";
       size = 26;
     };
-    theme = {
-      package = pkgs.dracula-theme;
-      name = "Dracula";
-    };
-    iconTheme = {
+
+    icons = {
+      enable = true;
       package = pkgs.beauty-line-icon-theme;
-      name = "BeautyLine";
+      dark = "BeautyLine";
+      light = "BeautyLine";
+    };
+    
+    fonts = {
+      monospace = {
+        name = const.font;
+        package = pkgs.maple-mono.NF;
+      };
+      sansSerif = {
+        name = const.font;
+        package = pkgs.maple-mono.NF;
+      };
+      sizes = {
+        desktop = 18;
+        applications = 12;
+        terminal = 19;
+        popups = 18;
+      };
+    };
+
+    opacity = {
+      desktop = 1.0;
+      applications = 1.0;
+      terminal = 0.7;
+      popups = 1.0;
+    };
+    
+    targets = {
+      gtk.enable = true;
+      hyprpaper.enable = true;
     };
   };
 
@@ -45,30 +64,6 @@
 
   services.hyprpaper = {
     enable = true;
-    settings =
-      let
-        dune = "${config.home.homeDirectory}/wallpaper/dune.jpg";
-        mojave = "${config.home.homeDirectory}/wallpaper/mojave.png";
-      in
-      {
-        preload = [
-          dune
-          mojave
-        ];
-        wallpaper = [
-          "HDMI-A-1,${dune}"
-        ];
-      };
-  };
-
-  services.wpaperd = {
-    enable = false;
-    settings = {
-      default = {
-        path = "./wallpaper";
-        duration = "30m";
-      };
-    };
   };
 
 }

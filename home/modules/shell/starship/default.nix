@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  stylix.targets.starship = {
+    enable = true;
+    colors.enable = true;
+  };
 
   programs.starship = {
     package = pkgs.starship;

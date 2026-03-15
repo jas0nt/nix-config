@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, tools, ... }:
+{ pkgs, pkgs-unstable, tools, config, ... }:
 
 {
 
@@ -6,19 +6,7 @@
 
     bat = {
       enable = true;
-      themes = {
-        dracula = {
-          src = pkgs.fetchFromGitHub {
-            owner = "dracula";
-            repo = "sublime"; # Bat uses sublime syntax for its themes
-            rev = "456d3289827964a6cb503a3b0a6448f4326f291b";
-            sha256 = "019hfl4zbn4vm4154hh3bwk6hm7bdxbr1hdww83nabxwjn99ndhv";
-          };
-          file = "Dracula.tmTheme";
-        };
-      };
       config = {
-        theme = "dracula";
         pager = "less -FR";
       };
     };
@@ -26,7 +14,6 @@
     btop = {
       enable = true;
       settings = {
-        color_theme = "dracula";
         proc_tree = true;
       };
     };

@@ -1,20 +1,29 @@
 { const, pkgs, ... }:
 
 {
+  stylix.targets.neovide = {
+    enable = true;
+    fonts.enable = true;
+    opacity.enable = true;
+  };
+
   programs.neovide = {
     enable = true;
     settings = {
       theme = "auto";
       title-hidden = true;
-      font = {
-        normal = [ const.font-code ];
-        size = 18.0;
-      };
     };
+  };
+
+  stylix.targets.neovim = {
+    enable = true;
   };
 
   programs.neovim = {
     enable = true;
+    plugins = [
+      pkgs.vimPlugins.base16-nvim
+    ];
   };
 
   home.file = {

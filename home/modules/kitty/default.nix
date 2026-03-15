@@ -1,16 +1,17 @@
 { const, ... }:
 
 {
+  stylix.targets.kitty = {
+    enable = true;
+    fonts.enable = true;
+    colors.enable = true;
+    opacity.enable = true;
+  };
+
   programs.kitty = {
     enable = true;
-    themeFile = "Dracula";
-    font = {
-      name = const.font-code;
-      size = 20;
-    };
     settings = {
       dynamic_background_opacity = "no";
-      background_opacity = "0.7";
       background_blur = "15";
 
       cursor_shape = "block";

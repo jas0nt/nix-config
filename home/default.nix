@@ -1,4 +1,5 @@
 {
+  inputs,
   const,
   config,
   pkgs,
@@ -8,6 +9,7 @@
 
 {
   imports = [
+    inputs.stylix.homeModules.stylix
     ./modules/file-manager
     ./modules/kitty
     ./modules/shell

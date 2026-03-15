@@ -1,4 +1,11 @@
 {
+  stylix.targets.firefox = {
+    enable = true;
+    colors.enable = true;
+    fonts.enable = true;
+    profileNames = [ "default" ];
+  };
+
   programs.firefox = {
     enable = true;
     profiles.default = {

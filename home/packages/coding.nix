@@ -8,6 +8,10 @@
     };
   };
 
+  stylix.targets.vscode = {
+    enable = false;
+  };
+
   programs.codex = {
     enable = true;
   };

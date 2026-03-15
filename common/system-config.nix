@@ -16,6 +16,13 @@ let
   system = const.system;
   tools = (import ./tools.nix) { const = const; };
 
+  pkgConfig = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "qtwebengine-5.15.19"
+    ];
+  };
+
   specialArgs = {
     inherit
       inputs
@@ -33,9 +40,14 @@ let
     ../system
     homeManagerModule
     {
-      home-manager.useGlobalPkgs = true;
+      home-manager.useGlobalPkgs = false;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = specialArgs;
+      home-manager.extraSpecialArgs = specialArgs // {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config = pkgConfig;
+        };
+      };
       home-manager.backupFileExtension = "backup";
       home-manager.users.${const.username} = import ../home;
     }
@@ -43,7 +55,7 @@ let
   ++ extraModules;
 
   config = {
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = pkgConfig;
   }
   // extraConfig;
 

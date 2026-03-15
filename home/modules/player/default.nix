@@ -8,6 +8,12 @@
     };
   };
 
+  stylix.targets.mpv = {
+    enable = true;
+    fonts.enable = true;
+    colors.enable = true;
+  };
+
   programs = {
     mpv = {
       enable = true;

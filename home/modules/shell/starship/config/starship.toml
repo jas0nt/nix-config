@@ -1,30 +1,20 @@
-palette = 'dracula'
-
-[palettes.dracula]
-color_background     =    '#6F4E37'
-color_foreground     =    '#f8f8f2'
-color_cyan           =    '#8be9fd'
-color_orange         =    '#ffb86c'
-color_purple         =    '#bd93f9'
-color_pink           =    '#ff79c6'
-color_red            =    '#ff5555'
-color_green          =    '#50fa7b'
-color_yellow         =    '#f1fa8c'
+# Palette will be injected by Nix from Stylix
+# Keep the color references but don't define the palette here
 
 [character]
 success_symbol = """
-[ 󰮯 ](bold fg:color_yellow)\
-[ 󰊠 ](bold fg:color_green)\
-[ 󰊠 ](bold fg:color_cyan)\
-[ 󰊠 ](bold fg:color_pink)"""
+[ 󰮯 ](bold fg:yellow)\
+[ 󰊠 ](bold fg:green)\
+[ 󰊠 ](bold fg:cyan)\
+[ 󰊠 ](bold fg:magenta)"""
 
 error_symbol = """
-[ 󰮯 ](bold fg:color_yellow)\
-[ 󰊠 ](bold fg:color_green)\
-[ 󰊠 ](bold fg:color_cyan)\
-[ 󰊠 ](bold fg:color_pink)\
-[ 󱐋](bold fg:color_red)"""
+[ 󰮯 ](bold fg:yellow)\
+[ 󰊠 ](bold fg:green)\
+[ 󰊠 ](bold fg:cyan)\
+[ 󰊠 ](bold fg:magenta)\
+[ 󱐋](bold fg:red)"""
 
 [username]
 format = "[$user]($style) on "
-style_user = "bold #bd93f9"
+style_user = "bold brown"

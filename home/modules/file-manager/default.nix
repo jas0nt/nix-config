@@ -8,6 +8,11 @@
     poppler-utils
   ];
 
+  stylix.targets.yazi = {
+    enable = true;
+    colors.enable = true;
+  };
+
   programs.yazi = {
     enable = true;
     package = pkgs-unstable.yazi;

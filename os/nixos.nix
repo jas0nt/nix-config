@@ -18,13 +18,7 @@ let
           constFile = ../common/const/nixos.nix;
           homeManagerModule = home-manager.nixosModules.home-manager;
           systemType = "nixos";
-          extraModules = [
-            {
-              nixpkgs.config.permittedInsecurePackages = [
-                "qtwebengine-5.15.19"
-              ];
-            }
-          ];
+          extraModules = [ ];
         };
       in
       {

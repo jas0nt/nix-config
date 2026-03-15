@@ -12,6 +12,11 @@
     "/etc/profiles/per-user/${const.username}/bin"
   ];
 
+  stylix.targets.fish = {
+    enable = true;
+    colors.enable = true;
+  };
+
   programs.fish = {
     enable = true;
     shellAbbrs = {
