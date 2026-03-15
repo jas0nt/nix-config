@@ -9,7 +9,7 @@
 
 {
   imports = [
-    inputs.stylix.homeModules.stylix
+    ./modules/theme
     ./modules/file-manager
     ./modules/kitty
     ./modules/shell
@@ -22,7 +22,6 @@
   ++ lib.optionals const.is-linux [
     ./modules/firefox
     ./services
-    ./modules/theme
     ./modules/window-manager
     ./modules/launcher
     ./modules/scripts

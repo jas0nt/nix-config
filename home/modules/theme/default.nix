@@ -3,28 +3,20 @@
   pkgs,
   config,
   const,
+  lib,
   ...
 }:
 
 {
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
+
   stylix = {
     enable = true;
     image = ./wallpaper/dune.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-    
-    cursor = {
-      package = pkgs.fuchsia-cursor;
-      name = "Fuchsia";
-      size = 26;
-    };
 
-    icons = {
-      enable = true;
-      package = pkgs.beauty-line-icon-theme;
-      dark = "BeautyLine";
-      light = "BeautyLine";
-    };
-    
     fonts = {
       monospace = {
         name = const.font;
@@ -48,7 +40,21 @@
       terminal = 0.7;
       popups = 1.0;
     };
-    
+  }
+  // lib.optionalAttrs const.is-linux {
+    cursor = {
+      package = pkgs.fuchsia-cursor;
+      name = "Fuchsia";
+      size = 26;
+    };
+
+    icons = {
+      enable = true;
+      package = pkgs.beauty-line-icon-theme;
+      dark = "BeautyLine";
+      light = "BeautyLine";
+    };
+
     targets = {
       gtk.enable = true;
       hyprpaper.enable = true;
@@ -61,9 +67,9 @@
       source = ./wallpaper;
     };
   };
-
+}
+// lib.optionalAttrs const.is-linux {
   services.hyprpaper = {
     enable = true;
   };
-
 }
