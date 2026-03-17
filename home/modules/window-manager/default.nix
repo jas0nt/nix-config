@@ -15,8 +15,8 @@
     ./wlogout.nix
   ];
 
-  home.file = {
-    ".config/code-flags.conf" = {
+  xdg.configFile = {
+    "code-flags.conf" = {
       source = ./config/code-flags.conf;
     };
   };

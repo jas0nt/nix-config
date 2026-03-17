@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
-  home.file = {
-    ".config/mpv/scripts" = {
+  xdg.configFile = {
+    "mpv/scripts" = {
       recursive = true;
       source = ./scripts;
     };

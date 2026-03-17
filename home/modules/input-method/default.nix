@@ -68,8 +68,8 @@
     };
   };
 
-  home.file = {
-    ".local/share/fcitx5/rime" =
+  xdg.dataFile = {
+    "fcitx5/rime" =
       let
         grammar-model = pkgs.fetchurl {
           url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";

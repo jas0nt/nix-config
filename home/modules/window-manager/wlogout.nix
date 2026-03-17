@@ -4,8 +4,8 @@
 }:
 
 {
-  home.file = {
-    ".config/wlogout/icons" = {
+  xdg.configFile = {
+    "wlogout/icons" = {
       recursive = true;
       source = ./config/wlogout/icons;
     };

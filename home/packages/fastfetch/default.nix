@@ -3,8 +3,8 @@
 {
   home.packages = with pkgs; [ fastfetch ];
 
-  home.file = {
-    ".config/fastfetch" = {
+  xdg.configFile = {
+    "fastfetch" = {
       recursive = true;
       source = ./config;
     };
