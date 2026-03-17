@@ -26,6 +26,27 @@
       enable = true;
     };
 
+    broot = {
+      enable = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      settings = {
+        icon_theme = "nerdfont";
+      };
+    };
+
+  };
+
+  stylix.targets = {
+    bat = {
+      enable = true;
+      colors.enable = true;
+    };
+    btop = {
+      enable = true;
+      colors.enable = true;
+      opacity.enable = true;
+    };
   };
 
   home.packages = with pkgs; [

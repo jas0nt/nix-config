@@ -45,12 +45,4 @@
     enable = true;
   };
 
-  programs.broot = {
-    enable = true;
-    enableNushellIntegration = true;
-    settings = {
-      icon_theme = "nerdfont";
-    };
-  };
-
 }

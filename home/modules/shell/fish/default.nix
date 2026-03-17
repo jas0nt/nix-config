@@ -46,14 +46,6 @@
     enableFishIntegration = true;
   };
 
-  programs.broot = {
-    enable = true;
-    enableFishIntegration = true;
-    settings = {
-      icon_theme = "nerdfont";
-    };
-  };
-
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
