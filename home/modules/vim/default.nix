@@ -16,20 +16,37 @@
   };
 
   stylix.targets.neovim = {
-    enable = true;
+    enable = false;
   };
 
   programs.neovim = {
     enable = true;
-    plugins = [
-      pkgs.vimPlugins.base16-nvim
+    plugins = with pkgs.vimPlugins; [
+      LazyVim
     ];
+    extraPackages = with pkgs; [
+      nixd
+      nixfmt
+      lua-language-server
+      stylua
+      pyright
+      ruff
+      rust-analyzer
+      rustfmt
+    ];
+    extraLuaConfig = ''
+      require("config.lazy")
+    '';
   };
 
-  home.file = {
-    ".config/nvim" = {
+  xdg.configFile = {
+    "nvim/lua/config" = {
+      source = ./config/nvim/lua/config;
       recursive = true;
-      source = ./config/nvim;
+    };
+    "nvim/lua/plugins" = {
+      source = ./config/nvim/lua/plugins;
+      recursive = true;
     };
   };
 

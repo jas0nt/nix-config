@@ -33,10 +33,11 @@ local logo = [[
 logo = string.rep("\n", 8) .. logo .. "\n\n"
 
 return {
+  { "Mofiqul/dracula.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "base16-dracula",
+      colorscheme = "dracula",
     },
   },
   {
