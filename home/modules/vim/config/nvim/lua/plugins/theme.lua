@@ -33,7 +33,7 @@ local logo = [[
 logo = string.rep("\n", 8) .. logo .. "\n\n"
 
 return {
-  { "Mofiqul/dracula.nvim" },
+  { "dracula/dracula.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {

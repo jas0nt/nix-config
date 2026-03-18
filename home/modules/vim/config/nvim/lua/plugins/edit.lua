@@ -12,10 +12,24 @@ return {
 			formatters = {
 				nixfmt = {
 					command = "nixfmt",
-					args = {},
+					-- Ensure nixfmt uses stdin (required for conform.nvim integration)
+					stdin = true,
+				},
+				stylua = {
+					stdin = true,
+				},
+				ruff = {
+					stdin = true,
+					args = { "--fix", "--stdin-filename", "$FILENAME", "-" },
+				},
+				rustfmt = {
 					stdin = true,
 				},
 			},
 		},
+	},
+
+	{
+		"terryma/vim-expand-region",
 	},
 }
