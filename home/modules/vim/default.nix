@@ -27,6 +27,7 @@
     extraPackages = with pkgs; [
       nixd
       nixfmt
+      statix # nix linting
       lua-language-server
       stylua
       pyright
