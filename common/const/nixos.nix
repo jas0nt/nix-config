@@ -13,6 +13,4 @@ in
   font-code = "Maple Mono NF";
   editor = "vim";
   browser = "firefox";
-  http-proxy = "http://127.0.0.1:7890";
-  socks-proxy = "socks5://127.0.0.1:7890";
 }
