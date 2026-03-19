@@ -20,7 +20,7 @@ return {
 				},
 				ruff = {
 					stdin = true,
-					args = { "--fix", "--stdin-filename", "$FILENAME", "-" },
+					args = { "format", "--stdin-filename", "$FILENAME", "-" },
 				},
 				rustfmt = {
 					stdin = true,
