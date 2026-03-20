@@ -1,4 +1,10 @@
-{ pkgs, pkgs-unstable, tools, config, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  tools,
+  config,
+  ...
+}:
 
 {
 
@@ -55,24 +61,21 @@
     genact
     lolcat
     nms
-
-    miniserve
     freerdp
     just
     wlrctl
-    gparted
     tray-tui
     sshfs
+    axel
 
+    gparted
     snipaste
     wpsoffice-cn
     qq
     wechat
     xunlei-uos
-    (tools.scale pkgs qbittorrent 1.5)
-    qbittorrent-cli
+    qbittorrent
     (tools.scale pkgs motrix 1.4)
-    axel
     localsend
     tigervnc
   ];
