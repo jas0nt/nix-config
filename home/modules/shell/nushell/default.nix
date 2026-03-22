@@ -33,16 +33,4 @@
     };
   };
 
-  programs.starship.enableNushellIntegration = true;
-  programs.yazi.enableNushellIntegration = true;
-
-  programs.zoxide = {
-    enable = true;
-    enableNushellIntegration = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-  };
-
 }

@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     sesh
+    television
   ];
 
   programs.tmux = {
@@ -72,5 +73,32 @@
     '';
   };
 
-  programs.fzf.tmux.enableShellIntegration = true;
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    enableNushellIntegration = true;
+  };
+
+  stylix.targets.fzf = {
+    enable = true;
+    colors.enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    tmux.enableShellIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    enableNushellIntegration = true;
+  };
+
+  programs.navi = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
 }

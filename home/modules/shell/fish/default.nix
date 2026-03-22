@@ -39,25 +39,4 @@
     };
   };
 
-  programs.starship.enableFishIntegration = true;
-
-  programs.fzf = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-
-  programs.navi = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-
-  home.packages = with pkgs; [
-    television
-  ];
-
 }
