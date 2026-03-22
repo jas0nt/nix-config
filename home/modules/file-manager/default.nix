@@ -36,8 +36,8 @@
       };
       mgr = {
         show_hidden = false;
-        linemode = "none";
-        sort_by = "natural";
+        linemode = "mtime";
+        sort_by = "mtime";
         sort_dir_first = true;
         sort_reverse = true;
       };
