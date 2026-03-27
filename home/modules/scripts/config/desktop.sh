@@ -20,7 +20,7 @@ idle-lock)
         wlrctl pointer move -1
     else
         echo "Locking"
-        hyprlock --immediate
+        swaylock
     fi
     ;;
 
@@ -29,11 +29,11 @@ logout-menu)
     ;;
 
 lock)
-    hyprlock --immediate
+    swaylock
     ;;
 
 logout)
-    hyprctl dispatch exit
+    niri msg action quit
     ;;
 
 hibernate)

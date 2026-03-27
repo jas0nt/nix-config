@@ -1,6 +1,6 @@
 {
   security.pam.services = {
-    hyprlock = {
+    swaylock = {
       unixAuth = true;
       rootOK = true;
     };

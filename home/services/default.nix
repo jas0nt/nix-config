@@ -7,7 +7,7 @@
     settings = {
       general = {
         ignore_dbus_inhibit = false;
-        lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+        lock_cmd = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock";
         after_sleep_cmd = "loginctl lock-session"; 
       };
 
