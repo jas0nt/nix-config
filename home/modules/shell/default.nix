@@ -12,6 +12,11 @@
     television
   ];
 
+  stylix.targets.tmux = {
+    enable = true;
+    colors.enable = true;
+  };
+
   programs.tmux = {
     enable = true;
     tmuxinator.enable = true;
