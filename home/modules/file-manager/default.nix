@@ -82,6 +82,7 @@
         { run = "shell --orphan --confirm ${const.terminal}"; on = [ "T" ]; }
         { run = "shell 't=$(mktemp --suffix=.jpg); ffmpegthumbnailer -i \"$0\" -o \"$t\" -s 0 -c jpeg -f >/dev/null 2>&1; qview \"$t\" >/dev/null 2>&1; rm \"$t\"' --block"; on = [ "e" ]; }
 
+        { run = "escape";                         on = [ "q" ]; }
         { run = "remove";                         on = [ "D" ]; }
         { run = "remove --permanently";           on = [ "d" ]; }
         { run = "shell 'dua i .' --block";        on = [ "m" "S" ]; }
