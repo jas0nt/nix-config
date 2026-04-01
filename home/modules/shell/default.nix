@@ -78,12 +78,6 @@
     '';
   };
 
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    enableNushellIntegration = true;
-  };
-
   stylix.targets.fzf = {
     enable = true;
     colors.enable = true;
