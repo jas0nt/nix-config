@@ -20,6 +20,7 @@
       config = {
         profile = "gpu-hq";
         slang = "zh-Hans,zh-CN,zh-cn,sc,Chinese (Simplified),chi,zh,zho,tc,en,eng";
+        sub-auto = "all";
       };
       scripts = with pkgs.mpvScripts; [
         mpris
