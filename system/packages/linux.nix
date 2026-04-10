@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  tools,
   ...
 }:
 
@@ -15,7 +16,7 @@
     feh
     kitty
     qview
-    pcmanfm
+    (tools.scale pkgs pcmanfm 1.5)
   ];
   xdg.portal = {
     enable = true;

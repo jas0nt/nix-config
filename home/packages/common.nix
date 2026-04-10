@@ -74,7 +74,7 @@
     qq
     wechat
     xunlei-uos
-    qbittorrent
+    (tools.scale pkgs qbittorrent 1.3)
     (tools.scale pkgs motrix 1.4)
     localsend
     tigervnc
