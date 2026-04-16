@@ -8,6 +8,7 @@
   stylix.targets.swaylock = {
     enable = true;
     colors.enable = true;
+    image.enable = true;
   };
 
   programs.swaylock = {

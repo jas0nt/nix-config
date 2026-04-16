@@ -7,7 +7,7 @@
     settings = {
       general = {
         ignore_dbus_inhibit = false;
-        lock_cmd = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock";
+        lock_cmd = "bash ~/scripts/desktop.sh lock";
         after_sleep_cmd = "loginctl lock-session"; 
       };
 
