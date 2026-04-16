@@ -29,7 +29,7 @@ logout-menu)
     ;;
 
 lock)
-    swaylock
+    pidof swaylock || swaylock
     ;;
 
 logout)
