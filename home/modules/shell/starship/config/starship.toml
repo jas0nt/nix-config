@@ -2,18 +2,8 @@
 # Keep the color references but don't define the palette here
 
 [character]
-success_symbol = """
-[ 󰮯 ](bold fg:yellow)\
-[ 󰊠 ](bold fg:green)\
-[ 󰊠 ](bold fg:cyan)\
-[ 󰊠 ](bold fg:magenta)"""
-
-error_symbol = """
-[ 󰮯 ](bold fg:yellow)\
-[ 󰊠 ](bold fg:green)\
-[ 󰊠 ](bold fg:cyan)\
-[ 󰊠 ](bold fg:magenta)\
-[ 󱐋](bold fg:red)"""
+success_symbol = "[~>](bold fg:green)"
+error_symbol = "[~>](bold fg:red)"
 
 [username]
 format = "[$user]($style) on "
