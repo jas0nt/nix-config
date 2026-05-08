@@ -85,6 +85,10 @@ calendar)
     pkill calcure || $TERMINAL --class myfloatingm calcure
     ;;
 
+restart-services)
+    systemctl --user restart pipewire pipewire-pulse waybar
+    ;;
+
 notification-center)
     sleep 0.1s
     swaync-client -t -sw
