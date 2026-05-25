@@ -4,6 +4,10 @@
       unixAuth = true;
       rootOK = true;
     };
+    hyprlock = {
+      unixAuth = true;
+      rootOK = true;
+    };
   };
 
   programs.fuse.userAllowOther = true;

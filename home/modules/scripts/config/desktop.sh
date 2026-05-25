@@ -20,7 +20,7 @@ idle-lock)
         wlrctl pointer move -1
     else
         echo "Locking"
-        swaylock
+        $0 lock
     fi
     ;;
 
@@ -29,7 +29,8 @@ logout-menu)
     ;;
 
 lock)
-    pidof swaylock || swaylock
+    # pidof swaylock || swaylock -f
+    hyprlock
     ;;
 
 logout)
