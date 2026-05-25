@@ -1,6 +1,6 @@
 set shell := ["bash", "-uc"]
 
-proxy_env := 'env "http_proxy=http://127.0.0.1:7890" "https_proxy=http://127.0.0.1:7890"'
+proxy_env := `p="${PROXY:-${HTTP_PROXY:-${http_proxy:-}}}"; if [ -n "$p" ]; then printf 'env "http_proxy=%s" "https_proxy=%s"' "$p" "$p"; fi`
 
 # Detect OS
 os := `if [ -f /usr/bin/sw_vers ]; then echo "darwin"; else echo "linux"; fi`
