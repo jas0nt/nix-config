@@ -19,15 +19,15 @@
     enableFishIntegration = true;
     enableNushellIntegration = true;
     initLua = ./init.lua;
-    plugins = {
-      smart-enter = pkgs-unstable.yaziPlugins.smart-enter;
-      mediainfo = pkgs-unstable.yaziPlugins.mediainfo;
-      projects = pkgs-unstable.yaziPlugins.projects;
-      bookmarks = pkgs-unstable.yaziPlugins.bookmarks;
-      lazygit = pkgs-unstable.yaziPlugins.lazygit;
-      mount = pkgs-unstable.yaziPlugins.mount;
-      compress = pkgs-unstable.yaziPlugins.compress;
-      mime-ext = pkgs-unstable.yaziPlugins.mime-ext;
+    plugins = with pkgs-unstable; {
+      smart-enter = yaziPlugins.smart-enter;
+      mediainfo = yaziPlugins.mediainfo;
+      projects = yaziPlugins.projects;
+      bookmarks = yaziPlugins.bookmarks;
+      lazygit = yaziPlugins.lazygit;
+      mount = yaziPlugins.mount;
+      compress = yaziPlugins.compress;
+      mime-ext = yaziPlugins.mime-ext;
       task-queue = ./plugins/task-queue;
     };
     settings = {
@@ -58,8 +58,8 @@
       };
       plugin = {
         prepend_fetchers = [
-          { id = "mime"; url = "local://*"; run = "mime-ext.local"; prio = "high"; }
-          { id = "mime"; url = "remote://*"; run = "mime-ext.remote"; prio = "high"; }
+          { group = "default"; id = "mime"; url = "local://*"; run = "mime-ext.local"; prio = "high"; }
+          { group = "default"; id = "mime"; url = "remote://*"; run = "mime-ext.remote"; prio = "high"; }
         ];
         prepend_preloaders = [
           { mime = "{audio,video,image}/*"; run = "mediainfo"; }
