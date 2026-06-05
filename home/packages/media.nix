@@ -13,7 +13,6 @@
 
     yt-dlp
     ytdownloader
-    clipgrab
     media-downloader
     yutto # bilibili downloader
     slurp

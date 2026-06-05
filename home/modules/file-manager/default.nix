@@ -1,4 +1,4 @@
-{ const, config, pkgs, pkgs-unstable, ... }:
+{ const, config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -15,11 +15,11 @@
 
   programs.yazi = {
     enable = true;
-    package = pkgs-unstable.yazi;
+    package = pkgs.yazi;
     enableFishIntegration = true;
     enableNushellIntegration = true;
     initLua = ./init.lua;
-    plugins = with pkgs-unstable; {
+    plugins = with pkgs; {
       smart-enter = yaziPlugins.smart-enter;
       mediainfo = yaziPlugins.mediainfo;
       projects = yaziPlugins.projects;

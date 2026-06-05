@@ -31,7 +31,7 @@
   ++ lib.optionals const.is-darwin [ ];
 
   home = {
-    stateVersion = "25.11";
+    stateVersion = "26.05";
 
     username = const.username;
 

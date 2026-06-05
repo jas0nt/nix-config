@@ -43,7 +43,7 @@
       ))
       # lsp
       nixd
-      nixfmt-rfc-style
+      nixfmt
       basedpyright
       pyright
       ruff

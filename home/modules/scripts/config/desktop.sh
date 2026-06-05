@@ -29,8 +29,8 @@ logout-menu)
     ;;
 
 lock)
-    # pidof swaylock || swaylock -f
-    hyprlock
+    pidof swaylock || swaylock -f
+    # hyprlock
     ;;
 
 logout)

@@ -9,6 +9,7 @@
   programs.firefox = {
     enable = true;
     profiles.default = {
+      isDefault = true;
       name = "default";
       settings = {
         # Customization
@@ -35,6 +36,7 @@
         "network.trr.mode" = 3;
         
         # UI/UX
+        "layout.css.devPixelsPerPx" = 1.30;
         "browser.tabs.drawInTitlebar" = true;
         "browser.sessionstore.max_tabs_undo" = 10;
         "browser.urlbar.suggest.searches" = false;

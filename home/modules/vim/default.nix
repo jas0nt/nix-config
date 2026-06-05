@@ -35,7 +35,7 @@
       rust-analyzer
       rustfmt
     ];
-    extraLuaConfig = ''
+    initLua = ''
       require("config.lazy")
     '';
   };

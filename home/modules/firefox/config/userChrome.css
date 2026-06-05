@@ -2,6 +2,9 @@
     /* URL bar width and height */
     --uc-urlbar-width: clamp(250px, 50vw, 600px);
     --uc-urlbar-height: clamp(50px, 5vw, 60px);
+
+    --tab-min-height: 30px !important;
+    --tab-max-height: 30px !important;
 }
 
 /* Hide navigation buttons and icons to clean up UI */
@@ -25,38 +28,11 @@
     display: -moz-inline-box !important;
 }
 
-/* Remove nav bar styling to prepare for one-line layout */
-#nav-bar {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-}
-
-#navigator-toolbox {
-    border-bottom: none !important;
-}
-
-#urlbar,
-#urlbar * {
-    box-shadow: none !important;
-}
-
-/* Container tab indicator - full width border */
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
-    height: 2px !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-}
-
-/* Remove tab gaps */
 .tabbrowser-tab {
     margin: 0 !important;
     padding: 0 !important;
-}
-
-.tabbrowser-tab > .tab-stack > .tab-background {
-    margin: 0 !important;
-    padding: 0 !important;
+    min-height: var(--tab-min-height) !important;
+    max-height: var(--tab-max-height) !important;
 }
 
 /* One-line layout: tabs and URL bar on same line */

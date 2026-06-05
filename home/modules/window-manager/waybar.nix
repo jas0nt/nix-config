@@ -16,7 +16,7 @@
     enable = true;
     systemd = {
       enable = true;
-      target = "graphical-session.target";
+      targets = [ "graphical-session.target" ];
     };
     style = tools.substitute-file ./config/waybar/style.css;
     settings = {
