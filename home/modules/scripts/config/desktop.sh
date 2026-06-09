@@ -46,7 +46,7 @@ reboot)
     ;;
 
 shutdown)
-    shutdown -h now
+    systemctl poweroff
     ;;
 
 toggle-im)
