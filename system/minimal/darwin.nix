@@ -1,7 +1,7 @@
 {const, ...}:
 
 {
-  system.stateVersion = 6;
+  system.stateVersion = 7;
   system.primaryUser = const.username;
 
   nix.gc = {
