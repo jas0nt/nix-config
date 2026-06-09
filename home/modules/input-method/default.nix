@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ const, pkgs, ... }:
 
 {
   home.sessionVariables = {
@@ -7,10 +7,14 @@
   };
 
   stylix.targets.fcitx5 = {
-    enable = true;
+    enable = false;
     fonts.enable = true;
     colors.enable = true;
   };
+
+  imports = [
+    ./fcitx5/theme/dracula.nix
+  ];
 
   i18n.inputMethod = {
     enable = true;

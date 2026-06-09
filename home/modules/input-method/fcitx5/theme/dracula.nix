@@ -102,6 +102,14 @@
             };
         };
       };
+      settings = {
+        addons = {
+          classicui.globalSection = {
+            Theme = "dracula";
+            Font = "${const.font-cn} 16";
+          };
+        };
+      };
     };
   };
 
