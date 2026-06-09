@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    pcmanfm
     file
     ffmpegthumbnailer
     mediainfo
