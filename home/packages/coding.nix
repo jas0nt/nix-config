@@ -12,8 +12,12 @@
     enable = false;
   };
 
+  programs.claude-code = {
+    enable = false;
+  };
+
   programs.codex = {
-    enable = true;
+    enable = false;
   };
 
   programs.uv = {
