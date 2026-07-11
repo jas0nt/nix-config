@@ -11,8 +11,8 @@
     inputs.niri.homeModules.niri
     ../swaync
     ./waybar.nix
-    ./swaylock.nix
-    # ./hyprlock.nix
+    # ./swaylock.nix
+    ./hyprlock.nix
     ./wlogout.nix
   ];
 
