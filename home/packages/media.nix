@@ -9,7 +9,7 @@
     vlc
     (tools.scale pkgs puddletag 1.4)
     nomacs
-    (tools.scale pkgs pix 1.6)
+    (tools.scale pkgs pix 1.8)
 
     yt-dlp
     ytdownloader
