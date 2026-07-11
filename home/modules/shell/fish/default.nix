@@ -19,6 +19,10 @@
 
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      bind alt-backspace backward-kill-path-component
+      bind ctrl-w backward-kill-word
+    '';
     shellAbbrs = {
       lock = "bash ~/scripts/desktop.sh lock";
       logout = "bash ~/scripts/desktop.sh logout";
