@@ -8,6 +8,10 @@
 {
   services.emacs.enable = true;
 
+  stylix.targets.emacs = {
+    enable = false;
+  };
+
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
@@ -50,12 +54,7 @@
       rust-analyzer
       rustfmt
 
-      # dirvish
-      vips
       ffmpegthumbnailer
-      mediainfo
-      file
-      poppler-utils
     ]
     ++ lib.optionals const.is-linux [
       gcc13
