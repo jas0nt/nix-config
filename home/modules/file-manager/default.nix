@@ -2,11 +2,13 @@
 
 {
   home.packages = with pkgs; [
-    pcmanfm
     file
     ffmpegthumbnailer
     mediainfo
     poppler-utils
+  ]
+  ++ lib.optionals const.is-linux [
+    pcmanfm
   ];
 
   stylix.targets.yazi = {
@@ -50,7 +52,7 @@
         image_delay = 0;
       };
       tasks = {
-        image_alloc = 1073741824; 
+        image_alloc = 1073741824;
         file_workers = 4;
         micro_workers = 16;
         preload_workers = 16;
