@@ -16,6 +16,10 @@
     ./wlogout.nix
   ];
 
+  gtk = {
+    enable = true;
+  };
+
   xdg.configFile = {
     "code-flags.conf" = {
       source = ./config/code-flags.conf;

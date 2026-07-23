@@ -16,15 +16,19 @@
     feh
     kitty
     qview
-    (tools.scale pkgs pcmanfm 1.5)
   ];
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
     configPackages = [
       pkgs.xdg-desktop-portal
+    ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-wlr
     ];
+    config.common.default = "gtk";
   };
 
   services.flatpak.enable = true;
