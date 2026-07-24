@@ -6,8 +6,6 @@
 }:
 
 {
-  services.emacs.enable = true;
-
   stylix.targets.emacs = {
     enable = false;
   };
@@ -42,7 +40,6 @@
           watchdog
           packaging
           ipython
-
         ]
       ))
       # lsp
