@@ -1,4 +1,4 @@
-{ const, config, pkgs, ... }:
+{ const, tools, config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -8,7 +8,7 @@
     poppler-utils
   ]
   ++ lib.optionals const.is-linux [
-    pcmanfm
+    (tools.scale pkgs pcmanfm 1.6)
   ];
 
   stylix.targets.yazi = {
