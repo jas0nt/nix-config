@@ -27,6 +27,7 @@
     ./modules/scripts
     ./modules/input-method
     ./modules/player
+    ./modules/host-modules
   ]
   ++ lib.optionals const.is-darwin [ ];
 
