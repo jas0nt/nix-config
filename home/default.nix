@@ -14,12 +14,12 @@
     ./modules/kitty
     ./modules/shell
     ./modules/git
-    ./modules/emacs
     ./modules/vim
     ./modules/docker
     ./packages
   ]
   ++ lib.optionals const.is-linux [
+    ./modules/emacs
     ./modules/firefox
     ./services
     ./modules/window-manager

@@ -15,15 +15,16 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      # 'zap': Uninstalls any brew app not listed here. 
+      # 'zap': Uninstalls any brew app not listed here.
       # This enforces that your Nix config is the single source of truth.
-      cleanup = "zap"; 
+      cleanup = "zap";
     };
     brews = [
       "cmus"
     ];
 
     casks = [
+      "emacs-app"
       "clash-verge-rev"
       "visual-studio-code"
       "wechat"
