@@ -15,6 +15,7 @@ flake-update:
 
 build:
   #!/usr/bin/env bash
+  set -x
   if [[ "{{os}}" == "darwin" ]]; then
     sudo {{proxy_env}} nix run nix-darwin/master#darwin-rebuild -- switch --flake path:.
   else
