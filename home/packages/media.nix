@@ -1,4 +1,9 @@
-{ pkgs, config, tools, ... }:
+{
+  pkgs,
+  config,
+  tools,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -11,6 +16,7 @@
     nomacs
     (tools.scale pkgs pix 1.8)
 
+    video-trimmer
     yt-dlp
     ytdownloader
     media-downloader

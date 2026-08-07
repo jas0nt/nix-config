@@ -28,7 +28,7 @@
     mihomo
     net-tools
     dnsutils
-    impala  # TUI for managing wifi
+    impala # TUI for managing wifi
   ];
 
 }

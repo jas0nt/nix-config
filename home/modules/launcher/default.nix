@@ -1,4 +1,10 @@
-{ pkgs, const, config, inputs, ... }:
+{
+  pkgs,
+  const,
+  config,
+  inputs,
+  ...
+}:
 
 {
   stylix.targets.fuzzel = {

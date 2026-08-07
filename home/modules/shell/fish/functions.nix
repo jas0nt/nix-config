@@ -42,7 +42,7 @@
                 echo "Error: Not a valid venv (missing activate.fish)"
             end
         end
-        '';
+      '';
 
       gpu_fan.body = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
 
@@ -53,7 +53,7 @@
         docker compose -f ~/dkr/windows.yaml up --detach
         sleep 5
         xfreerdp /u:docker /p:\"\" /size:3456x1944 /v:127.0.0.1:3389 /cert:ignore /sec:tls
-        '';
+      '';
     };
   };
 

@@ -29,7 +29,10 @@
       url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -43,9 +46,17 @@
     let
       nixosOutputs = (import ./os/nixos.nix) inputs;
       darwinOutputs = (import ./os/darwin.nix) inputs;
+      systems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forEachSystem = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
     in
     {
       inherit (nixosOutputs) nixosConfigurations;
       inherit (darwinOutputs) darwinConfigurations;
+
+      formatter = forEachSystem (pkgs: pkgs.nixfmt-tree);
     };
 }

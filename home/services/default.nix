@@ -8,7 +8,7 @@
       general = {
         ignore_dbus_inhibit = false;
         lock_cmd = "bash ~/scripts/desktop.sh lock";
-        after_sleep_cmd = "loginctl lock-session"; 
+        after_sleep_cmd = "loginctl lock-session";
       };
 
       listener = [

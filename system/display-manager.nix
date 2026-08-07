@@ -1,4 +1,9 @@
-{ const, config, pkgs, ... }:
+{
+  const,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   theme = "--theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";

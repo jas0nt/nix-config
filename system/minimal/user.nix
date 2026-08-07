@@ -1,4 +1,9 @@
-{ const, pkgs, lib, ... }:
+{
+  const,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.fish.enable = true;
@@ -7,7 +12,8 @@
     shell = pkgs.fish;
     description = const.username;
     uid = 1000;
-  } // lib.optionalAttrs const.is-linux {
+  }
+  // lib.optionalAttrs const.is-linux {
     isNormalUser = true;
     extraGroups = [
       "networkmanager"

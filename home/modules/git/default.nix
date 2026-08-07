@@ -33,7 +33,9 @@
   ];
 
   xdg.configFile = {
-    "tig/config" = { source = ./config/tigrc; };
+    "tig/config" = {
+      source = ./config/tigrc;
+    };
   };
 
 }

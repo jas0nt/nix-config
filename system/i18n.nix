@@ -25,16 +25,19 @@
     ];
 
     fontconfig = {
-      defaultFonts = let my-fonts = [
-        "Maple Mono CN"
-        "Maple Mono NF"
-      ];
-      in {
-        serif = my-fonts;
-        sansSerif = my-fonts;
-        monospace = my-fonts;
-        emoji = [ "Noto Color Emoji" ];
-      };
+      defaultFonts =
+        let
+          my-fonts = [
+            "Maple Mono CN"
+            "Maple Mono NF"
+          ];
+        in
+        {
+          serif = my-fonts;
+          sansSerif = my-fonts;
+          monospace = my-fonts;
+          emoji = [ "Noto Color Emoji" ];
+        };
     };
   };
 

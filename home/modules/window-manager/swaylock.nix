@@ -19,7 +19,7 @@
       indicator = true;
       indicator-radius = 100;
       indicator-thickness = 7;
-      
+
       datestr = "%a, %B %e";
       timestr = "%H:%M";
     };

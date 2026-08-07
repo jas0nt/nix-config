@@ -32,9 +32,9 @@ let
     "image/jpeg" = [ "com.interversehq.qView.desktop" ];
     "image/webp" = [ "com.interversehq.qView.desktop" ];
     "image/*" = [ "com.interversehq.qView.desktop" ];
-    "text/*"  = [ "vim.desktop" ];
+    "text/*" = [ "vim.desktop" ];
     "inode/directory" = [ "yazi.desktop" ];
-    "text/plain"  = [ "vim.desktop" ];
+    "text/plain" = [ "vim.desktop" ];
 
     "application/x-bittorrent" = [ "qbittorrent.desktop" ];
   };
