@@ -78,8 +78,7 @@ record-screen)
     FILE_DATE="$(date +'%Y-%m-%d_%H-%M-%S')"
     RECORDING_FILE=$RECORDING_DIR/$FILE_DATE.mp4
     mkdir -p $RECORDING_DIR
-    swaync-client -dn
-    pkill wf-recorder || (wf-recorder --audio --audio-backend=pipewire -f $RECORDING_FILE && swaync-client -df)
+    pkill wf-recorder || (wf-recorder --audio --audio-backend=pipewire -f $RECORDING_FILE)
     ;;
 
 calendar)
@@ -92,11 +91,11 @@ restart-services)
 
 notification-center)
     sleep 0.1s
-    swaync-client -t -sw
+    makoctl restore
     ;;
 
 notification-dnd)
-    swaync-client -d -sw
+    makoctl mode -t do-not-disturb
     ;;
 
 *)

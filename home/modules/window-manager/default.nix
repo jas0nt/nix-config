@@ -9,8 +9,8 @@
 {
   imports = [
     inputs.niri.homeModules.niri
-    ../swaync
     ./waybar.nix
+    ./mako.nix
     # ./swaylock.nix
     ./hyprlock.nix
     ./wlogout.nix

@@ -31,8 +31,8 @@
       notification-body-image-height = 100;
       notification-body-image-width = 200;
       notification-inline-replies = true;
-      timeout = 10;
-      timeout-low = 5;
+      timeout = 0;
+      timeout-low = 0;
       timeout-critical = 0;
       notification-window-width = 500;
       keyboard-shortcuts = true;
