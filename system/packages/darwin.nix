@@ -30,9 +30,11 @@
       "wechat"
       "snipaste"
       "google-chrome"
+      "wpsoffice-cn"
       "localsend"
       "motrix"
       "adrive"
+      "calibre"
     ];
   };
 
