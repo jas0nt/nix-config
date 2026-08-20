@@ -77,7 +77,7 @@
       let
         grammar-model = pkgs.fetchurl {
           url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
-          sha256 = "sha256-Pr3wgPM9TzYY8medb540opC9dZBvQrnXU/Yw5RAeVAc=";
+          sha256 = "sha256-a81qxhNpt0AYI/fc5ZomWYFA6sW5Q884Zun0EgS2rfs=";
         };
       in
       {
@@ -85,7 +85,7 @@
           owner = "jas0nt";
           repo = "rime-ice";
           rev = "e0b1588f8ca405fb81dfd92235ecd5bdccfa18ce";
-          sha256 = "sha256-sixtx8eVCqfNtHsXR8QQ1gmRG9jlHS1uXPclAtP4skI=";
+          sha256 = "sha256-G2NcwXf7iR5YXhv/el90uE3EObzFsGyvVxHuzDMgHuE=";
           postFetch = ''
             rm $out/default.yaml
             cp ${fcitx5/rime/default.yaml} $out/default.yaml
