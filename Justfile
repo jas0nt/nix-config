@@ -59,6 +59,7 @@ gc:
   # garbage collect all unused nix store entries
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d
   sudo nix-collect-garbage --delete-older-than 7d
+  just clean
 
 val path:
   #!/usr/bin/env bash
