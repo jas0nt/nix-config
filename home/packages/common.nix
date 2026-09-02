@@ -71,7 +71,7 @@
     gparted
     snipaste
     wpsoffice-cn
-    qq
+    # qq
     wechat
     xunlei-uos
     (tools.scale pkgs qbittorrent 1.3)
