@@ -5,16 +5,14 @@
   extraModules ? [ ],
   extraConfig ? { },
   homeManagerModule,
-  systemType,
   hostname,
   ...
 }:
 
 let
-  constCommon = import ./const/common.nix;
-  const = constCommon // import constFile;
-  system = const.system;
-  tools = (import ./tools.nix) { const = const; };
+  const = import ./const/common.nix // import constFile;
+  inherit (const) system;
+  tools = import ./tools.nix { inherit const; };
 
   pkgConfig = {
     allowUnfree = true;
@@ -30,40 +28,30 @@ let
       ;
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
-      config.allowUnfree = true;
+      config = pkgConfig;
     };
   };
+in
+{
+  inherit system specialArgs;
 
-  commonModules = [
+  modules = [
     ../system
     homeManagerModule
     {
-      home-manager.useGlobalPkgs = false;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = specialArgs // {
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config = pkgConfig;
-        };
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = specialArgs;
+        backupFileExtension = "backup";
+        users.${const.username} = import ../home;
       };
-      home-manager.backupFileExtension = "backup";
-      home-manager.users.${const.username} = import ../home;
+      nixpkgs.config = pkgConfig;
     }
   ]
-  ++ extraModules;
-
-  config = {
-    nixpkgs.config = pkgConfig;
-  }
-  // extraConfig;
-
-  commonModulesWithConfig = commonModules ++ [ config ];
-
-in
-{
-  system = system;
-  specialArgs = specialArgs;
-  modules = commonModulesWithConfig ++ [
+  ++ extraModules
+  ++ [
+    extraConfig
     ../hosts/${hostname}
   ];
 }

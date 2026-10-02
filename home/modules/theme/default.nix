@@ -15,6 +15,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
+    overlays.enable = false;
     image = ./wallpaper/clouds.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 

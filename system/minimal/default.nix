@@ -25,6 +25,4 @@
     builders-use-substitutes = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
 }
