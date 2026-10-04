@@ -32,6 +32,7 @@
     gh
     tree-sitter
     virtualenv
+    nixfmt-tree
     nodejs
 
     rustc
