@@ -10,6 +10,7 @@
   networking.hostName = hostname;
   imports = [
     ./hardware-configuration.nix
+    ./mac-mount.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
