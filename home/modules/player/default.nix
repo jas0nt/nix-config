@@ -24,6 +24,7 @@
 
         gpu-context = "wayland";
         vo = "gpu-next";
+        hwdec = "nvdec";
 
         save-position-on-quit = "yes";
         watch-later-directory = "~~/watch_later";

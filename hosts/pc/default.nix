@@ -17,10 +17,18 @@
   ];
 
   hardware.nvidia = {
-    open = false;
+    modesetting.enable = true;
+    open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   hardware.nvidia-container-toolkit.enable = true;
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
