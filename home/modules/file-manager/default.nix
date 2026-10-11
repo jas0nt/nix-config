@@ -131,13 +131,12 @@
         }
         {
           run = "shell --orphan --confirm ${const.terminal}";
-          on = [ "T" ];
+          on = [ "`" ];
         }
         {
           run = "shell 't=$(mktemp --suffix=.jpg); ffmpegthumbnailer -i \"$0\" -o \"$t\" -s 0 -c jpeg -f >/dev/null 2>&1; qview \"$t\" >/dev/null 2>&1; rm \"$t\"' --block";
           on = [ "e" ];
         }
-
         {
           run = "cd ~/.local/share/Trash";
           on = [
@@ -145,18 +144,13 @@
             "t"
           ];
         }
-
         {
           run = "escape";
           on = [ "q" ];
         }
         {
-          run = "remove";
-          on = [ "D" ];
-        }
-        {
           run = "remove --permanently";
-          on = [ "d" ];
+          on = [ "D" ];
         }
         {
           run = "shell 'dua i .' --block";
@@ -174,9 +168,80 @@
         }
 
         {
+          run = "tab_close";
+          on = [
+            "t"
+            "c"
+          ];
+          desc = "Close tab";
+        }
+        {
+          run = "tab_switch -1 --relative";
+          on = [ "H" ];
+          desc = "Previous tab";
+        }
+        {
+          run = "tab_switch 1 --relative";
+          on = [ "L" ];
+          desc = "Next tab";
+        }
+
+        {
+          run = "visual_mode";
+          on = [ "V" ];
+          desc = "Visual mode";
+        }
+        {
+          run = "plugin task-queue delete";
+          on = [ "d" ];
+          desc = "Queue deletion";
+        }
+        {
           run = "plugin task-queue insert";
           on = [ "I" ];
+          desc = "Queue yanked files (copy/move)";
         }
+        {
+          run = "plugin task-queue run";
+          on = [
+            "v"
+            "x"
+          ];
+          desc = "Run queue / leftover script";
+        }
+        {
+          run = "plugin task-queue preview";
+          on = [
+            "v"
+            "s"
+          ];
+          desc = "Preview script";
+        }
+        {
+          run = "plugin task-queue status";
+          on = [
+            "v"
+            "v"
+          ];
+          desc = "Queue status / progress";
+        }
+        {
+          run = "plugin task-queue undo";
+          on = [
+            "v"
+            "u"
+          ];
+          desc = "Undo last queued op";
+        }
+        {
+          run = "plugin task-queue clear";
+          on = [
+            "v"
+            "c"
+          ];
+          desc = "Clear queue and script";
+        }
+
         {
           run = "plugin --sync smart-enter";
           on = [ "<Enter>" ];

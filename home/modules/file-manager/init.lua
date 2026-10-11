@@ -13,6 +13,9 @@ function Linemode:size_and_mtime()
 end
 
 
+-- task-queue
+require("task-queue"):setup()
+
 -- projects
 require("projects"):setup({
     event = {
@@ -23,15 +26,15 @@ require("projects"):setup({
         merge = { enable = true, name = "project-merged", },
     },
     save = {
-        method = "yazi", -- yazi | lua
+        method = "lua", -- yazi | lua
         yazi_load_event = "@projects-load", -- event name when loading projects in `yazi` method
-        lua_save_path = "~/.local/state/yazi/projects.json",
+        -- lua_save_path = "~/.local/state/yazi/projects.json",
     },
     last = {
         update_after_save = true,
         update_after_load = true,
-        update_before_quit = false,
-        load_after_start = false,
+        update_before_quit = true,
+        load_after_start = true,
     },
     merge = {
         event = "projects-merge",
