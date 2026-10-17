@@ -39,7 +39,8 @@
       mount = yaziPlugins.mount;
       compress = yaziPlugins.compress;
       mime-ext = yaziPlugins.mime-ext;
-      task-queue = ./plugins/task-queue;
+      dired-satchel = ./plugins/dired-satchel;
+      video-shared = ./plugins/video-shared;
     };
     settings = {
       log = {
@@ -48,15 +49,15 @@
       mgr = {
         show_hidden = false;
         linemode = "mtime";
-        sort_by = "mtime";
+        sort_by = "natural";
         sort_dir_first = true;
-        sort_reverse = true;
+        sort_reverse = false;
       };
       preview = {
         cache_dir = config.home.homeDirectory + "/.cache/yazi";
-        max_width = 1920;
-        max_height = 1080;
-        image_quality = 50;
+        max_width = 3840;
+        max_height = 2160;
+        image_quality = 90;
         image_delay = 0;
       };
       tasks = {
@@ -88,8 +89,9 @@
           }
         ];
         prepend_preloaders = [
+          { mime = "video/*"; run = "video-shared"; }
           {
-            mime = "{audio,video,image}/*";
+            mime = "{audio,image}/*";
             run = "mediainfo";
           }
           {
@@ -102,8 +104,9 @@
           }
         ];
         prepend_previewers = [
+          { mime = "video/*"; run = "video-shared"; }
           {
-            mime = "{audio,video,image}/*";
+            mime = "{audio,image}/*";
             run = "mediainfo";
           }
           {
@@ -191,18 +194,37 @@
           on = [ "V" ];
           desc = "Visual mode";
         }
+
+        # ---- dired-satchel: same keys as dired-satchel ----
         {
-          run = "plugin task-queue delete";
+          run = "plugin dired-satchel pack";
+          on = [ "y" ];
+          desc = "Pack (SCRIPT) / yank (LIVE)";
+        }
+        {
+          run = "plugin dired-satchel cut";
+          on = [ "x" ];
+          desc = "Pack (SCRIPT) / cut (LIVE)";
+        }
+        {
+          run = "plugin dired-satchel unpack";
+          on = [ "Y" ];
+          desc = "Empty satchel";
+        }
+        {
+          run = "plugin dired-satchel paste"; # NEW
+          on = [ "p" ];
+          desc = "Paste";
+        }
+        {
+          run = "plugin dired-satchel delete";
           on = [ "d" ];
-          desc = "Queue deletion";
+          desc = "Delete";
         }
+
+        # ---- dired-satchel: `v` menu (stands in for satchel-transient) ----
         {
-          run = "plugin task-queue insert";
-          on = [ "I" ];
-          desc = "Queue yanked files (copy/move)";
-        }
-        {
-          run = "plugin task-queue run";
+          run = "plugin dired-satchel run";
           on = [
             "v"
             "x"
@@ -210,7 +232,7 @@
           desc = "Run queue / leftover script";
         }
         {
-          run = "plugin task-queue preview";
+          run = "plugin dired-satchel preview";
           on = [
             "v"
             "s"
@@ -218,7 +240,7 @@
           desc = "Preview script";
         }
         {
-          run = "plugin task-queue status";
+          run = "plugin dired-satchel status";
           on = [
             "v"
             "v"
@@ -226,7 +248,7 @@
           desc = "Queue status / progress";
         }
         {
-          run = "plugin task-queue undo";
+          run = "plugin dired-satchel undo";
           on = [
             "v"
             "u"
@@ -234,12 +256,36 @@
           desc = "Undo last queued op";
         }
         {
-          run = "plugin task-queue clear";
+          run = "plugin dired-satchel unqueue"; # NEW
+          on = [
+            "v"
+            "r"
+          ];
+          desc = "Remove selected/hovered files from queue and satchel";
+        }
+        {
+          run = "plugin dired-satchel clear";
           on = [
             "v"
             "c"
           ];
           desc = "Clear queue and script";
+        }
+        {
+          run = "plugin dired-satchel unpack"; # NEW
+          on = [
+            "v"
+            "y"
+          ];
+          desc = "Empty satchel";
+        }
+        {
+          run = "plugin dired-satchel toggle"; # NEW
+          on = [
+            "v"
+            "t"
+          ];
+          desc = "Toggle SCRIPT / LIVE mode";
         }
 
         {
@@ -266,38 +312,44 @@
           on = [ "M" ];
         }
 
+        # CHANGED: prefix moved from `P` to `g p`, because `P` is now move-here
         {
           run = "plugin projects save";
           on = [
-            "P"
+            "g"
+            "p"
             "s"
           ];
         }
         {
           run = "plugin projects load_last";
           on = [
-            "P"
+            "g"
+            "p"
             "p"
           ];
         }
         {
           run = "plugin projects load";
           on = [
-            "P"
+            "g"
+            "p"
             "l"
           ];
         }
         {
           run = "plugin projects delete";
           on = [
-            "P"
+            "g"
+            "p"
             "d"
           ];
         }
         {
           run = "plugin projects delete_all";
           on = [
-            "P"
+            "g"
+            "p"
             "D"
           ];
         }

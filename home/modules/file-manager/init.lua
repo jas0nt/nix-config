@@ -13,8 +13,8 @@ function Linemode:size_and_mtime()
 end
 
 
--- task-queue
-require("task-queue"):setup()
+-- dired-satchel
+require("dired-satchel"):setup()
 
 -- projects
 require("projects"):setup({
