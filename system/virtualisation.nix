@@ -5,6 +5,12 @@
 
   users.users.${const.username}.extraGroups = [ "libvirtd" ];
 
+  systemd.services.docker.environment = {
+    HTTP_PROXY = "http://127.0.0.1:7890";
+    HTTPS_PROXY = "http://127.0.0.1:7890";
+    NO_PROXY = "localhost,127.0.0.1";
+  };
+
   environment.systemPackages = with pkgs; [
     spice
     spice-gtk
