@@ -9,6 +9,8 @@
 --   LIVE              y / x / p / Y are Yazi's native yank / cut / paste /
 --                     unyank, and delete is the native `remove`.
 --
+-- Deletion is ALWAYS permanent (no trash), in both modes.
+--
 -- Commands (`plugin dired-satchel <cmd>`):
 --   pack     (y) SCRIPT: add the selected files (or the hovered file) to the
 --            satchel, to be COPIED. The satchel accumulates across
@@ -18,15 +20,18 @@
 --            LIVE: native `yank --cut`.
 --   paste    (p) SCRIPT: queue the satchel into the current directory (a
 --            copy of the packed files, a move of the cut ones), then empty
---            it. Files already in the current directory are skipped.
+--            it. Files already in the current directory are skipped. If a
+--            target name already exists (or two files share a name), you
+--            are asked to confirm the overwrite; `--force` skips the ask.
 --            LIVE: native `paste` (`--force` is passed through).
 --   unpack   (Y) SCRIPT: empty the satchel.
 --            LIVE: native `unyank` (and empty the satchel).
---   delete   SCRIPT: queue the selected (or hovered) files for deletion.
---            LIVE:   native `remove` (`--permanently` is passed through).
+--   delete   (d) SCRIPT: queue the selected (or hovered) files for permanent
+--            deletion.
+--            LIVE: native `remove --permanently`.
 --   insert   queue the yanked files as copy/move into the current
 --            directory (works in both modes; uses Yazi's yank buffer
---            instead of the satchel).
+--            instead of the satchel). Same conflict check as `paste`.
 --   unqueue  remove the selected (or hovered) files from every queued
 --            operation and from the satchel; operations that become
 --            empty are dropped.
@@ -38,7 +43,14 @@
 --   clear    drop the queue and delete the script file
 --   toggle   switch between SCRIPT and LIVE mode
 --
--- Visual marks (needs `require("dired-satchel"):setup()` in init.lua):
+-- Setup (init.lua):
+--   require("dired-satchel"):setup {
+--     default_mode = "script",  -- or "live"
+--     rsync_extra  = "",        -- extra rsync flags, e.g. "-HAX"
+--     reflink      = false,     -- same-filesystem copies use `cp -a --reflink=auto`
+--   }
+--
+-- Visual marks:
 --   a letter at the right edge: y = copy, x = move (packed or queued),
 --   D = delete.
 --   Marks stay while the script runs, are cleared when it succeeds, and are
@@ -57,12 +69,15 @@
 --   * `run` with an empty queue runs the leftover script as-is. With a
 --     non-empty queue and a leftover script it refuses.
 --   * The script is idempotent: rsync skips finished files, --inplace keeps
---     partial data, mv is guarded by an existence check, and rm -rf ignores
---     missing paths, so re-running is safe.
+--     partial data, mv/cp are guarded by an existence check, and rm -rf
+--     ignores missing paths, so re-running is safe.
+--   * The script runs under `flock` on a lock file, so two Yazi instances
+--     can never run it at the same time (and `clear` refuses while it runs).
 --
 -- Script contents:
 --   Moves within one filesystem use `mv` (instant rename); moves across
---   filesystems use rsync (progress + resumable).
+--   filesystems, or onto an existing target, use rsync (progress,
+--   resumable, merges directories).
 
 local function env(name)
 	local v = os.getenv(name)
@@ -76,6 +91,8 @@ local STATE_DIR = (env("XDG_STATE_HOME") or (HOME .. "/.local/state")) .. "/yazi
 local SCRIPT = STATE_DIR .. "/dired-satchel.sh"
 local LOG = STATE_DIR .. "/dired-satchel.log"
 local PREVIEW = STATE_DIR .. "/dired-satchel.preview.sh"
+local LOCK = STATE_DIR .. "/dired-satchel.lock"
+local BUSY = 99 -- flock exit code meaning "another instance holds the lock"
 
 -- ---------------------------------------------------------------------
 -- Sync helpers: the only code that touches `cx` and the plugin state.
@@ -86,6 +103,7 @@ local PREVIEW = STATE_DIR .. "/dired-satchel.preview.sh"
 --   st.stash_cut   set of those names that are packed to be MOVED (the rest copy)
 --   st.running     bool
 --   st.script_mode nil/true = SCRIPT, false = LIVE
+--   st.opts        options passed to setup()
 --   st.marks       file name -> mark, rebuilt after every state change
 -- ---------------------------------------------------------------------
 
@@ -164,6 +182,7 @@ local get_state = ya.sync(function(st)
 		cut = st.stash_cut or {},
 		running = st.running or false,
 		script_mode = st.script_mode ~= false,
+		opts = st.opts or {},
 	}
 end)
 
@@ -272,15 +291,38 @@ local reset = ya.sync(function(st)
 	rebuild_marks(st)
 end)
 
--- Everything queued goes into the script file: move it to "in-flight" so
--- the marks stay until the script succeeds (a failed run keeps them).
-local begin_run = ya.sync(function(st)
+-- Freeze the queue: with FREEZE, every queued op moves to "in-flight" (the
+-- marks stay until the script succeeds; a failed run keeps them) and is
+-- returned, so the caller renders exactly the ops that are marked in-flight.
+-- Anything queued after this call is NOT part of the script. Without FREEZE
+-- (leftover script) the queue is left untouched.
+local begin_run = ya.sync(function(st, freeze)
 	st.inflight = st.inflight or {}
-	for _, op in ipairs(st.ops or {}) do
-		st.inflight[#st.inflight + 1] = op
+	local frozen = {}
+	if freeze then
+		frozen = st.ops or {}
+		for _, op in ipairs(frozen) do
+			st.inflight[#st.inflight + 1] = op
+		end
+		st.ops = {}
 	end
-	st.ops = {}
 	st.running = true
+	rebuild_marks(st)
+	return frozen
+end)
+
+-- Undo begin_run(true) when the script could not be written: the frozen ops
+-- go back to the head of the queue.
+local abort_run = ya.sync(function(st, ops)
+	local n = #ops
+	for _ = 1, n do
+		table.remove(st.inflight)
+	end
+	st.ops = st.ops or {}
+	for i = n, 1, -1 do
+		table.insert(st.ops, 1, ops[i])
+	end
+	st.running = false
 	rebuild_marks(st)
 end)
 
@@ -315,6 +357,14 @@ local function basename(path)
 	return path:match("[^/]+$") or path
 end
 
+local function parent_dir(path)
+	return (path:match("^(.*)/[^/]+/*$") or "") .. "/"
+end
+
+local function with_slash(path)
+	return (path:gsub("/*$", "/"))
+end
+
 local function exists(path)
 	local f = io.open(path, "r")
 	if f then
@@ -329,16 +379,26 @@ local function ensure_state_dir()
 end
 
 -- Write via a temp file + rename, so a crash can never leave a truncated
--- script behind (a truncated leftover would later be run as-is).
+-- script behind (a truncated leftover would later be run as-is). Every
+-- write/close error is checked, so a full disk cannot produce one either.
 local function write_atomic(path, text)
 	local tmp = path .. ".tmp"
 	local f, err = io.open(tmp, "w")
 	if not f then
 		return nil, err
 	end
-	f:write(text)
-	f:close()
-	return os.rename(tmp, path)
+	local wok, werr = f:write(text)
+	local cok, cerr = f:close()
+	if not wok or not cok then
+		os.remove(tmp)
+		return nil, werr or cerr or "write failed"
+	end
+	local rok, rerr = os.rename(tmp, path)
+	if not rok then
+		os.remove(tmp)
+		return nil, rerr
+	end
+	return true
 end
 
 local function format_duration(seconds)
@@ -366,6 +426,70 @@ local function confirm(title, body)
 		title = ui.Line(title),
 		body = ui.Text(body):wrap(ui.Wrap.YES),
 	}
+end
+
+-- Join LINES, keeping at most MAX of them.
+local function summarize(lines, max)
+	local out = {}
+	for i, line in ipairs(lines) do
+		if i > max then
+			out[#out + 1] = string.format("... and %d more", #lines - max)
+			break
+		end
+		out[#out + 1] = line
+	end
+	return table.concat(out, "\n")
+end
+
+-- ---------------------------------------------------------------------
+-- Locking (so two Yazi instances never run the script at once)
+-- ---------------------------------------------------------------------
+
+-- True when another process holds the lock. If `flock` is not installed
+-- (or the lock cannot be probed) this is false, i.e. no protection.
+local function is_locked()
+	local status = Command("flock")
+		:arg({ "-n", "-E", tostring(BUSY), LOCK, "true" })
+		:stdin(Command.NULL)
+		:stdout(Command.NULL)
+		:stderr(Command.NULL)
+		:status()
+	return status ~= nil and status.code == BUSY
+end
+
+-- ---------------------------------------------------------------------
+-- Conflict detection
+-- ---------------------------------------------------------------------
+
+local function target_exists(dest_dir, file)
+	return fs.cha(Url(dest_dir .. basename(file)), false) ~= nil
+end
+
+-- Names that would collide: an existing target, or two files with the same
+-- name in one batch (the later one would overwrite the earlier one).
+local function find_conflicts(files, dest_dir)
+	local out, seen = {}, {}
+	for _, f in ipairs(files) do
+		local name = basename(f)
+		if seen[name] then
+			out[#out + 1] = clean(name) .. "  (same name twice in this batch)"
+		else
+			seen[name] = true
+			if target_exists(dest_dir, f) then
+				out[#out + 1] = clean(name) .. "  (already exists)"
+			end
+		end
+	end
+	return out
+end
+
+-- true = go ahead (no conflicts, or the user accepted the overwrite).
+local function confirm_overwrite(files, dest_dir)
+	local conflicts = find_conflicts(files, dest_dir)
+	if #conflicts == 0 then
+		return true
+	end
+	return confirm("Overwrite existing files?", summarize(conflicts, 12))
 end
 
 -- ---------------------------------------------------------------------
@@ -402,24 +526,34 @@ local function dev_of(path, follow)
 	return cha and cha.dev or nil
 end
 
--- Idempotent mv: skip sources that no longer exist, so re-running a
+local function rsync_base(opts)
+	local extra = opts.rsync_extra
+	return "rsync -avh --info=progress2 --no-compress --inplace" .. ((extra and extra ~= "") and (" " .. extra) or "")
+end
+
+-- Idempotent mv / cp: skip sources that no longer exist, so re-running a
 -- leftover script after a partial run is safe under `set -e`.
-local function mv_cmd(files, dest)
+local function guarded_cmd(tool, files, dest)
 	local lines = {}
 	for i, f in ipairs(files) do
 		local q = ya.quote(f)
-		lines[i] = string.format("if [ -e %s ] || [ -L %s ]; then mv -- %s %s; fi", q, q, q, dest)
+		lines[i] = string.format("if [ -e %s ] || [ -L %s ]; then %s -- %s %s; fi", q, q, tool, q, dest)
 	end
 	return table.concat(lines, "\n")
 end
 
-local function rsync_move_cmd(files, dest)
+local function rsync_copy_cmd(files, dest, opts)
+	return string.format("%s -- %s %s", rsync_base(opts), quote_all(files), dest)
+end
+
+local function rsync_move_cmd(files, dest, opts)
 	local sources = quote_all(files)
 	-- --remove-source-files only removes files, so also prune the
 	-- directories it leaves behind (only empty ones; failures are ignored).
 	return table.concat({
 		string.format(
-			"rsync -avh --progress --no-compress --inplace --remove-source-files --ignore-missing-args -- %s %s",
+			"%s --remove-source-files --ignore-missing-args -- %s %s",
+			rsync_base(opts),
 			sources,
 			dest
 		),
@@ -427,23 +561,30 @@ local function rsync_move_cmd(files, dest)
 	}, "\n")
 end
 
-local function command(op)
+local function command(op, opts)
 	if op.type == "delete" then
 		return "rm -rf -- " .. quote_all(op.files)
 	end
 
-	local dest = ya.quote((op.dest:gsub("/*$", "/")))
-	if op.type == "copy" then
-		return string.format("rsync -avh --progress --no-compress --inplace -- %s %s", quote_all(op.files), dest)
-	end
-
-	-- move: same filesystem -> mv (a plain rename, instant at any size);
-	-- different filesystem -> rsync (progress output and resumable).
+	local dest_dir = with_slash(op.dest)
+	local dest = ya.quote(dest_dir)
+	local is_move = op.type == "move"
 	local dest_dev = dev_of(op.dest, true)
+
+	-- Fast path: a plain rename (move) or a reflink copy (opt-in) on the same
+	-- filesystem. A move onto an existing target goes through rsync instead,
+	-- which overwrites files and merges directories (mv would fail on a
+	-- non-empty directory).
 	local fast, slow = {}, {}
 	for _, f in ipairs(op.files) do
-		local d = dest_dev and dev_of(f, false)
-		if d and d == dest_dev then
+		local same_dev = dest_dev ~= nil and dev_of(f, false) == dest_dev
+		local use_fast
+		if is_move then
+			use_fast = same_dev and not target_exists(dest_dir, f)
+		else
+			use_fast = opts.reflink and same_dev
+		end
+		if use_fast then
 			fast[#fast + 1] = f
 		else
 			slow[#slow + 1] = f
@@ -452,30 +593,49 @@ local function command(op)
 
 	local cmds = {}
 	if #fast > 0 then
-		cmds[#cmds + 1] = mv_cmd(fast, dest)
+		cmds[#cmds + 1] = guarded_cmd(is_move and "mv" or "cp -a --reflink=auto", fast, dest)
 	end
 	if #slow > 0 then
-		cmds[#cmds + 1] = rsync_move_cmd(slow, dest)
+		cmds[#cmds + 1] = is_move and rsync_move_cmd(slow, dest, opts) or rsync_copy_cmd(slow, dest, opts)
 	end
 	return table.concat(cmds, "\n")
 end
 
-local function render(ops)
+local function render(ops, opts)
 	local out = { "#!/usr/bin/env bash", "set -xeuo pipefail", "" }
 	for _, op in ipairs(ops) do
 		out[#out + 1] = "# " .. describe(op)
-		out[#out + 1] = command(op)
+		out[#out + 1] = command(op, opts)
 		out[#out + 1] = ""
 	end
 	return table.concat(out, "\n")
+end
+
+-- Operation descriptions ("# ..." lines) of a script file on disk.
+local function script_summary(path)
+	local f = io.open(path, "r")
+	if not f then
+		return path
+	end
+	local lines = {}
+	for line in f:lines() do
+		if line:sub(1, 2) == "# " then
+			lines[#lines + 1] = clean(line:sub(3))
+		end
+	end
+	f:close()
+	if #lines == 0 then
+		return path
+	end
+	return path .. "\n\n" .. summarize(lines, 12)
 end
 
 -- ---------------------------------------------------------------------
 -- Commands
 -- ---------------------------------------------------------------------
 
--- Every command receives `args` (job.args): named flags such as
--- `--permanently` arrive as args.permanently (most commands ignore them).
+-- Every command receives `args` (job.args): named flags such as `--force`
+-- arrive as args.force (most commands ignore them).
 
 -- SCRIPT mode: add the selected files (or the hovered one) to the satchel
 -- as `kind` ("copy" or "cut"). LIVE mode: native yank / yank --cut.
@@ -527,23 +687,26 @@ local function unpack_stash()
 	notify(n > 0 and "Satchel emptied" or "Satchel is already empty")
 end
 
--- Run a script file with bash; output goes to a log file (instead of the
--- TUI) so `status` can tail it. Returns Command:status()'s results.
+-- Run a script file with bash under flock; output goes to a log file
+-- (instead of the TUI) so `status` can tail it. The log is only opened by
+-- the process that got the lock, so a busy lock never clobbers it.
+-- Exits with BUSY when another instance holds the lock. Without `flock`
+-- the script simply runs unprotected.
+-- Returns Command:status()'s results.
+local LAUNCHER = [[
+if command -v flock >/dev/null 2>&1; then
+  exec flock -n -E "$4" "$3" sh -c 'exec bash "$1" >"$2" 2>&1' _ "$1" "$2"
+fi
+exec sh -c 'exec bash "$1" >"$2" 2>&1' _ "$1" "$2"
+]]
+
 local function launch(path)
-	return Command("bash")
-		:arg("-c")
-		:arg('exec bash "$1" >"$2" 2>&1')
-		:arg("_")
-		:arg(path)
-		:arg(LOG)
+	return Command("sh")
+		:arg({ "-c", LAUNCHER, "_", path, LOG, LOCK, tostring(BUSY) })
 		:stdin(Command.NULL)
 		:stdout(Command.NULL)
 		:stderr(Command.NULL)
 		:status()
-end
-
-local function parent_dir(path)
-	return (path:match("^(.*)/[^/]+/*$") or "") .. "/"
 end
 
 -- Split the satchel for delivery into DEST_DIR: files to copy and files
@@ -580,7 +743,8 @@ end
 
 -- SCRIPT mode: queue the whole satchel into the cwd (a copy of the files
 -- packed with `pack`, a move of those packed with `cut`) and empty it; the
--- queued files keep their C / M marks. LIVE mode: native paste.
+-- queued files keep their y / x marks. LIVE mode: native paste.
+-- `--force` skips the overwrite confirmation.
 local function paste(args)
 	local s = get_state()
 	if not s.script_mode then
@@ -591,10 +755,23 @@ local function paste(args)
 	end
 
 	local dest = snapshot_cwd()
-	local dest_dir = (dest:gsub("/*$", "/"))
+	local dest_dir = with_slash(dest)
 	local copies, cuts = split_satchel(s, dest_dir)
 	if #copies == 0 and #cuts == 0 then
 		return notify("Everything in the satchel is already in this directory", "warn")
+	end
+
+	if not args.force then
+		local all = {}
+		for _, f in ipairs(copies) do
+			all[#all + 1] = f
+		end
+		for _, f in ipairs(cuts) do
+			all[#all + 1] = f
+		end
+		if not confirm_overwrite(all, dest_dir) then
+			return notify("Cancelled")
+		end
 	end
 
 	local ops = ops_for(copies, cuts, dest)
@@ -606,21 +783,38 @@ local function paste(args)
 end
 
 -- Queue Yazi's yank buffer as copy/move (independent of the satchel).
-local function queue_transfer()
+-- Like `paste`, files already in the current directory are skipped.
+local function queue_transfer(args)
 	local snap = snapshot_yanked()
 	if not snap or #snap.files == 0 then
 		return notify("No yanked files", "warn")
 	end
 
-	local op = { type = snap.cut and "move" or "copy", files = snap.files, dest = snap.cwd }
+	local dest_dir = with_slash(snap.cwd)
+	local files = {}
+	for _, f in ipairs(snap.files) do
+		if parent_dir(f) ~= dest_dir then
+			files[#files + 1] = f
+		end
+	end
+	if #files == 0 then
+		return notify("Everything yanked is already in this directory", "warn")
+	end
+
+	if not args.force and not confirm_overwrite(files, dest_dir) then
+		return notify("Cancelled")
+	end
+
+	local op = { type = snap.cut and "move" or "copy", files = files, dest = snap.cwd }
 	push_op(op)
 	ya.emit("unyank", {})
 	notify("Queued " .. describe(op))
 end
 
-local function queue_delete(args)
+-- Deletion is always permanent. SCRIPT: queue `rm -rf`. LIVE: native remove.
+local function queue_delete()
 	if not get_state().script_mode then
-		return ya.emit("remove", { permanently = args.permanently })
+		return ya.emit("remove", { permanently = true })
 	end
 
 	local sel = snapshot_selection()
@@ -671,7 +865,7 @@ end
 
 local function clear()
 	local s = get_state()
-	if s.running then
+	if s.running or is_locked() then
 		return notify("A script is running; wait for it to finish", "warn")
 	end
 
@@ -700,7 +894,7 @@ local function preview()
 	if #s.ops > 0 then
 		-- Rendered from the queue into a scratch file; never touches SCRIPT.
 		ensure_state_dir()
-		local ok, err = write_atomic(PREVIEW, render(s.ops))
+		local ok, err = write_atomic(PREVIEW, render(s.ops, s.opts))
 		if not ok then
 			return notify("Cannot write preview: " .. tostring(err), "error", 6)
 		end
@@ -738,6 +932,10 @@ local function status()
 	if s.running then
 		local last = tail_of_log() or "(no output yet)"
 		return notify("Script running. Latest output:\n" .. last, "info", 5)
+	end
+	if is_locked() then
+		local last = tail_of_log() or "(no output yet)"
+		return notify("Script running in another Yazi instance. Latest output:\n" .. last, "info", 5)
 	end
 	if #s.ops > 0 then
 		return notify(
@@ -778,36 +976,43 @@ local function run()
 	local title, body
 	if leftover then
 		title = "Run LEFTOVER script?"
-		body = SCRIPT
+		body = script_summary(SCRIPT)
 	else
 		local lines = {}
 		for i, op in ipairs(s.ops) do
-			if i > 12 then
-				lines[#lines + 1] = string.format("... and %d more", #s.ops - 12)
-				break
-			end
-			lines[#lines + 1] = describe(op)
+			lines[i] = describe(op)
 		end
 		title = "Run queued operations?"
-		body = table.concat(lines, "\n")
+		body = summarize(lines, 12)
 	end
 	if not confirm(title, body) then
 		return notify("Cancelled")
 	end
 
-	if #s.ops > 0 then
+	-- Freeze the queue first, THEN render: exactly the frozen ops are written
+	-- to the script and marked in-flight, and anything queued while the
+	-- (asynchronous) rendering below is in progress simply stays queued.
+	-- With a leftover script nothing is frozen and the script is never written.
+	local ops = begin_run(not leftover)
+	if not leftover then
 		ensure_state_dir()
-		local ok, err = write_atomic(SCRIPT, render(s.ops))
+		local ok, err = write_atomic(SCRIPT, render(ops, s.opts))
 		if not ok then
+			abort_run(ops)
 			return notify("Cannot write script: " .. tostring(err), "error", 8)
 		end
 	end
 
-	begin_run() -- queue -> in-flight (marks stay), running = true
 	local started = os.time()
 
-	-- Output goes to a log file (instead of the TUI) so `status` can tail it.
-	local result, err = launch(SCRIPT)
+	-- pcall: a Lua error must never leave `running` stuck at true.
+	local ok, a, b = pcall(launch, SCRIPT)
+	local result, err
+	if ok then
+		result, err = a, b
+	else
+		result, err = nil, a
+	end
 
 	local success = result and result.success or false
 	end_run(success) -- success clears the marks, failure keeps them
@@ -817,6 +1022,8 @@ local function run()
 		os.remove(SCRIPT)
 		os.remove(LOG)
 		notify("Script finished successfully (" .. elapsed .. ")", "info", 8)
+	elseif result and result.code == BUSY then
+		notify("Another Yazi instance is already running the script", "warn", 6)
 	else
 		local why = result and ("exit code " .. tostring(result.code)) or tostring(err)
 		notify(
@@ -850,10 +1057,15 @@ local actions = {
 }
 
 return {
-	-- Call from init.lua: require("dired-satchel"):setup()
-	setup = function(st, _)
+	-- Call from init.lua: require("dired-satchel"):setup { ... }
+	setup = function(st, opts)
+		opts = opts or {}
+		st.opts = {
+			rsync_extra = opts.rsync_extra,
+			reflink = opts.reflink == true,
+		}
 		if st.script_mode == nil then
-			st.script_mode = true
+			st.script_mode = opts.default_mode ~= "live"
 		end
 
 		-- Per-file marks at the right edge of the file list.

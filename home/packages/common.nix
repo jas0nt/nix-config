@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   tools,
   config,
   ...
@@ -76,6 +75,7 @@
     xunlei-uos
     (tools.scale pkgs qbittorrent 1.3)
     (tools.scale pkgs motrix 1.4)
+    protonmail-desktop
     localsend
     tigervnc
   ];

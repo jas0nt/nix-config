@@ -3,9 +3,38 @@
   tools,
   config,
   pkgs,
+  lib,
   ...
 }:
 
+let
+  # Keymap helper: k <keys> <run> <desc>   (desc = "" omits the desc field)
+  k =
+    on: run: desc:
+    {
+      inherit run;
+      on = lib.toList on;
+    }
+    // lib.optionalAttrs (desc != "") { inherit desc; };
+
+  satchel = cmd: "plugin dired-satchel ${cmd}";
+
+  videoRule = {
+    mime = "video/*";
+    run = "video-shared";
+  };
+  mediainfoRules =
+    map
+      (mime: {
+        inherit mime;
+        run = "mediainfo";
+      })
+      [
+        "{audio,image}/*"
+        "application/subrip"
+        "application/postscript"
+      ];
+in
 {
   home.packages =
     with pkgs;
@@ -26,35 +55,32 @@
 
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi;
     enableFishIntegration = true;
     enableNushellIntegration = true;
     initLua = ./init.lua;
-    plugins = with pkgs; {
-      smart-enter = yaziPlugins.smart-enter;
-      mediainfo = yaziPlugins.mediainfo;
-      projects = yaziPlugins.projects;
-      bookmarks = yaziPlugins.bookmarks;
-      lazygit = yaziPlugins.lazygit;
-      mount = yaziPlugins.mount;
-      compress = yaziPlugins.compress;
-      mime-ext = yaziPlugins.mime-ext;
+
+    plugins = {
+      inherit (pkgs.yaziPlugins)
+        smart-enter
+        mediainfo
+        projects
+        bookmarks
+        lazygit
+        mount
+        compress
+        mime-ext
+        ;
       dired-satchel = ./plugins/dired-satchel;
       video-shared = ./plugins/video-shared;
     };
+
     settings = {
-      log = {
-        enabled = false;
-      };
       mgr = {
-        show_hidden = false;
         linemode = "mtime";
         sort_by = "natural";
-        sort_dir_first = true;
-        sort_reverse = false;
       };
       preview = {
-        cache_dir = config.home.homeDirectory + "/.cache/yazi";
+        cache_dir = "${config.xdg.cacheHome}/yazi";
         max_width = 3840;
         max_height = 2160;
         image_quality = 90;
@@ -66,10 +92,6 @@
         micro_workers = 16;
         preload_workers = 16;
         process_workers = 4;
-        image_bound = [
-          0
-          0
-        ];
       };
       plugin = {
         prepend_fetchers = [
@@ -88,330 +110,74 @@
             prio = "high";
           }
         ];
-        prepend_preloaders = [
-          { mime = "video/*"; run = "video-shared"; }
-          {
-            mime = "{audio,image}/*";
-            run = "mediainfo";
-          }
-          {
-            mime = "application/subrip";
-            run = "mediainfo";
-          }
-          {
-            mime = "application/postscript";
-            run = "mediainfo";
-          }
-        ];
-        prepend_previewers = [
-          { mime = "video/*"; run = "video-shared"; }
-          {
-            mime = "{audio,image}/*";
-            run = "mediainfo";
-          }
-          {
-            mime = "application/subrip";
-            run = "mediainfo";
-          }
-          {
-            mime = "application/postscript";
-            run = "mediainfo";
-          }
-        ];
+        prepend_preloaders = [ videoRule ] ++ mediainfoRules;
+        prepend_previewers = [ videoRule ] ++ mediainfoRules;
       };
     };
+
     keymap = {
       input.prepend_keymap = [
-        {
-          run = "close";
-          on = [ "<Esc>" ];
-        }
+        (k "<Esc>" "close" "")
       ];
+
       mgr.prepend_keymap = [
-        {
-          run = "shell \"$SHELL\" --block";
-          on = [ "!" ];
-        }
-        {
-          run = "shell --orphan --confirm ${const.terminal}";
-          on = [ "`" ];
-        }
-        {
-          run = "shell 't=$(mktemp --suffix=.jpg); ffmpegthumbnailer -i \"$0\" -o \"$t\" -s 0 -c jpeg -f >/dev/null 2>&1; qview \"$t\" >/dev/null 2>&1; rm \"$t\"' --block";
-          on = [ "e" ];
-        }
-        {
-          run = "cd ~/.local/share/Trash";
-          on = [
-            "g"
-            "t"
-          ];
-        }
-        {
-          run = "escape";
-          on = [ "q" ];
-        }
-        {
-          run = "remove --permanently";
-          on = [ "D" ];
-        }
-        {
-          run = "shell 'dua i .' --block";
-          on = [
-            "m"
-            "S"
-          ];
-        }
-        {
-          run = "linemode size_and_mtime";
-          on = [
-            "m"
-            "a"
-          ];
-        }
+        (k "`" "shell --orphan --confirm ${const.terminal}" "")
+        (k "q" "escape" "")
+        (k [ "m" "S" ] "shell 'dua i .' --block" "")
+        (k [ "m" "a" ] "linemode size_and_mtime" "")
 
-        {
-          run = "tab_close";
-          on = [
-            "t"
-            "c"
-          ];
-          desc = "Close tab";
-        }
-        {
-          run = "tab_switch -1 --relative";
-          on = [ "H" ];
-          desc = "Previous tab";
-        }
-        {
-          run = "tab_switch 1 --relative";
-          on = [ "L" ];
-          desc = "Next tab";
-        }
+        # ---- tabs / history / visual ----
+        (k [ "t" "t" ] "tab_create --current" "New tab")
+        (k [ "t" "c" ] "tab_close" "Close tab")
+        (k "H" "tab_switch -1 --relative" "Previous tab")
+        (k "L" "tab_switch 1 --relative" "Next tab")
+        (k "<A-h>" "back" "History back")
+        (k "<A-l>" "forward" "History forward")
+        (k "V" "visual_mode" "Visual mode")
+        (k "<A-v>" "visual_mode --unset" "Visual mode (unset)")
 
-        {
-          run = "visual_mode";
-          on = [ "V" ];
-          desc = "Visual mode";
-        }
+        # ---- dired-satchel ----
+        (k "y" (satchel "pack") "Pack (SCRIPT) / yank (LIVE)")
+        (k "x" (satchel "cut") "Pack (SCRIPT) / cut (LIVE)")
+        (k "Y" (satchel "unpack") "Empty satchel")
+        (k "X" (satchel "unpack") "Empty satchel")
+        (k "p" (satchel "paste") "Paste (asks before overwriting)")
+        (k "d" (satchel "delete") "Delete permanently")
 
-        # ---- dired-satchel: same keys as dired-satchel ----
-        {
-          run = "plugin dired-satchel pack";
-          on = [ "y" ];
-          desc = "Pack (SCRIPT) / yank (LIVE)";
-        }
-        {
-          run = "plugin dired-satchel cut";
-          on = [ "x" ];
-          desc = "Pack (SCRIPT) / cut (LIVE)";
-        }
-        {
-          run = "plugin dired-satchel unpack";
-          on = [ "Y" ];
-          desc = "Empty satchel";
-        }
-        {
-          run = "plugin dired-satchel paste"; # NEW
-          on = [ "p" ];
-          desc = "Paste";
-        }
-        {
-          run = "plugin dired-satchel delete";
-          on = [ "d" ];
-          desc = "Delete";
-        }
+        # ---- `v` menu (stands in for satchel-transient) ----
+        (k [ "v" "x" ] (satchel "run") "Run queue / leftover script")
+        (k [ "v" "s" ] (satchel "preview") "Preview script")
+        (k [ "v" "v" ] (satchel "status") "Queue status / progress")
+        (k [ "v" "u" ] (satchel "undo") "Undo last queued op")
+        (k [ "v" "r" ] (satchel "unqueue") "Remove selected/hovered files from queue and satchel")
+        (k [ "v" "c" ] (satchel "clear") "Clear queue and script")
+        (k [ "v" "y" ] (satchel "unpack") "Empty satchel")
+        (k [ "v" "t" ] (satchel "toggle") "Toggle SCRIPT / LIVE mode")
+        (k [ "v" "i" ] (satchel "insert") "Queue Yazi's yank buffer here")
 
-        # ---- dired-satchel: `v` menu (stands in for satchel-transient) ----
-        {
-          run = "plugin dired-satchel run";
-          on = [
-            "v"
-            "x"
-          ];
-          desc = "Run queue / leftover script";
-        }
-        {
-          run = "plugin dired-satchel preview";
-          on = [
-            "v"
-            "s"
-          ];
-          desc = "Preview script";
-        }
-        {
-          run = "plugin dired-satchel status";
-          on = [
-            "v"
-            "v"
-          ];
-          desc = "Queue status / progress";
-        }
-        {
-          run = "plugin dired-satchel undo";
-          on = [
-            "v"
-            "u"
-          ];
-          desc = "Undo last queued op";
-        }
-        {
-          run = "plugin dired-satchel unqueue"; # NEW
-          on = [
-            "v"
-            "r"
-          ];
-          desc = "Remove selected/hovered files from queue and satchel";
-        }
-        {
-          run = "plugin dired-satchel clear";
-          on = [
-            "v"
-            "c"
-          ];
-          desc = "Clear queue and script";
-        }
-        {
-          run = "plugin dired-satchel unpack"; # NEW
-          on = [
-            "v"
-            "y"
-          ];
-          desc = "Empty satchel";
-        }
-        {
-          run = "plugin dired-satchel toggle"; # NEW
-          on = [
-            "v"
-            "t"
-          ];
-          desc = "Toggle SCRIPT / LIVE mode";
-        }
+        # ---- plugins ----
+        (k "<Enter>" "plugin smart-enter" "")
+        (k "z" "plugin zoxide" "")
+        (k "Z" "plugin fzf" "")
+        (k [ "g" "i" ] "plugin lazygit" "")
+        (k "M" "plugin mount" "")
 
-        {
-          run = "plugin --sync smart-enter";
-          on = [ "<Enter>" ];
-        }
-        {
-          run = "plugin zoxide";
-          on = [ "z" ];
-        }
-        {
-          run = "plugin fzf";
-          on = [ "Z" ];
-        }
-        {
-          run = "plugin lazygit";
-          on = [
-            "g"
-            "i"
-          ];
-        }
-        {
-          run = "plugin mount";
-          on = [ "M" ];
-        }
+        # projects
+        (k [ "P" "s" ] "plugin projects save" "")
+        (k [ "P" "p" ] "plugin projects load_last" "")
+        (k [ "P" "l" ] "plugin projects load" "")
+        (k [ "P" "d" ] "plugin projects delete" "")
+        (k [ "P" "D" ] "plugin projects delete_all" "")
 
-        # CHANGED: prefix moved from `P` to `g p`, because `P` is now move-here
-        {
-          run = "plugin projects save";
-          on = [
-            "g"
-            "p"
-            "s"
-          ];
-        }
-        {
-          run = "plugin projects load_last";
-          on = [
-            "g"
-            "p"
-            "p"
-          ];
-        }
-        {
-          run = "plugin projects load";
-          on = [
-            "g"
-            "p"
-            "l"
-          ];
-        }
-        {
-          run = "plugin projects delete";
-          on = [
-            "g"
-            "p"
-            "d"
-          ];
-        }
-        {
-          run = "plugin projects delete_all";
-          on = [
-            "g"
-            "p"
-            "D"
-          ];
-        }
+        (k "'" "plugin bookmarks jump" "")
+        (k [ "b" "b" ] "plugin bookmarks save" "")
+        (k [ "b" "d" ] "plugin bookmarks delete" "")
+        (k [ "b" "D" ] "plugin bookmarks delete_all" "")
 
-        {
-          run = "plugin bookmarks jump";
-          on = [ "'" ];
-        }
-        {
-          run = "plugin bookmarks save";
-          on = [
-            "b"
-            "b"
-          ];
-        }
-        {
-          run = "plugin bookmarks delete";
-          on = [
-            "b"
-            "d"
-          ];
-        }
-        {
-          run = "plugin bookmarks delete_all";
-          on = [
-            "b"
-            "D"
-          ];
-        }
-
-        {
-          run = "plugin compress";
-          on = [
-            "C"
-            "c"
-          ];
-          desc = "Archive selected files";
-        }
-        {
-          run = "plugin compress -p";
-          on = [
-            "C"
-            "p"
-          ];
-          desc = "Archive selected files (password)";
-        }
-        {
-          run = "plugin compress -ph";
-          on = [
-            "C"
-            "h"
-          ];
-          desc = "Archive selected files (password+header)";
-        }
-        {
-          run = "plugin compress -phl";
-          on = [
-            "C"
-            "l"
-          ];
-          desc = "Archive selected files (password+header+level)";
-        }
+        (k [ "C" "c" ] "plugin compress" "Archive selected files")
+        (k [ "C" "p" ] "plugin compress -p" "Archive selected files (password)")
+        (k [ "C" "h" ] "plugin compress -ph" "Archive selected files (password+header)")
+        (k [ "C" "l" ] "plugin compress -phl" "Archive selected files (password+header+level)")
       ];
     };
   };
