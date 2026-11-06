@@ -1,3 +1,4 @@
+name: windows
 services:
   windows:
     image: dockurr/windows

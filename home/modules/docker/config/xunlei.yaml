@@ -1,0 +1,15 @@
+name: xunlei
+services:
+  xunlei:
+    image: cnk3x/xunlei:latest
+    container_name: xunlei
+    privileged: true
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:2345:2345
+    environment:
+      XL_DASHBOARD_USERNAME: "admin"
+      XL_DASHBOARD_PASSWORD: "admin"
+    volumes:
+      - ~/Documents/xunlei/data:/xunlei/data
+      - ~/Downloads/xunlei:/xunlei/downloads
