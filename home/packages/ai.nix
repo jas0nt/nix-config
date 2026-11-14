@@ -1,9 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   home.packages = with pkgs; [
-    ollama
-    aichat
-    oterm
+    pkgs-unstable.deepseek-harness
   ];
 }

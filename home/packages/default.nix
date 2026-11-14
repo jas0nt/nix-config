@@ -9,6 +9,7 @@
     ./common.nix
     ./coding.nix
     ./media.nix
+    ./ai.nix
   ]
   ++ lib.optionals const.is-darwin [
     ./mac-apps.nix
