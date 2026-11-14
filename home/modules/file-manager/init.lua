@@ -13,9 +13,6 @@ function Linemode:size_and_mtime()
 end
 
 
--- dired-satchel
-require("dired-satchel"):setup()
-
 -- projects
 require("projects"):setup({
     event = {
