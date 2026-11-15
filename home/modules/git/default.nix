@@ -9,6 +9,7 @@
           name = "Jas0nT";
           email = "taoeta@gmail.com";
         };
+        credential.helper = "store";
       };
       includes = [
         { path = ./config/theme; }
