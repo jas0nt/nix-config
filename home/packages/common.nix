@@ -1,7 +1,6 @@
 {
   pkgs,
   tools,
-  config,
   ...
 }:
 
@@ -64,7 +63,6 @@
     just
     wlrctl
     tray-tui
-    sshfs
     axel
 
     gparted

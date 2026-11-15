@@ -1,8 +1,5 @@
 {
-  inputs,
   const,
-  config,
-  pkgs,
   lib,
   ...
 }:
@@ -34,7 +31,7 @@
   home = {
     stateVersion = "26.05";
 
-    username = const.username;
+    inherit (const) username;
 
     # Use mkForce to prevent Home Manager from trying to guess the home directory
     homeDirectory = lib.mkForce const.home;
@@ -42,13 +39,15 @@
     sessionVariables = {
       EDITOR = const.editor;
       BROWSER = const.browser;
-      TERM = const.terminal;
       TERMINAL = const.terminal;
       http_proxy = const.http-proxy;
       https_proxy = const.http-proxy;
       all_proxy = const.socks-proxy;
     };
   };
+
+  # nix-darwin 下 man 由系统提供，HM 的 man cache 生成没有意义
+  programs.man.generateCaches = lib.mkIf const.is-darwin false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

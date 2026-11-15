@@ -27,12 +27,6 @@
         keybind = "q";
       }
       {
-        label = "hibernate";
-        action = "bash ~/scripts/desktop.sh hibernate";
-        text = "Hibernate";
-        keybind = "h";
-      }
-      {
         label = "reboot";
         action = "bash ~/scripts/desktop.sh reboot";
         text = "Reboot";

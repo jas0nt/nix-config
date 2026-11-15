@@ -1,6 +1,5 @@
 {
   const,
-  pkgs,
   lib,
   ...
 }:
@@ -18,5 +17,6 @@
     ./virtualisation.nix
     ./display-manager.nix
     ./game.nix
+    ./proxy.nix
   ];
 }

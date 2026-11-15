@@ -53,7 +53,7 @@
         # Other
         "browser.startup.homepage_override.mstone" = "ignore";
       };
-      userChrome = (builtins.readFile ./config/userChrome.css);
+      userChrome = builtins.readFile ./config/userChrome.css;
     };
   };
 }

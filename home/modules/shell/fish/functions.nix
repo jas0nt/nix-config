@@ -1,8 +1,16 @@
 {
+  const,
+  lib,
+  ...
+}:
+
+{
   imports = [
+    ./randopen.nix
+  ]
+  ++ lib.optionals const.is-linux [
     ./windows.nix
     ./xunlei.nix
-    ./randopen.nix
   ];
 
   programs.fish = {
@@ -23,10 +31,11 @@
         end
       '';
 
-      gpu_fan.body = "sudo nvidia-settings --display :1.0 -a \"[gpu:0]/GPUFanControlState=1\" -a \"[fan:0]/GPUTargetFanSpeed=$argv[1]\"";
-
       rgc.body = "rg --json $argv | delta";
 
+    }
+    // lib.optionalAttrs const.is-linux {
+      gpu_fan.body = "bash ~/scripts/gpu_fan.sh $argv";
     };
   };
 

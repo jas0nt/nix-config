@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  services.hyprpolkitagent.enable = true;
 
   services.hypridle = {
     enable = true;
@@ -66,8 +67,10 @@
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.mihomo}/bin/mihomo -f .config/fuckgfw/config.yaml";
+        ExecStart = "${pkgs.mihomo}/bin/mihomo -f %h/.config/fuckgfw/config.yaml";
         ExecStopPost = "${pkgs.libnotify}/bin/notify-send fuckgfw stopped";
+        Restart = "on-failure";
+        RestartSec = 5;
       };
     };
 

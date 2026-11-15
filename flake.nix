@@ -36,13 +36,7 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      ...
-    }:
+    inputs@{ nixpkgs, ... }:
     let
       nixosOutputs = (import ./os/nixos.nix) inputs;
       darwinOutputs = (import ./os/darwin.nix) inputs;

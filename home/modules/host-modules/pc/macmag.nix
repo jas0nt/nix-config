@@ -3,7 +3,7 @@
   xdg.desktopEntries.macmag =
     let
       openMagnetOnMac = pkgs.writeShellScript "open-magnet-mac" ''
-        exec ssh mac "open '$1'"
+        exec ssh mac "open $(printf '%q' "$1")"
       '';
     in
     {

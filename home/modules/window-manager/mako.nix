@@ -15,8 +15,4 @@
     };
 
   };
-
-  wayland.windowManager.sway.config.startup = [
-    { command = "mako"; }
-  ];
 }

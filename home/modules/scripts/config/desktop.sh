@@ -1,6 +1,4 @@
-set -x
-
-DIR=$(dirname "$0")
+#!/usr/bin/env bash
 
 case $1 in
 
@@ -12,33 +10,16 @@ launcher)
     fuzzel
     ;;
 
-idle-lock)
-    source $DIR/utils.sh
-    if is-media-playing; then
-        echo "Not locking"
-        wlrctl pointer move 1
-        wlrctl pointer move -1
-    else
-        echo "Locking"
-        $0 lock
-    fi
-    ;;
-
 logout-menu)
-    pkill wlogout || wlogout -b 5 -B 700 -T 700
+    pkill wlogout || wlogout -b "$(wc -l < "$HOME/.config/wlogout/layout")" -B 700 -T 700
     ;;
 
 lock)
-    # pidof swaylock || swaylock -f
     hyprlock
     ;;
 
 logout)
     niri msg action quit
-    ;;
-
-hibernate)
-    systemctl hibernate
     ;;
 
 reboot)
@@ -61,10 +42,6 @@ file-manager)
     $TERMINAL --class fm yazi
     ;;
 
-screenshot)
-    grim -g "$(slurp)" - | wl-copy
-    ;;
-
 record)
     RECORDING_DIR=~/Videos/Recording
     FILENAME="$(date +'%Y-%m-%d_%H-%M-%S').mp4"
@@ -85,17 +62,9 @@ calendar)
     pkill calcure || $TERMINAL --class myfloatingm calcure
     ;;
 
-restart-services)
-    systemctl --user restart pipewire pipewire-pulse waybar
-    ;;
-
 notification-center)
     sleep 0.1s
     makoctl restore
-    ;;
-
-notification-dnd)
-    makoctl mode -t do-not-disturb
     ;;
 
 *)

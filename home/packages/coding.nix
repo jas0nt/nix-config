@@ -12,14 +12,6 @@
     enable = false;
   };
 
-  programs.claude-code = {
-    enable = false;
-  };
-
-  programs.codex = {
-    enable = false;
-  };
-
   programs.uv = {
     enable = true;
   };
@@ -33,6 +25,8 @@
     tree-sitter
     virtualenv
     nixfmt-tree
+    deadnix
+    statix
     nodejs
 
     rustc

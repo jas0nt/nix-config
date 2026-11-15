@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   imports = [
     ./bash
@@ -12,31 +10,32 @@
     colors.enable = true;
   };
 
-  programs.zellij = {
-    enable = true;
-    # enableFishIntegration = true;
-  };
-
   stylix.targets.fzf = {
     enable = true;
     colors.enable = true;
   };
 
-  programs.fzf = {
-    enable = true;
-    enableFishIntegration = true;
-    tmux.enableShellIntegration = true;
-  };
+  programs = {
+    zellij = {
+      enable = true;
+    };
 
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-    enableNushellIntegration = true;
-  };
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+      tmux.enableShellIntegration = true;
+    };
 
-  programs.navi = {
-    enable = true;
-    enableFishIntegration = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+    };
+
+    navi = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
 
 }

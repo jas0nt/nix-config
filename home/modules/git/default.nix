@@ -1,26 +1,28 @@
 { pkgs, ... }:
 
 {
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "Jas0nT";
-        email = "taoeta@gmail.com";
+  programs = {
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Jas0nT";
+          email = "taoeta@gmail.com";
+        };
       };
+      includes = [
+        { path = ./config/theme; }
+      ];
     };
-    includes = [
-      { path = ./config/theme; }
-    ];
-  };
 
-  programs.delta = {
-    enable = true;
-    enableGitIntegration = true;
-  };
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
 
-  programs.lazygit = {
-    enable = true;
+    lazygit = {
+      enable = true;
+    };
   };
 
   stylix.targets.lazygit = {

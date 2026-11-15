@@ -105,7 +105,6 @@ spawn-at-startup "systemctl" "--user" "restart" "hypridle.service"
 
 environment {
     DISPLAY ":0"  // xwayland
-    GDK_BACKEND "wayland,x11"
     QT_QPA_PLATFORM "wayland;xcb"
     SDL_VIDEODRIVER "wayland"
     CLUTTER_BACKEND "wayland"

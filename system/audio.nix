@@ -3,10 +3,7 @@
 {
   security.rtkit.enable = true;
   services = {
-    pulseaudio = {
-      enable = false;
-      package = pkgs.pulseaudioFull;
-    };
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       audio.enable = true;

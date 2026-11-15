@@ -5,7 +5,7 @@ in
   system = "x86_64-darwin";
   is-linux = false;
   is-darwin = true;
-  username = username;
+  inherit username;
   home = "/Users/${username}";
   terminal = "kitty";
   font = "Maple Mono NF";

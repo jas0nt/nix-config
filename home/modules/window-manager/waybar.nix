@@ -108,23 +108,6 @@
           max-volume = 100;
           scroll-step = 1;
         };
-        "pulseaudio" = {
-          format = "{volume}";
-          format-muted = "{volume}";
-          format-icons = {
-            default = [
-              ""
-              "󰔷"
-              ""
-              ""
-            ];
-          };
-          on-click = "bash ~/scripts/volume.sh mute";
-          on-click-right = "bash ~/scripts/volume.sh gui";
-          on-scroll-up = "bash ~/scripts/volume.sh up";
-          on-scroll-down = "bash ~/scripts/volume.sh down";
-          scroll-step = 5;
-        };
         "tray" = {
           icon-size = 25;
           spacing = 7;
@@ -139,7 +122,7 @@
           };
         };
         "network" = {
-          format = "{iframe}";
+          format = "{ifname}";
           format-wifi = "󰖩";
           format-ethernet = "󰈀";
           format-disconnected = "󰖪";
@@ -148,24 +131,6 @@
           tooltip-format-ethernet = "{ifname} ";
           tooltip-format-disconnected = "Disconnected";
           on-click-right = "bash ~/scripts/desktop.sh network-manager";
-        };
-        "battery" = {
-          states = {
-            good = 95;
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon}  {capacity}%";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
-          format-alt = "{icon} {time}";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
         };
         "custom/notification" = {
           tooltip = false;

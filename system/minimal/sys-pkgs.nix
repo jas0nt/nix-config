@@ -10,7 +10,7 @@
     git = {
       enable = true;
       package = pkgs.gitFull;
-      config.credential.helper = "store";
+      config.credential.helper = "cache --timeout=86400";
     };
   };
 

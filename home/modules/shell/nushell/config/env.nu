@@ -1,6 +1,5 @@
 $env.EDITOR = '@editor@'
 $env.BROWSER = '@browser@'
-$env.TERM = '@terminal@'
 $env.TERMINAL = '@terminal@'
 $env.http_proxy = '@http-proxy@'
 $env.https_proxy = '@http-proxy@'

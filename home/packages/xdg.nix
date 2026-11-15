@@ -18,14 +18,10 @@ let
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
-    "x-scheme-handler/discord" = [ "discordcanary.desktop" ];
     "x-scheme-handler/magnet" = [ "qbittorrent.desktop" ];
-    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
-    "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "text/vnd.trolltech.linguist" = [ "mpv.desktop" ];
     "image/gif" = [ "com.interversehq.qView.desktop" ];
     "image/png" = [ "com.interversehq.qView.desktop" ];
     "image/jpg" = [ "com.interversehq.qView.desktop" ];
@@ -42,7 +38,6 @@ in
 {
   xdg = {
     enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
 
     desktopEntries = {
       yazi = {

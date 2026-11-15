@@ -1,7 +1,6 @@
 {
   const,
   lib,
-  pkgs,
   ...
 }:
 
@@ -29,16 +28,17 @@
       bind ctrl-w backward-kill-word
     '';
     shellAbbrs = {
-      lock = "bash ~/scripts/desktop.sh lock";
-      logout = "bash ~/scripts/desktop.sh logout";
       fuckgfw = "export http_proxy=${const.http-proxy}; and export https_proxy=${const.http-proxy}; and export all_proxy=${const.socks-proxy}";
       gfw = "set -e http_proxy; and set -e https_proxy; and set -e all_proxy";
       icat = "kitten icat";
+      cd = "z";
+    }
+    // lib.optionalAttrs const.is-linux {
+      lock = "bash ~/scripts/desktop.sh lock";
+      logout = "bash ~/scripts/desktop.sh logout";
       showcert = "nmap -p 443 --script ssl-cert";
       dota = "steam steam://rungameid/570";
       ipy = "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'";
-      cd = "z";
-      tmuxsesh = "sesh connect $(sesh list | fzf)";
     };
     shellAliases = {
       ls = "eza";

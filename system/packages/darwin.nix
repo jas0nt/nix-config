@@ -14,10 +14,10 @@
     #enableFishIntegration = true;
     onActivation = {
       autoUpdate = true;
-      upgrade = true;
+      upgrade = false;
       # 'zap': Uninstalls any brew app not listed here.
       # This enforces that your Nix config is the single source of truth.
-      cleanup = "zap";
+      cleanup = "uninstall";
     };
     brews = [
       "cmus"

@@ -1,7 +1,6 @@
 :root {
     /* URL bar width and height */
     --uc-urlbar-width: clamp(250px, 50vw, 600px);
-    --uc-urlbar-height: clamp(50px, 5vw, 60px);
 }
 
 /* Hide navigation buttons and icons to clean up UI */

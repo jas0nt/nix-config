@@ -57,3 +57,8 @@ fmt:
 
 check:
   nix flake check path:.
+
+lint:
+  deadnix --fail .
+  statix check . --ignore "**/hardware-configuration.nix"
+  nixfmt --check $(find . -name "*.nix" -not -path "./.git/*")

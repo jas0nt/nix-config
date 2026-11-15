@@ -9,7 +9,7 @@ services:
       CPU_CORES: "4"
       DISK_SIZE: "64G"
       USERNAME: "docker"
-      PASSWORD: ""
+      PASSWORD: "admin"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     devices:

@@ -1,7 +1,6 @@
 {
   const,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }:

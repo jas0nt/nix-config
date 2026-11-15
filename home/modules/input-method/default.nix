@@ -1,4 +1,4 @@
-{ const, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.sessionVariables = {

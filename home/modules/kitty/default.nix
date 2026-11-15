@@ -1,4 +1,4 @@
-{ const, ... }:
+_:
 
 {
   stylix.targets.kitty = {

@@ -16,7 +16,6 @@
   // lib.optionalAttrs const.is-linux {
     isNormalUser = true;
     extraGroups = [
-      "networkmanager"
       "wheel"
       "docker"
     ];

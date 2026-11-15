@@ -1,7 +1,5 @@
 {
   pkgs,
-  tools,
-  config,
   inputs,
   ...
 }:
@@ -11,7 +9,6 @@
     inputs.niri.homeModules.niri
     ./waybar.nix
     ./mako.nix
-    # ./swaylock.nix
     ./hyprlock.nix
     ./wlogout.nix
   ];
@@ -36,7 +33,7 @@
   programs.niri = {
     enable = true;
     package = pkgs.niri;
-    config = (builtins.readFile ./config/config.kdl);
+    config = builtins.readFile ./config/config.kdl;
   };
 
 }

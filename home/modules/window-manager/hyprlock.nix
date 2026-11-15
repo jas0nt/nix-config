@@ -1,11 +1,8 @@
-{
-  config,
-  ...
-}:
+_:
 
 {
   stylix.targets.hyprlock = {
-    enable = false;
+    enable = true;
     colors.enable = true;
     image.enable = true;
   };

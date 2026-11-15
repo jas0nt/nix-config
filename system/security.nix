@@ -1,13 +1,7 @@
 {
-  security.pam.services = {
-    swaylock = {
-      unixAuth = true;
-      rootOK = true;
-    };
-    hyprlock = {
-      unixAuth = true;
-      rootOK = true;
-    };
+  security.pam.services.hyprlock = {
+    unixAuth = true;
+    rootOK = false;
   };
 
   programs.fuse.userAllowOther = true;
