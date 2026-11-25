@@ -29,7 +29,6 @@
         "org.freedesktop.impl.portal.Access" = [ "gtk" ];
         "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-        # 用 gtk 的 file chooser，避免额外依赖 nautilus
         "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
       };
     };

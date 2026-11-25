@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   browser = [ "firefox.desktop" ];
 
@@ -38,6 +38,14 @@ in
 {
   xdg = {
     enable = true;
+
+    # niri-flake points NIX_XDG_DESKTOP_PORTAL_DIR at the user profile,
+    # hiding system portals; install gtk here so FileChooser = gtk works
+    # (the gnome portal delegates to nautilus, which isn't available).
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
 
     desktopEntries = {
       yazi = {
