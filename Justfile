@@ -3,8 +3,20 @@ set shell := ["bash", "-uc"]
 hostname := `hostname -s`
 keep := "7d"
 
-# 只在设置了代理变量时生成 `env http_proxy=... https_proxy=...` 前缀
-proxy_env := `p="${PROXY:-${HTTP_PROXY:-${http_proxy:-}}}"; if [ -n "$p" ]; then printf 'env "http_proxy=%s" "https_proxy=%s"' "$p" "$p"; fi`
+# Current user's nix config (contains access-tokens). root can't read it under sudo, so inject it via NIX_CONFIG
+nix_conf := home_directory() / ".config/nix/nix.conf"
+
+# Proxy URL, empty if unset
+proxy := `printf '%s' "${PROXY:-${HTTP_PROXY:-${http_proxy:-}}}"`
+
+# Proxy args for `env`, only generated when a proxy is set
+proxy_args := if proxy == "" { "" } else { ' "http_proxy=' + proxy + '" "https_proxy=' + proxy + '"' }
+
+# For normal-user commands: proxy only
+proxy_env := if proxy == "" { "" } else { "env" + proxy_args }
+
+# For sudo commands: user's nix.conf + proxy
+sudo_env := 'env "NIX_CONFIG=$(cat "' + nix_conf + '" 2>/dev/null)"' + proxy_args
 
 rebuild := if os() == "macos" {
   "nix run nix-darwin/master#darwin-rebuild -- switch"
@@ -18,7 +30,7 @@ default:
   @just --choose
 
 build *args:
-  sudo {{proxy_env}} {{rebuild}} --flake path:. {{args}}
+  sudo {{sudo_env}} {{rebuild}} --flake path:. {{args}}
 
 debug: (build "--show-trace --verbose")
 
